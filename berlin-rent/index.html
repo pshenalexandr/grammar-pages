@@ -3,48 +3,323 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>TITLE</title>
+<title>Why can't anyone in Berlin find a flat?</title>
+<meta name="description" content="An unreasonably thorough, interactive, fact-checked tour of Berlin's rental market: the map, the lock-in machine, and everything the city tried.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Patrick+Hand&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<!-- hand-drawn jitter for stick figures -->
 <svg width="0" height="0" style="position:absolute"><filter id="wobble"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="3"/><feDisplacementMap in="SourceGraphic" scale="2.2"/></filter></svg>
 <div id="progress"></div>
 
 <header class="hero">
-  <h1>BIG <span>QUESTION?</span></h1>
-  <div class="sub">An unreasonably long tour of ...</div>
-  <div class="scene"><i data-stick='{"mood":"shock","arms":"up"}'></i><img src="assets/source.png" alt=""><i data-stick='{"mood":"sweat","arms":"shrug","hat":"glasses"}'></i></div>
-  <div class="scroll-cue">scroll down, it gets worse ↓</div>
+  <h1>Why can't anyone in Berlin <span>find a flat?</span></h1>
+  <div class="sub">An unreasonably thorough tour of the machine that eats Berlin's flats. With a map.</div>
+  <div class="scene">
+    <i data-stick='{"mood":"shock","arms":"up"}'></i>
+    <div class="dossier" aria-label="A comically thick application folder">
+      <div class="tabs"><span>Schufa</span><span>Payslips ×3</span><span>Selbstauskunft</span><span>Mietschulden&shy;freiheits&shy;bescheinigung</span><span>Cover letter v9</span></div>
+      <div class="folder"><b>BEWERBUNGS&shy;MAPPE</b><small>application dossier, vol. 1 of 3</small><em>thickness: stops bullets</em></div>
+    </div>
+    <i data-stick='{"mood":"sweat","arms":"hold","prop":"phone"}'></i>
+  </div>
+  <div class="scroll-cue">scroll down, the queue starts here ↓</div>
 </header>
 
 <main>
 <section class="col">
-  <p class="big">Hook sentence.</p>
-  <p>Body with a footnote.<span class="fn" data-note="Fun aside.">0</span> And a boring source note.<span class="fn gray" data-note="Source.">0</span></p>
+  <p class="big">You have seen this listing. You have seen it forty times.</p>
+  <div class="listing">
+    <div class="l-h">2-Zi., 50 m², möbliert, befristet 11 Monate <span>€1,207 warm</span></div>
+    <div class="l-b">Besichtigung tomorrow 7:40. Please bring: Schufa, last 3 payslips, Mietschuldenfreiheitsbescheinigung, Selbstauskunft, a short text about yourself. <i>No pets, no WG, no smokers, no music, no hope.</i></div>
+  </div>
+  <p>That price isn't made up, by the way. It's 50 m² times <b>€24.14</b>, the average all-in rent per m² of a furnished, temporary Berlin listing in 2025.<span class="fn gray" data-note="Abgeordnetenhaus Drs. 19/26285 (Senate answer, 23 June 2026): furnished-temporary listings averaged €24.14/m² all-in (warm, with furniture) in 2025.">0</span> The "no hope" part I added. The rest is just Tuesday.</p>
+  <p>If you've been to 40 Besichtigungen and have a spreadsheet about it, hi, this is for you. If you have a lease from 2009, also hi, you're a character in this story and you won't like your card.</p>
+  <p>Here's the situation in four numbers:</p>
+  <div class="stats" id="stats">
+    <div class="stat"><div class="n">+119%</div><div class="l">advertised rents above the official rent index (2025)</div><span class="fn gray" data-note="IBB Wohnungsmarktbericht 2025, press release 6 March 2026: median asking rent €15.78 vs Mietspiegel 2024 €7.21, the highest gap among German big cities. Against the new Mietspiegel 2026 (€7.71) it's about +105%.">0</span></div>
+    <div class="stat"><div class="n">4.5%</div><div class="l">of flats at big co-op and city landlords changed tenants in 2025. A record low.</div><span class="fn gray" data-note="BBU Jahresstatistik 2025, 14 Sept 2026. It was 9.5% in 2001. The average tenancy is now over 22 years.">0</span></div>
+    <div class="stat"><div class="n">~300</div><div class="l">requests per flat at a state landlord. Then they draw lots.</div><span class="fn gray" data-note="HOWOGE, quoted in the Berliner Morgenpost, 27 Aug 2022: on average 300 online requests per flat; 10 people are drawn by lot for the viewing.">0</span></div>
+    <div class="stat"><div class="n">1,035,950 → 0</div><div class="l">Yes votes to socialise big landlords (2021) → flats socialised (Oct 2026)</div><span class="fn gray" data-note="Landeswahlleiterin, Volksentscheid 26 Sept 2021: 1,035,950 yes = 57.6% of voters. Status as of 8 Oct 2026: no flat socialised (entwicklungsstadt, 12 Sept 2026; tagesschau, 8 Oct 2026).">0</span></div>
+  </div>
+  <p>So I had three questions:</p>
+  <ol class="qs">
+    <li><a href="#p1">Why is it so expensive?</a></li>
+    <li><a href="#p2">Why does nobody move?</a></li>
+    <li><a href="#p3">Why didn't anything the city tried work?</a></li>
+  </ol>
+  <p class="tt-hint">Dotted words have hover cards (tap on phones). <span class="fn" data-note="Blue circles are asides like this one.">0</span> Blue circles are asides, <span class="fn gray" data-note="Grey circles are sources, with dates.">0</span> grey ones are sources. All rents are <b>cold</b> (Kaltmiete), per m², per month, unless a number says otherwise.</p>
 </section>
 
 <div class="sep">• • •</div>
 
-<section class="col">
+<section class="col" id="p1">
   <div class="chapter-kicker">Part 1</div>
-  <h2 class="chapter">Chapter title</h2>
-  <p>Explain the mechanism in plain words, with an analogy.</p>
+  <h2 class="chapter">Musical chairs with 3.7 million players</h2>
+  <p>Berlin's housing market is musical chairs. The music is people arriving. The chairs are flats. And the rule that matters: <b>a chair only gets a new price when somebody stands up.</b></p>
+  <p>The music got loud. Between 2011 and 2025 the official population grew by about <b>375,000</b>, from 3.33 to 3.70 million.<span class="fn gray" data-note="Amt für Statistik Berlin-Brandenburg: 3,326,002 (31 Dec 2011, Zensus 2011 basis) and 3,700,577 (31 Dec 2025, published 22 June 2026). The residents' register says 3.91 million; the official count was corrected down by the 2022 census.">0</span> That's roughly one <a href="https://en.wikipedia.org/wiki/Bochum" target="_blank" rel="noopener">Bochum</a> moving in.<span class="fn" data-note="Bochum has about 365,000 inhabitants. Nobody told Bochum.">0</span> In 2025, all of the growth came from migration: Berlin had more deaths than births.</p>
+  <p>The chairs did not keep up. The Senat's target has long been up to 20,000 new flats a year. Here is what actually got built:</p>
   <div class="widget">
-    <h3>The thing-o-matic</h3>
-    <!-- interactive goes here -->
+    <h3>Flats built per year vs the target</h3>
+    <svg id="buildChart" viewBox="0 0 700 260" role="img" aria-label="Bar chart of completed flats per year in Berlin, 2011 to 2025, against a 20,000 target line"></svg>
+    <div class="chart-insp" id="buildInsp">Hover a bar.</div>
   </div>
-  <div class="caption">(What is simplified, said plainly.)</div>
+  <div class="caption">Completed flats (new builds + conversions), Amt für Statistik Berlin-Brandenburg. Best year: 18,999 (2019). Never 20,000.</div>
+  <p>Why the drop after 2019? Building got expensive fast. A 10-year mortgage rate went from <b>1.27%</b> (Sept 2021) to <b>3.92%</b> (Nov 2023), and it was still 4.04% in August 2026. Construction prices rose by a third between 2021 and 2025. Building permits for flats fell from 25,052 in 2016 to 9,772 in 2024.<span class="fn gray" data-note="Bundesbank, housing loans with >10y fixed rate; Destatis 61261-0001 (index 2021 = 100 → 133.9 in 2025); IBB Tabellenband 2025 Tab. 16 (permits). Permits recovered to 13,754 in 2025.">0</span> And if you don't build, you don't get to cut the ribbon on a press release either.</p>
+  <p>Meanwhile, empty flats basically ran out. The 2022 census found <b>1.97%</b> empty, and only <b>1.2%</b> had been empty for three months or more. Planners consider about 3% healthy, because people need somewhere to move <i>into</i>.<span class="fn gray" data-note="Drs. 19/21184 (Zensus 2022 vacancy); StEP Wohnen 2040 (3% reserve).">0</span></p>
+  <p>So the few chairs that do free up go to whoever pays most. That's where the "Berlin rent" you see online comes from: it's not what Berlin pays, it's what the <i>listings</i> ask. And here's the part nobody tells you at the Besichtigung:</p>
+  <p class="punch"><b>Berlin doesn't have one rent. It has two: the one people pay, and the one people are asked to pay.</b></p>
+  <p>The people already inside pay about <b>€7.67</b> per m² on average (census, 2022). The listings ask a median of <b>€15.78</b> (2025). Same city. Same kind of buildings. Often the same building.<span class="fn gray" data-note="Zensus 2022: average net cold rent €7.67/m² (Amt für Statistik Berlin-Brandenburg, 21 Aug 2024). IBB: median asking rent €15.78/m² (2025). Caveat: asking rents are what portals advertise. New contracts signed at BBU member landlords averaged €9.54 in 2025, because cheap municipal and co-op flats often never reach a portal.">0</span> Let's put both on a map.</p>
+</section>
+
+<section class="wide mapsec" id="themap">
+  <div class="map-head">
+    <div class="chapter-kicker small">The map</div>
+    <h2 class="chapter small">Berlin, colored by pain</h2>
+  </div>
+  <div class="map-top">
+    <div class="toggle" id="modeTabs" role="tablist">
+      <button data-m="time" class="on">⏳ Time machine</button><button data-m="gap">⚖️ The Gap</button><button data-m="afford">💸 Can I afford it?</button>
+    </div>
+    <div class="map-btns">
+      <button id="btn3d" class="pill">3D skyline</button>
+      <button id="btnLayers" class="pill">☰ Layers</button>
+    </div>
+  </div>
+  <div id="mapbox">
+    <div id="map"></div>
+    <div id="map2"></div>
+    <div id="swipe" class="swipe-handle"><span>◀ ▶</span><em class="sl">neighbor pays</em><em class="sr">you'd pay</em></div>
+    <div id="mapov"></div>
+    <div id="legend" class="legend"></div>
+    <div id="insp" class="insp"></div>
+    <div id="drawer" class="drawer"></div>
+    <div class="zoom"><button id="zin" aria-label="zoom in">+</button><button id="zout" aria-label="zoom out">−</button><button id="zreset" aria-label="reset view">⌂</button></div>
+    <div id="kiez" class="kiez"></div>
+    <div id="thfpop" class="thfpop"></div>
+    <div id="aboutpop" class="aboutpop"></div>
+  </div>
+  <div class="mctl" data-for="time">
+    <div class="tm-row">
+      <button id="play" class="pill play">▶ play</button>
+      <input type="range" id="yearSlider" step="1" aria-label="year">
+      <div class="yearBig" id="yearBig">2025</div>
+    </div>
+    <div class="tm-read">
+      <div><span>Berlin median asking rent</span><b id="cityMed">–</b></div>
+      <div class="tide"><span>Areas <u>outside</u> the Ring asking ≥ €12/m²</span><b id="tide">–</b><div class="bar"><i id="tideBar"></i></div></div>
+    </div>
+    <div class="timeNote" id="timeNote"></div>
+  </div>
+  <div class="mctl" data-for="gap" hidden>
+    <div class="tm-row wrap">
+      <div class="toggle" id="gapView"><button data-v="swipe" class="on">↔ swipe</button><button data-v="ratio">× ratio</button></div>
+      <div class="toggle" id="gapYear"><button data-y="2022" class="on">2022 vs 2022</button><button data-y="2025">2025 listings</button></div>
+    </div>
+    <p class="gap-say">Drag the handle. Left: what <b>your neighbor</b> pays. Right: what <b>you'd</b> pay to move in next door. Same colors on both sides, so every jump in color is money.</p>
+  </div>
+  <div class="mctl" data-for="afford" hidden>
+    <div class="aff">
+      <label>Your net income: <b id="affIncome">€2,700</b>/month<input type="range" id="incSlider" min="1000" max="8000" step="50" aria-label="net income"></label>
+      <div class="aff-row"><span>Flat size</span><div class="toggle" id="sizeSel"><button data-s="30">30 m²</button><button data-s="45">45 m²</button><button data-s="60" class="on">60 m²</button><button data-s="80">80 m²</button><button data-s="100">100 m²</button></div></div>
+      <div class="aff-row"><span>Max share of income on cold rent</span><div class="toggle" id="ruleSel"><button data-r="0.3" class="on">30% (the rule)</button><button data-r="0.4">40%</button><button data-r="0.5">50% (Berlin mode)</button></div></div>
+      <div class="aff-row"><span>Listings year</span><select id="affYear"><option>2025</option><option>2022</option><option>2019</option><option>2015</option><option>2012</option></select></div>
+    </div>
+    <div class="aff-out">
+      <div class="big-pct" id="affPct">–</div>
+      <div>of the city's rented flats sit in areas where a <b id="affSize">60 m²</b> listing fits your budget of <b id="affBudget">–</b> (<span id="affAreas">–</span> areas).<div id="affMood" class="mood"></div></div>
+    </div>
+    <p class="aff-home" id="affHome"></p>
+    <p class="aside">The median household in Berlin has €2,675 net a month (2024), which is why the slider starts near there.<span class="fn gray" data-note="IBB Wohnungsmarktbericht 2025 Tabellenband, Mikrozensus 2024: median household net income €2,675/month.">0</span></p>
+  </div>
+  <div class="caption" id="mapCaption"></div>
+  <div class="map-foot"><span id="mapstatus"></span> Click any area for its Kiez card. Some places respond to a double-click.</div>
+</section>
+
+<section class="col">
+  <p>Press play once more and watch the Ringbahn. In 2012, <b>none</b> of the 382 areas outside the Ring with data asked €12/m² or more. In 2025, <b>250 of 379</b> did. The Ring used to be where "expensive" stopped. Now it's a line the price walked across on its way to Spandau.<span class="fn" data-note="These are nominal euros. Consumer prices also rose over 2012–2025, by roughly a third, so part of the red is just inflation. But asking rents more than doubled (+119%), which inflation alone doesn't explain.">0</span></p>
+  <p>And the Gap view is the real story. Pick any area: the people living there pay about half of what you'd pay to join them. <b>Every color jump between the two sides of that slider is a reason not to move.</b> Which brings us to the weirdest part.</p>
+</section>
+
+<div class="sep">• • •</div>
+
+<section class="col" id="p2">
+  <div class="chapter-kicker">Part 2</div>
+  <h2 class="chapter">The lock-in machine</h2>
+  <p>In most cities, rent is one price that moves. In Berlin, it's two prices that drift apart, and the law glues you to the cheaper one.</p>
+  <p>If you already have a lease, your rent can rise at most <b>15% in three years</b>, and never above the Mietspiegel, the official table of "local comparative rents".<span class="fn gray" data-note="Kappungsgrenze: Berlin ordinance, valid to 10 May 2028. The Mietspiegel is built from rents agreed or changed in the last 6 years (§ 558 BGB, 4 years before 2020), so it trails the market by design.">0</span> The Mietspiegel is built from rents of the last six years, so it lags the market by design. Its 2026 average: <b>€7.71</b>.</p>
+  <p>If you want a <i>new</i> lease, you pay what the listing says. Median 2025: <b>€15.78</b>.</p>
+  <p>Now meet the Hoffmanns. Two adults, 85 m², kids moved out in 2012. They'd happily take a 55 m² flat and give their big one to a family. Drag the years:</p>
+  <div class="widget" id="lockin">
+    <h3>The lock-in machine</h3>
+    <div class="li-top">
+      <div class="li-fig" id="liFig"></div>
+      <div class="li-bars">
+        <div class="li-yr" id="liYear">2012</div>
+        <div class="meter"><div class="lbl"><span>🛋️ Stay in 85 m²</span><b id="liStay">–</b></div><div class="bar"><i id="liStayBar" style="background:#7660b8"></i></div></div>
+        <div class="meter"><div class="lbl"><span>📦 Move to 55 m²</span><b id="liMove">–</b></div><div class="bar"><i id="liMoveBar"></i></div></div>
+        <div class="li-verdict" id="liVerdict"></div>
+      </div>
+    </div>
+    <input type="range" id="liSlider" min="2012" max="2025" step="1" value="2012" aria-label="year">
+    <div class="ticks"><span>2012</span><span>2015</span><span>2018</span><span>2021</span><span>2025</span></div>
+    <div class="li-loop" id="liLoop">
+      <div class="lp" data-k="0">Gap grows</div><div class="lp" data-k="1">Nobody moves</div><div class="lp" data-k="2">Fewer listings</div><div class="lp" data-k="3">Listings get pricier</div>
+    </div>
+    <div class="li-turn"><span>Turnover at BBU landlords (share of flats changing tenants)</span><b id="liTurn">–</b><div class="bar"><i id="liTurnBar"></i></div><small id="liTurnNote"></small></div>
+  </div>
+  <div class="caption">Stay = 85 m² × the latest Mietspiegel city average. Move = 55 m² × the IBB median asking rent that year. Simplification: a real sitting tenant's rent can sit above or below the average. Turnover: last BBU figure reported up to that year.</div>
+  <p>See the crossover around 2018? From then on, the smaller flat costs more than the bigger one. In 2025 the 55 m² flat costs about <b>€868</b> a month cold, the 85 m² one about <b>€613</b>. Moving out of the too-big flat would cost the Hoffmanns roughly €3,000 a year for the privilege of having less space.</p>
+  <p>So they stay. So does everyone. At BBU member landlords, the share of flats changing tenants fell from <b>9.5%</b> (2001) to <b>4.5%</b> (2025), and the average tenancy is now over <b>22 years</b>. At the state-owned landlords it's 3.8%, down from "around 10%".<span class="fn gray" data-note="BBU, 14 Sept 2026; Senate report on the state-owned housing companies 2024. A state-landlord spokesman put it this way (Morgenpost, 15 April 2026): 10% turnover would mean 160,000 flats a year coming free; now it's perhaps 60,000.">0</span> Fewer people moving means fewer listings: 64,483 regular listings in 2012, 40,014 in 2025.<span class="fn gray" data-note="IBB, number of listings analysed per year. Not every flat is listed online, but the trend is the point.">0</span> Fewer listings means more people per listing, which pushes asking rents up, which widens the gap. Which means fewer people move.</p>
+  <p class="punch"><b>Every Berliner who stays put makes the next listing more expensive, and every expensive listing makes another Berliner stay put.</b></p>
+  <p>Nobody in this story is doing anything wrong. The Hoffmanns are being rational. That's what makes it a machine and not a villain.<span class="fn" data-note="Economists call this the lock-in effect. Berlin's version is unusually strong because the gap between asking and existing rents (+119%) is the largest of any German big city, per IBB.">0</span></p>
+</section>
+
+<div class="sep">• • •</div>
+
+<section class="col" id="p3">
+  <div class="chapter-kicker">Part 3</div>
+  <h2 class="chapter">Everything the city tried</h2>
+  <p>To be fair to Berlin: it tried. It tried a lot. It tried things no other German state tried. Here's how it went, one round at a time. Ring the bell.</p>
+  <div class="fights" id="fights"></div>
+  <p>Notice a pattern? It isn't that nobody did anything. It's that every tool hit a wall: <b>the federal level</b> (Karlsruhe, the BGB), <b>the exemptions</b> (furnished, temporary, new builds), or <b>time</b> (laws that take effect in 2028, construction that takes years). And the biggest own-goal was scored back when the problem was the opposite one: around 2001, Berlin had roughly 100,000 empty flats and was planning demolitions.<span class="fn gray" data-note="MieterEcho 292/2001; vacancy 8.5% (155,000 flats) in 1998, Abgeordnetenhaus KA 15/372. Public stock: ~482,000 (1990) → ~273,000 (2005), per Andrej Holm. Another source (ARCH+) says ~590,000 in 1990.">0</span></p>
+  <h3 class="sub-h">The cast</h3>
+  <p>Every story needs characters. Click to flip.</p>
+  <div class="tenants" id="chars"></div>
+</section>
+
+<div class="sep">• • •</div>
+
+<section class="col" id="sim">
+  <div class="chapter-kicker">Field trip</div>
+  <h2 class="chapter">The Besichtigung simulator</h2>
+  <p>Theory is nice. Let's go stand in a queue. Pick a flat, then hit apply. The odds come from real, sourced applicant counts. The queue is drawn to scale, one figure per 10 applicants, wrapped around a Berlin block.</p>
+  <div class="widget" id="simW">
+    <h3>Besichtigung simulator</h3>
+    <div class="toggle" id="simScen"></div>
+    <p class="sim-note" id="simNote"></p>
+    <svg id="queue" viewBox="0 0 700 330" aria-label="A queue of stick figures wrapping around a city block"></svg>
+    <div class="sim-ctrl"><button class="bell" id="apply">📨 Apply</button><button class="pill" id="apply10">Apply 10×</button><button class="pill" id="simReset">reset</button></div>
+    <div class="sim-out">
+      <div><span>applications</span><b id="sApps">0</b></div>
+      <div><span>viewings</span><b id="sViews">0</b></div>
+      <div><span>flats</span><b id="sFlats">0</b></div>
+      <div><span>pages printed</span><b id="sPages">0</b></div>
+    </div>
+    <div class="sim-msg" id="simMsg">Your odds per application: –</div>
+    <div class="docs" id="docs"></div>
+  </div>
+  <div class="caption">Odds per application = viewers ÷ applicants × 1 ÷ viewers = 1 ÷ applicants. Real landlords don't pick at random. This is the optimistic version.</div>
+
+  <h3 class="sub-h">Boss fight: the Schufa</h3>
+  <p>Almost every landlord asks for a Schufa: a score from Germany's private credit bureau. If you just arrived in Germany, you probably don't have much of a file yet. Choose your moves.</p>
+  <div class="widget boss" id="boss">
+    <div class="boss-top">
+      <div class="boss-you"><div id="youFig"></div><div class="hp"><span>you</span><div class="bar"><i id="youHp"></i></div></div></div>
+      <div class="boss-vs">VS</div>
+      <div class="boss-them"><div class="schufa-mon">SCHUFA<small>Schutzgemeinschaft für allgemeine Kreditsicherung</small></div><div class="hp"><span>Schufa</span><div class="bar"><i id="bossHp"></i></div></div></div>
+    </div>
+    <div class="boss-moves" id="bossMoves"></div>
+    <div class="boss-log" id="bossLog">A wild SCHUFA appears!</div>
+  </div>
+  <div class="caption">BonitätsCheck price: €29.95 (Schufa, 2026). The free copy under Art. 15 GDPR is meant for you and has no verification code for third parties.</div>
+
+  <h3 class="sub-h">The Anmeldung loop</h3>
+  <p>One more level. To register your address (the Anmeldung, required within two weeks of moving in) you need a form from your landlord. To get a landlord, many ask for… a registered address. To get a tax ID, which your employer needs for your payslips, which the landlord needs, you need the Anmeldung. And the tax office says your surname must be on the letterbox.<span class="fn gray" data-note="§ 17 and § 19 Bundesmeldegesetz; BZSt FAQ on receiving the tax ID by post. A bank account usually also wants a registered address, though by law everyone has a right to a basic account (Basiskonto).">0</span></p>
+  <div class="loop" id="loopW"></div>
+  <div class="caption">The exit: any flat with a lease, even a sublet, gets you a Wohnungsgeberbestätigung. In Berlin, a booked Bürgeramt appointment counts as registering on time.</div>
+</section>
+
+<div class="sep">• • •</div>
+
+<section class="col" id="scams">
+  <div class="chapter-kicker">Practice</div>
+  <h2 class="chapter">Legal, sketchy, or illegal?</h2>
+  <p>Real listing patterns. Guess first, then click to reveal. Some of them are fine, so you can't just click "illegal" on everything. (In Berlin you'd mostly be right, but still.)</p>
+  <div class="scams" id="scamGrid"></div>
+  <div class="score" id="scamScore"></div>
+</section>
+
+<div class="sep">• • •</div>
+
+<section class="col" id="calc">
+  <div class="chapter-kicker">Numbers you can feel</div>
+  <h2 class="chapter">Your rent, in Berlin units</h2>
+  <p>A monthly rent is an abstract number until you convert it into things Berlin actually runs on.</p>
+  <div class="widget">
+    <h3>The rent converter</h3>
+    <label class="calc-in">My monthly rent (warm, all-in): <b id="cRentV">€1,100</b><input type="range" id="cRent" min="300" max="3000" step="10" value="1100" aria-label="monthly rent"></label>
+    <div class="units" id="units"></div>
+    <div class="calc-share" id="cShare"></div>
+  </div>
+  <div class="caption" id="calcCap"></div>
+</section>
+
+<div class="sep">• • •</div>
+
+<section class="col" id="quizS">
+  <div class="chapter-kicker">Quiz</div>
+  <h2 class="chapter">Which Berlin renter are you?</h2>
+  <p>Four questions. Six outcomes. None of them happy.</p>
+  <div class="quiz" id="quiz"></div>
+</section>
+
+<div class="sep">• • •</div>
+
+<section class="col" id="cheat">
+  <div class="chapter-kicker">Cheat sheet</div>
+  <h2 class="chapter">8 rules that actually help</h2>
+  <p>Checked against the law, not against vibes. Screenshot this one.</p>
+  <ol class="rules" id="rules"></ol>
+</section>
+
+<div class="sep">• • •</div>
+
+<section class="col" id="end">
+  <h2 class="chapter">So, why?</h2>
+  <p class="punch"><b>Because Berlin has two shortages stacked on top of each other: too few flats were built for the people who came, and the flats that exist are locked by a gap that doubles your rent the moment you move. The few chairs that free up go to the highest bidder, the loopholes go to the furnished listings, and every fix the city tried was either voided by Karlsruhe, riddled with exemptions, or scheduled for 2028.</b></p>
+  <p>The good news, such as it is: the machine is legible. More building lowers the price of the chairs. Narrowing the gap (or the loopholes) unlocks people. Neither is a mystery. Both are slow.</p>
+  <div class="comic">
+    <div class="panel"><i data-stick='{"mood":"happy","arms":"down"}'></i><div class="bubble">Did you find a flat?</div></div>
+    <div class="panel"><div class="bubble r">No. But now I know exactly why.</div><i data-stick='{"mood":"flat","arms":"hold","prop":"phone","flip":true}'></i></div>
+    <div class="panel"><i data-stick='{"mood":"sweat","arms":"shrug"}'></i><div class="bubble">Does that help?</div><div class="mini-dossier">BEWERBUNGS&shy;MAPPE<br><small>vol. 4 of 3</small></div></div>
+  </div>
+  <p class="center hand big2">Keep the folder. You'll need it.</p>
+</section>
+
+<section class="col">
+  <h3 class="sub-h">Glossary</h3>
+  <div id="gloss" class="gloss"></div>
 </section>
 </main>
 
-<footer><div class="col"><h3>Notes & sources</h3><ul><li>Source, date, what is simplified.</li></ul></div></footer>
+<footer><div class="col">
+  <h3>Notes, sources & what's simplified</h3>
+  <ul id="simp">
+    <li>All rents are € net cold (Kaltmiete) per m² per month unless stated. Asking rents = IBB medians/means of online listings; they are what gets <i>advertised</i>, not what gets signed. New contracts at BBU member landlords averaged €9.54 in 2025.</li>
+    <li>Existing rents on the map are our own aggregation of the official Zensus 2022 100 m grid to 542 LOR Planungsräume (reproduces the official Berlin mean €7.67 within €0.02; ~94% of rented flats covered). Labelled "own calculation".</li>
+    <li>Nothing on the map is interpolated. Missing years are grey; areas with fewer than 21 listings are hatched.</li>
+    <li>Euros are nominal (not inflation-adjusted) everywhere: maps, fights, per-flat prices.</li>
+    <li>The lock-in widget assumes a sitting tenant pays the Mietspiegel city average. Real rents vary.</li>
+    <li>Furnished-temporary share: 48% (2025) of <i>listings</i> per Senate/IBB; other counts are lower (~25%, vdp). Flats get re-listed, so the Senate estimates them at about a third of actual new leases.</li>
+    <li>Population: official count (Fortschreibung), not the residents' register (which is ~210,000 higher).</li>
+    <li>Ballpark: Club-Mate crate price (shop prices, no survey); Döner median is crowd-sourced; 2026 election results preliminary.</li>
+    <li>Map: LOR boundaries CC BY 3.0 DE (Amt für Statistik Berlin-Brandenburg via ODIS); lines from VBB GTFS; Tempelhofer Feld © OpenStreetMap contributors (ODbL); street tiles (if they load) © OpenMapTiles, © OpenStreetMap contributors via OpenFreeMap.</li>
+  </ul>
+  <h3>Sources</h3>
+  <ol id="srcList" class="srcs"></ol>
+  <p>Research and fact-check date: 8 October 2026. If something here is wrong, it's a bug, not a joke.</p>
+</div></footer>
+
 <script src="core.js"></script>
-<script src="lens.js"></script><!-- only if the page uses the lens -->
 <script src="data.js"></script>
+<script src="data-map.js"></script>
+<script src="geo.js"></script>
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js" onerror="window.__noGL=true"></script>
+<script src="map.js"></script>
 <script src="app.js"></script>
-<script src="abbr.js"></script><!-- hover glossary; needs GLOSS in data.js -->
+<script src="abbr.js"></script>
 </body>
 </html>
