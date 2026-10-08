@@ -398,8 +398,12 @@ h2.chapter.small{margin-top:4px}
 .rules li::marker{font-family:var(--head);color:var(--orange)}
 
 /* ending */
-.comic .panel{min-height:240px;position:relative}
-.comic .bubble{margin-bottom:110px}
+.comic{gap:14px;align-items:stretch}
+.comic{flex-wrap:nowrap}
+.comic .panel{flex:1 1 0;min-width:0;min-height:300px;position:relative;flex-direction:column;align-items:stretch;justify-content:space-between;padding:12px}
+.comic .bubble{margin:0 0 18px;font-size:19px;max-width:none}
+.comic .bubble.b2{margin-top:-6px}
+.comic .figs{display:flex;justify-content:space-between;align-items:flex-end}
 .mini-dossier{position:absolute;right:8px;bottom:8px;font-family:var(--head);font-size:11px;background:#d9b382;border:2px solid var(--ink);padding:6px;transform:rotate(-6deg);box-shadow:0 4px 0 #fff,0 6px 0 var(--ink),0 10px 0 #fff,0 12px 0 var(--ink);text-align:center;line-height:1.1}
 .mini-dossier small{font-family:var(--hand);font-size:12px}
 .srcs{font-size:14px;line-height:1.45;word-break:break-word}
@@ -442,7 +446,8 @@ footer ul{padding-left:20px}
   .ring{grid-template-columns:1fr}
   .vs{text-align:center}
   .result{grid-template-columns:1fr}
-  .comic .panel{min-height:220px}
+  .comic{flex-wrap:wrap}
+  .comic .panel{flex:1 1 100%}
 }
 @keyframes sheet{from{transform:translateY(100%)}}
 

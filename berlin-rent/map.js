@@ -264,7 +264,7 @@ function initMap() {
   const canGL = (() => { if (!window.maplibregl) return false; try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); } catch (e) { return false; } })();
   const mapEl = $('#map');
   R = canGL ? new GLRenderer(mapEl) : new SVGRenderer(mapEl);
-  box.classList.add(R.kind);
+  box.classList.add(R.kind); window.__berlinMap = R;
   $('#mapstatus').innerHTML = canGL ? C.status.gl : C.status.svg;
   R.on('basemap', ok => { $('#mapstatus').innerHTML = ok ? C.status.tiles : C.status.paper; });
 
@@ -386,7 +386,7 @@ function initMap() {
       <div class="k-bez">${C.bezNames[a.bez]}${a.ring ? ' · inside the Ring' : ' · outside the Ring'}</div>
       <h4>${a.name}</h4>
       <div class="k-grid">
-        <div><span>asking ${Y[last]}</span><b>${v1 != null ? eur(v1, 2) : 'n/a'}</b><small>median /m²${n25 != null ? `, ${n25} listings` : ''}</small></div>
+        <div><span>asking ${Y[last]}</span><b>${v1 != null ? eur(v1, 2) : 'n/a'}</b><small>median /m²${n25 != null ? `, ${n25} listings${n25 < 21 ? ' ⚠ thin data' : ''}` : ''}</small></div>
         <div><span>since ${Y[first]}</span><b>${chg != null ? (chg >= 0 ? '+' : '') + chg + '%' : 'n/a'}</b><small>from ${v0 != null ? eur(v0, 2) : '?'}</small></div>
         <div><span>neighbor pays</span><b>${a.ex ? eur(a.ex, 2) : 'n/a'}</b><small>existing mean 2022</small></div>
         <div><span>the gap</span><b>${g ? '×' + g.toFixed(2) : 'n/a'}</b><small>asking ÷ existing, 2022</small></div>

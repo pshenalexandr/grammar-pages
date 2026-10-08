@@ -7,7 +7,7 @@
 <meta name="description" content="An unreasonably thorough, interactive, fact-checked tour of Berlin's rental market: the map, the lock-in machine, and everything the city tried.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Patrick+Hand&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css">
+<link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -67,7 +67,7 @@
     <div class="chart-insp" id="buildInsp">Hover a bar.</div>
   </div>
   <div class="caption">Completed flats (new builds + conversions), Amt für Statistik Berlin-Brandenburg. Best year: 18,999 (2019). Never 20,000.</div>
-  <p>Why the drop after 2019? Building got expensive fast. A 10-year mortgage rate went from <b>1.27%</b> (Sept 2021) to <b>3.92%</b> (Nov 2023), and it was still 4.04% in August 2026. Construction prices rose by a third between 2021 and 2025. Building permits for flats fell from 25,052 in 2016 to 9,772 in 2024.<span class="fn gray" data-note="Bundesbank, housing loans with >10y fixed rate; Destatis 61261-0001 (index 2021 = 100 → 133.9 in 2025); IBB Tabellenband 2025 Tab. 16 (permits). Permits recovered to 13,754 in 2025.">0</span> And if you don't build, you don't get to cut the ribbon on a press release either.</p>
+  <p>Why the drop after 2019? Building got expensive fast. The interest on a mortgage fixed for over 10 years went from <b>1.27%</b> (Sept 2021) to <b>3.92%</b> (Nov 2023), and it was still 4.04% in August 2026. Construction prices rose by a third between 2021 and 2025. Building permits for flats fell from 25,052 in 2016 to 9,772 in 2024.<span class="fn gray" data-note="Bundesbank, housing loans with >10y fixed rate; Destatis 61261-0001 (index 2021 = 100 → 133.9 in 2025); IBB Tabellenband 2025 Tab. 16 (permits). Permits recovered to 13,754 in 2025.">0</span> So the cranes went home.</p>
   <p>Meanwhile, empty flats basically ran out. The 2022 census found <b>1.97%</b> empty, and only <b>1.2%</b> had been empty for three months or more. Planners consider about 3% healthy, because people need somewhere to move <i>into</i>.<span class="fn gray" data-note="Drs. 19/21184 (Zensus 2022 vacancy); StEP Wohnen 2040 (3% reserve).">0</span></p>
   <p>So the few chairs that do free up go to whoever pays most. That's where the "Berlin rent" you see online comes from: it's not what Berlin pays, it's what the <i>listings</i> ask. And here's the part nobody tells you at the Besichtigung:</p>
   <p class="punch"><b>Berlin doesn't have one rent. It has two: the one people pay, and the one people are asked to pay.</b></p>
@@ -282,9 +282,9 @@
   <p class="punch"><b>Because Berlin has two shortages stacked on top of each other: too few flats were built for the people who came, and the flats that exist are locked by a gap that doubles your rent the moment you move. The few chairs that free up go to the highest bidder, the loopholes go to the furnished listings, and every fix the city tried was either voided by Karlsruhe, riddled with exemptions, or scheduled for 2028.</b></p>
   <p>The good news, such as it is: the machine is legible. More building lowers the price of the chairs. Narrowing the gap (or the loopholes) unlocks people. Neither is a mystery. Both are slow.</p>
   <div class="comic">
-    <div class="panel"><i data-stick='{"mood":"happy","arms":"down"}'></i><div class="bubble">Did you find a flat?</div></div>
-    <div class="panel"><div class="bubble r">No. But now I know exactly why.</div><i data-stick='{"mood":"flat","arms":"hold","prop":"phone","flip":true}'></i></div>
-    <div class="panel"><i data-stick='{"mood":"sweat","arms":"shrug"}'></i><div class="bubble">Does that help?</div><div class="mini-dossier">BEWERBUNGS&shy;MAPPE<br><small>vol. 4 of 3</small></div></div>
+    <div class="panel"><div class="bubble">Did you find a flat?</div><div class="figs"><i data-stick='{"mood":"happy","arms":"down","scale":0.8}'></i><i data-stick='{"mood":"sweat","arms":"hold","prop":"phone","scale":0.8,"flip":true}'></i></div></div>
+    <div class="panel"><div class="bubble r">No. But now I know <i>exactly</i> why.</div><div class="figs"><i data-stick='{"mood":"flat","arms":"down","scale":0.8}'></i><i data-stick='{"mood":"smug","arms":"hips","scale":0.8,"flip":true}'></i></div></div>
+    <div class="panel"><div class="bubble">Does that help?</div><div class="bubble r b2">No. But if you ever get a lease, put me in your will.<span class="fn" data-note="This one is real: under § 563 BGB, a spouse, partner, child or other household member can step into a tenant's lease when the tenant dies. In Berlin, that's an heirloom.">0</span></div><div class="figs"><i data-stick='{"mood":"shock","arms":"up","scale":0.8}'></i><i data-stick='{"mood":"happy","arms":"point","scale":0.8,"flip":true}'></i></div><div class="mini-dossier">BEWERBUNGS&shy;MAPPE<br><small>vol. 4 of 3</small></div></div>
   </div>
   <p class="center hand big2">Keep the folder. You'll need it.</p>
 </section>
