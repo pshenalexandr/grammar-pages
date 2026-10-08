@@ -10,7 +10,7 @@ const SRC = {
   ibbTab: {t: 'IBB Wohnungsmarktbericht 2025, Tabellenband (Mietspiegel averages Tab. 23, permits Tab. 16)', u: 'https://www.ibb.de/media/dokumente/publikationen/berliner-wohnungsmarkt/wohnungsmarktbericht/2025/ibb-wmb_tabellenband_2025_bf.pdf', d: '2026-03'},
   zensus: {t: 'Zensus 2022, average net cold rent and flats per 100 m grid cell (Destatis, dl-de/by-2-0); Berlin mean €7.67', u: 'https://www.statistik-berlin-brandenburg.de/news/2024/zensus-miete/', d: '2024-08-21'},
   ms26: {t: 'Senate press release: Berliner Mietspiegel 2026, average €7.71', u: 'https://www.berlin.de/sen/stadt/presse/pressemeldungen/pressemitteilung.1674998.php', d: '2026-05-28'},
-  bbu25: {t: 'BBU Jahresstatistik 2025: Fluktuation 4.5%, average tenancy over 22 years', u: 'https://bbu.de/beitraege/bbu-jahresstatistik-2025-berlin-fluktuation-bei-den-bbu-mitgliedsunternehmen-berlin-im-jahr-2025', d: '2026-09-14'},
+  bbu25: {t: 'BBU Jahresstatistik 2025: Fluktuation (leases ended by tenants) 4.5%, average tenancy over 22 years', u: 'https://bbu.de/beitraege/bbu-jahresstatistik-2025-berlin-fluktuation-bei-den-bbu-mitgliedsunternehmen-berlin-im-jahr-2025', d: '2026-09-14'},
   lwu24: {t: 'Senate report on the state-owned housing companies 2024 (turnover 3.8%, "formerly around 10%")', u: 'https://www.berlin.de/sen/bauen/_assets/neubau/bericht_2024_geaendert.pdf', d: '2025'},
   howoge: {t: 'Berliner Morgenpost via GHB: "3000 Bewerber für 111 Wohnungen" (HOWOGE ~300 requests per flat, lottery)', u: 'https://www.ghb-online.de/oeffentlichkeitsarbeit/pressestimmen/1140-3000-bewerber-fuer-111-wohnungen.html', d: '2022-08-27'},
   gewobag: {t: 'Abgeordnetenhaus Drs. 19/15409 (Gewobag closes listings at about 500 requests, invites 5–15)', u: 'https://pardok.parlament-berlin.de/starweb/adis/citat/VT/19/SchrAnfr/S19-15409.pdf', d: '2023-05-17'},
@@ -18,7 +18,7 @@ const SRC = {
   tsp23: {t: 'Tagesspiegel: 600+ requests in the first hour, viewing aborted', u: 'https://www.tagesspiegel.de/berlin/', d: '2023-04-04'},
   dwe: {t: 'Landeswahlleiterin: Volksentscheid "Deutsche Wohnen & Co. enteignen", official result', u: 'https://www.wahlen-berlin.de/abstimmungen/ve2021/AFSPRAES/ergebnisse.html', d: '2021-10'},
   dwe5: {t: 'entwicklungsstadt: what became of the referendum (status Sept 2026)', u: 'https://www.entwicklungsstadt.de/deutsche-wohnen-enteignen-was-aus-dem-berliner-volksentscheid-wurde/', d: '2026-09-12'},
-  reuters: {t: 'Reuters: Vonovia secures majority of Deutsche Wohnen (50.49%)', u: 'https://www.reuters.com/business/vonovia-secures-majority-stake-deutsche-wohnen-2021-09-27/', d: '2021-09-27'},
+  reuters: {t: 'Reuters: Vonovia secures majority of Deutsche Wohnen (50.49%)', u: 'https://www.reuters.com/business/vonovia-reaches-threshold-deutsche-wohnen-takeover-2021-09-27/', d: '2021-09-27'},
   bverfg: {t: 'BVerfG press release 28/2021 on 2 BvF 1/20 (Mietendeckel void)', u: 'https://www.bundesverfassungsgericht.de/SharedDocs/Pressemitteilungen/EN/2021/bvg21-028.html', d: '2021-04-15'},
   diw: {t: 'DIW Wochenbericht 8/2021 on the Mietendeckel (asking rents −7 to −11%, listings, Potsdam)', u: 'https://www.diw.de/documents/publikationen/73/diw_01.c.811443.de/21-8-3.pdf', d: '2021-02'},
   komm: {t: 'Expertenkommission Vergesellschaftung, final report (socialisation legally possible)', u: 'https://www.berlin.de/kommission-vergesellschaftung/', d: '2023-06-28'},
@@ -37,7 +37,7 @@ const SRC = {
   compl11: {t: 'Senate answer Drs. 18/16665 (completions 2011–2014)', u: 'https://kleineanfragen.de/berlin/18/16665-wohnungszahl-und-wohnungsabgaenge.txt', d: '2019'},
   step: {t: 'StEP Wohnen 2040 (targets, 3% healthy vacancy reserve, 222,000 flats needed)', u: 'https://www.berlin.de/sen/stadtentwicklung/planung/stadtentwicklungsplaene/step-wohnen-2040/', d: '2024'},
   vac: {t: 'Abgeordnetenhaus Drs. 19/21184: Zensus 2022 vacancy 1.97%, 1.2% for 3+ months', u: 'https://pardok.parlament-berlin.de/starweb/adis/citat/VT/19/SchrAnfr/S19-21184.pdf', d: '2025'},
-  buba: {t: 'Deutsche Bundesbank, mortgage rates >10y fixation (1.27% Sep 2021, 3.92% Nov 2023, 4.04% Aug 2026)', u: 'https://www.bundesbank.de/dynamic/action/en/statistics/time-series-databases/time-series-databases/759784/759784?tsId=BBK01.SUD118', d: '2026-09'},
+  buba: {t: 'Deutsche Bundesbank, mortgage rates >10y fixation (1.27% Sep 2021, 3.92% Nov 2023, 4.04% Aug 2026)', u: 'https://www.bundesbank.de/dynamic/action/en/statistics/time-series-databases/time-series-databases/759784/759784?tsId=BBK01.SUD119', d: '2026-09'},
   destatisBau: {t: 'Destatis 61261-0001, construction price index for residential buildings (2021 = 100)', u: 'https://www-genesis.destatis.de/genesis/online?sequenz=tabelleErgebnis&selectionname=61261-0001', d: '2026-09-21'},
   social: {t: 'Abgeordnetenhaus Drs. 19/22754: rent- and allocation-bound flats by Bezirk 2020–2024', u: 'https://pardok.parlament-berlin.de/starweb/adis/citat/VT/19/SchrAnfr/S19-22754.pdf', d: '2025'},
   lor: {t: 'LOR Planungsräume 2021 boundaries (Amt für Statistik Berlin-Brandenburg via ODIS), CC BY 3.0 DE', u: 'https://daten.odis-berlin.de/', d: '2021'},
@@ -107,7 +107,7 @@ const MAPCOPY = {
   captions: {
     time: 'Drag the years or press play. Each patch is one of Berlin\'s 542 <i>Planungsräume</i> (planning areas, about 7,000 people each). Color = median asking rent of listings that year, in nominal euros (no inflation adjustment). Hatched = fewer than 21 listings, which IBB calls not representative. Nothing is interpolated: missing years stay grey.',
     gap: 'Left of the handle: what the people already living there pay on average (Zensus 2022, existing leases). Right: the average asking rent if you want in. Same color scale on both sides, so the color jump IS the lock-in. Switch to "ratio" to see the multiplier per area. Existing rents are our own aggregation of the official 100 m census grid.',
-    afford: 'Cold rent only. Utilities and heating (Nebenkosten) come on top, so this is the optimistic version. Click any area to make it "your Kiez". The % is weighted by how many rented flats each area has (Zensus 2022), not by land area, because nobody lives in the Grunewald.'
+    afford: 'Cold rent only. Utilities and heating (Nebenkosten) come on top, so this is the optimistic version. Click any area to make it "your Kiez". The % is weighted by how many rented flats each area has (Zensus 2022), not by land area, because nobody lives in the Grunewald forest.'
   },
   yearNotes: {
     2012: 'Berlin, 2012: the city of "poor but sexy" (Wowereit, 2003) still mostly holds.',
@@ -138,7 +138,7 @@ const MAPCOPY = {
     '01': 'Mitte: highest median asking rent of any Bezirk in 2025 (€20.00), and the biggest gap to what existing tenants pay (×2.41). The center of town, also the center of the problem.',
     '02': 'Friedrichshain-Kreuzberg: the smallest Bezirk by area. In 2023, 72% of its rental listings were furnished and temporary. Listings, not flats, but still.',
     '03': 'Pankow: asking rents +115% since 2012. It built about 19,000 flats in 2015–2024 and the queue did not notice.',
-    '04': 'Charlottenburg-Wilmersdorf: home of the furnished 20 m² flat offered for €1,349, which is about €67 per m².',
+    '04': 'Charlottenburg-Wilmersdorf: home of the furnished 20 m² co-living flat offered for €1,349 all-in, which is about €67 per m² (warm).',
     '05': 'Spandau: the smallest gap in Berlin (asking only ×1.76 what neighbors pay). The cheapest way to feel like you got a deal is to move here.',
     '06': 'Steglitz-Zehlendorf: the highest median household income in Berlin (€3,000 net/month) and the lowest renter share (74.9%). People here own their lock-in.',
     '07': 'Tempelhof-Schöneberg: contains Tempelhofer Feld, a 300 ha field that Berliners voted in 2014 to keep empty. Double-click it.',
@@ -146,7 +146,7 @@ const MAPCOPY = {
     '09': 'Treptow-Köpenick: built more flats than any other Bezirk in 2015–2024 (26,871). Asking rents still went +140%.',
     '10': 'Marzahn-Hellersdorf: cheapest asking rents in Berlin (€11.56), which is still more than Mitte asked in 2012 (€7.55). Its rent-bound social flats fell from 22,032 (2020) to 3,653 (2024).',
     '11': 'Lichtenberg: 94.5% of flats are rentals, the highest share in Berlin. Its rent-bound social flats fell from 22,432 (2020) to 3,633 (2024), mostly because old bindings simply expired.',
-    '12': 'Reinickendorf: asking rents +103% since 2012, the second-lowest renter share (75.7%), and the second-smallest social-flat loss. The quiet one.'
+    '12': 'Reinickendorf: asking rents +103% since 2012, the second-lowest renter share (75.7%), and the smallest social-flat loss of any Bezirk (4,305 → 4,142). The quiet one.'
   },
   quipsPlr: {},
   layers: [
@@ -199,46 +199,46 @@ const FIGHTS = [
     l: {who: 'Deutsche Wohnen & Co. enteignen<br><small>the referendum</small>', st: {mood: 'happy', arms: 'up', prop: 'mega'}},
     r: {who: 'Reality<br><small>5 years later</small>', st: {mood: 'flat', arms: 'shrug'}},
     story: 'On Sunday 26 September 2021, 57.6% of voters (59.1% of valid votes) said yes to socialising landlords with more than 3,000 flats, about 240,000 homes. On Monday, Vonovia announced it now controlled Deutsche Wohnen.<span class="fn gray" data-note="Landeswahlleiterin result; Reuters, 27 Sept 2021 (50.49%).">0</span> An expert commission concluded in June 2023 that socialisation is legal and compensation may be below market value.',
-    verdict: '<b>Still in round one.</b> The vote was a non-binding resolution. The Senate passed a framework law in March 2026 that takes effect in 2028 and socialises nothing by itself. The initiative\'s binding draft law has not started collecting signatures. After the 20 Sept 2026 election (Die Linke first, 25.7%), socialisation is on the table in coalition talks that started on 8 October 2026. Flats socialised so far: <b>0</b>.',
+    verdict: '<b>Still in round one.</b> The vote was a non-binding resolution. Berlin\'s parliament passed a framework law on 12 March 2026 that takes effect on 28 March 2028 and socialises nothing by itself. The initiative\'s binding draft law has not started collecting signatures. After the 20 Sept 2026 election (Die Linke first, 25.7%), socialisation is on the table in exploratory talks that began on 8 October 2026. Flats socialised so far: <b>0</b>.',
     srcs: ['dwe', 'reuters', 'komm', 'vgr', 'dwe5', 'elect']},
   {yr: '2015 – 2029', h: 'Mietpreisbremse vs its own footnotes',
     l: {who: 'The Mietpreisbremse<br><small>rent brake</small>', st: {mood: 'smug', arms: 'hips', hat: 'glasses'}},
     r: {who: 'The exemptions<br><small>§§ 556e–f, § 549 BGB</small>', st: {mood: 'smug', arms: 'point', hat: 'tophat'}},
-    story: 'New leases may be at most 10% above the Mietspiegel. Berlin switched it on first, on 1 June 2015, and it now runs to 31 Dec 2029. Except for: flats first let after 1 Oct 2014; the first letting after a "comprehensive modernisation"; whatever the previous tenant paid; "temporary use", which has no time limit in the law; and a furniture surcharge no statute defines. Breaking it carries <b>no fine</b>. The federal Justice Minister in 2025: "It can\'t be that a landlord puts two chairs in an empty flat and thinks he can then charge much higher prices."<span class="fn gray" data-note="Hubig, 27 June 2025. The tenants\' federation DMB estimates over 45% of ads breach the brake (69% of furnished ads), based on ads and from a tenant lobby.">0</span>',
-    verdict: '<b>Alive, binding, and enforced only if you sue your own landlord.</b> Since 2020, a written complaint (Rüge) within 30 months gets overpaid rent back from day one. A fix ("Mietrecht II": max 6–8 months for temporary lets, a capped furniture surcharge) is a bill in committee since July 2026. Not law.',
+    story: 'New leases may be at most 10% above the Mietspiegel. Berlin switched it on first, on 1 June 2015, and it now runs to 31 Dec 2029. Except for: flats first let after 1 Oct 2014; the first letting after a "comprehensive modernisation"; whatever the previous tenant paid; "temporary use", which has no time limit in the law; and a furniture surcharge no statute defines. Breaking the brake itself carries <b>no fine</b> (only the rarely enforced rent-gouging rule in § 5 WiStG does). The federal Justice Minister in 2025: "It can\'t be that a landlord puts two chairs in an empty flat and thinks he can then charge much higher prices."<span class="fn gray" data-note="Hubig, 27 June 2025. The tenants\' federation DMB estimates over 45% of ads for pre-2014 flats breach the brake (69% of furnished ones). Based on ads, and from a tenant lobby.">0</span>',
+    verdict: '<b>Alive, binding, and enforced only if you sue your own landlord.</b> Since 2020, a written complaint (Rüge) within 30 months gets overpaid rent back from day one, as long as the lease is still running. A fix ("Mietrecht II": max 6–8 months for temporary lets, a capped furniture surcharge) is a bill in committee since July 2026. Not law.',
     srcs: ['brake', 'bgb556', 'hubig', 'dmb', 'mr2']},
   {yr: '2004 vs 2021', h: 'Sell low, buy high',
     l: {who: 'Berlin, 2004<br><small>broke, selling</small>', st: {mood: 'happy', arms: 'shrug'}},
     r: {who: 'Berlin, 2021<br><small>sorry, buying</small>', st: {mood: 'sweat', arms: 'hold', prop: 'phone'}},
-    story: 'In 2004 the Senate sold GSW, about 65,700 flats, to Cerberus and Whitehall for <b>€405M plus €1.56bn of debt</b>. The finance senator called it a remarkable success. GSW later became part of Deutsche Wohnen (2013), which became part of Vonovia (2021). In September 2021 Berlin bought about 14,750 flats back from Vonovia and Deutsche Wohnen for <b>€2.46bn</b>, with asbestos in the 1970s/80s buildings included.',
-    verdict: '<b>Per flat, nominal, different flats:</b> sold for about <b>€6,200</b> cash (about <b>€30,000</b> including debt). Bought back for about <b>€167,000</b>. The state landlords now own 404,170 flats again (end of 2025), up from about 273,000 in 2005. Still short of the ~482,000 of 1990.',
+    story: 'In 2004 the Senate sold GSW, about 65,700 units (mostly flats), to Cerberus and Whitehall for <b>€405M plus roughly €1.5–1.7bn of debt</b>. The finance senator called it a remarkable success. GSW later became part of Deutsche Wohnen (2013), which became part of Vonovia (2021). In September 2021 Berlin bought about 14,750 flats back from Vonovia and Deutsche Wohnen for <b>€2.46bn</b>, with asbestos floor tiles in some of the 1970s/80s blocks included.',
+    verdict: '<b>Per flat, nominal, different flats:</b> sold for about <b>€6,200</b> cash (about <b>€30,000</b> including ~€1.56bn debt). Bought back for about <b>€167,000</b> (the price also covered ~450 shops). The state landlords (incl. Berlinovo) now own 404,170 flats again (end of 2025), up from about 273,000 in 2005. Still short of the ~482,000 of 1990.',
     srcs: ['gswSale', 'buyback', 'lwuStock']}
 ];
 
 /* ---------------- characters ---------------- */
 const CHARS = [
   {nm: 'The Bestandsmieter', nick: '"smug, immortal"', c: '#9ed39e', st: {mood: 'smug', arms: 'hips', hat: 'glasses'},
-    bio: 'Signed in 2009. Pays around the Mietspiegel average (€7.71). Rent can rise at most 15% in 3 years, and only up to the Mietspiegel. Will not move. Cannot move. Has become one with the Altbau.', q: 'Under the Mietendeckel my rent was legally frozen at its level of Tuesday, 18 June 2019. Best Tuesday of my life.'},
+    bio: 'Signed in 2009. Pays around the Mietspiegel average (€7.71). Rent can rise at most 15% in 3 years, and only up to the Mietspiegel (modernisation surcharges and stepped/index leases aside). Will not move. Cannot move. Has become one with the Altbau.', q: 'Under the Mietendeckel my rent was legally frozen at its level of Tuesday, 18 June 2019. Best Tuesday of my life.'},
   {nm: 'The Newcomer', nick: '"has a folder"', c: '#f7c39b', st: {mood: 'sweat', arms: 'hold', prop: 'phone'},
     bio: 'Median asking rent €15.78. Only 40,014 regular listings in all of 2025, versus 64,483 in 2012 (IBB). Seekers budget €10.48/m²; the typical offer is €18.16 (ImmoScout24, 2024).', q: 'I have 47 tabs open and a PDF called "dossier_FINAL_v9".'},
   {nm: 'The Big Landlord', nick: '"we\'re a platform"', c: '#c9c1f0', st: {mood: 'smug', hat: 'tophat', arms: 'hips'},
-    bio: 'Vonovia: 138,354 Berlin units (2025). In April 2025 the Senate expelled it from the city\'s housing alliance for justifying rent rises with Mietspiegel features that the Mietspiegel doesn\'t have.', q: 'The rent increase reflects your excellent bus connection.'},
+    bio: 'Vonovia: 138,354 Berlin units (2025). In April 2025 the Senate dropped it from the city\'s housing alliance, reportedly over rent rises justified with a "good transport connection" feature the Mietspiegel doesn\'t have.', q: 'The rent increase reflects your excellent bus connection.'},
   {nm: 'The Senat', nick: '"20,000 a year, promise"', c: '#a9d0f0', st: {mood: 'sweat', arms: 'shrug', hat: 'hardhat'},
-    bio: 'Target: up to 20,000 new flats a year. Best year ever: 18,999 (2019). 2025: 11,027. Around 2001, with ~100,000 flats empty, it was planning demolitions. Its current plan says Berlin needs 222,000 new ones.', q: 'Next year. Definitely next year.'},
+    bio: 'Target: up to 20,000 new flats a year. Best year since the 1990s: 18,999 (2019). 2025: 11,027. Around 2001, with ~100,000 flats empty, it was planning demolitions. Its current plan says Berlin needs 222,000 new ones.', q: 'Next year. Definitely next year.'},
   {nm: 'The Mieterverein', nick: '"since 1888"', c: '#f3e08a', st: {mood: 'angry', arms: 'point', prop: 'mega'},
     bio: 'Berliner Mieterverein: founded 1888, 190,000+ members, €11 a month. In 1963 it had 2,300 members, because rent control made it look pointless. It looks less pointless now.', q: 'Did you check the Mietspiegel before you signed? Sit down. Let\'s talk.'},
   {nm: 'Karlsruhe', nick: '"wrong level, sorry"', c: '#d8d2c6', st: {mood: 'flat', hat: 'glasses', arms: 'down'},
     bio: 'The Federal Constitutional Court. Voided the Mietendeckel in 2021 without an oral hearing. It never said a rent freeze is a bad idea, only that Berlin was the wrong level of government to have it.', q: 'We have no opinion on your rent. We have an opinion on Article 74.'},
   {nm: 'The Möbliert-auf-Zeit Listing', nick: '"two chairs and a dream"', c: '#f2a6a6', st: {mood: 'happy', arms: 'up', hat: 'party'},
-    bio: '48% of Berlin rental listings in 2025 (peak 57% in 2023), at €24.14/m² all-in on average (Senate, 2026). By the Senate\'s own estimate it is about a third of actual new leases, because these flats get re-listed a lot.', q: 'Fully furnished*, 11 months, €1,349.<br><small>*a chair</small>'}
+    bio: '48% of Berlin rental listings in 2025 (peak 57% in 2023), at €24.14/m² all-in on average (Senate, 2026). By the Senate\'s own estimate it is about a third of actual new leases, because these flats get re-listed a lot.', q: 'Fully furnished*, 20 m², €1,349 all-in.<br><small>*a chair</small>'}
 ];
 
 /* ---------------- Besichtigung simulator ---------------- */
 const SIM = {
   scenarios: [
     {id: 'howoge', n: 'State landlord, lottery', applicants: 300, viewers: 10, note: 'HOWOGE: "on average 300 online requests per flat", then 10 are drawn by lot for the viewing (2022). Then one of the 10 gets it.', src: 'howoge'},
-    {id: 'gewobag', n: 'State landlord, first 500', applicants: 500, viewers: 10, note: 'Gewobag takes a listing offline at "usually no more than 500 requests" and invites 5–15 people (2023). We use 10.', src: 'gewobag'},
-    {id: 'mega', n: 'The megaphone flat', applicants: 1792, viewers: 1792, note: 'One flat in 2019: 1,792 applicants in 12 hours, let in by megaphone in batches of 20–30. Everyone got a viewing. One got the flat.', src: 'tonline'}
+    {id: 'gewobag', n: 'State landlord, up to 500', applicants: 500, viewers: 10, note: 'Gewobag takes a listing offline at "usually no more than 500 requests" and invites 5–15 people (2023). We use the cap of 500 and 10 viewers, so this is the worst case.', src: 'gewobag'},
+    {id: 'mega', n: 'The megaphone flat', applicants: 1792, viewers: 300, note: 'One flat in 2019: 1,792 applicants in 12 hours. A few hundred were invited and let in in groups of 20–30, with megaphone announcements outside. One got the flat. (We use 300 viewers.)', src: 'tonline'}
   ],
   docs: ['Selbstauskunft', 'Schufa-BonitätsCheck', 'last 3 payslips', 'ID (to look at, not copy)', 'Mietschuldenfreiheitsbescheinigung', 'Anmeldung', 'employment contract', 'cover letter', 'photo of you looking reliable', 'Haftpflicht proof'],
   docNotes: {
@@ -268,14 +268,14 @@ const SCAMS = [
   {ad: '"Viewing fee €50, payable at the door."', v: 'illegal', why: 'Fees or advances just to view are banned for agents (fine up to €25,000).', src: 'wovermg'},
   {ad: '"Agent commission: 2 months\' rent (the landlord hired us)."', v: 'illegal', why: 'Bestellerprinzip since 1 June 2015: whoever hires the agent pays. That\'s the landlord.', src: 'wovermg'},
   {ad: '"Ablöse: €10,000 for the IKEA kitchen (worth ~€1,000)."', v: 'sketchy', why: 'Kitchen buy-outs are legal, but the part above value + 50% is void and you can claim it back for 3 years.', src: 'bgh97'},
-  {ad: '"€3,000 Abstand, just so I move out and you get the flat."', v: 'illegal', why: 'Pure "key money" is void. Only proven moving costs can be reimbursed.', src: 'wovermg'},
+  {ad: '"€3,000 Abstand, just so I move out and you get the flat."', v: 'illegal', why: 'Pure "key money" is void and you can claim it back. Only proven moving costs can be reimbursed.', src: 'wovermg'},
   {ad: '"Deposit: 3 months\' net cold rent, in 3 monthly instalments."', v: 'legal', why: 'Exactly the legal maximum, and the instalments are your right (§ 551 BGB).', src: 'bgb551'},
   {ad: '"Deposit: 3× warm rent, all before you get the keys."', v: 'illegal', why: 'The cap is 3× net cold, and you may pay in 3 instalments. The excess is void.', src: 'bgb551'},
-  {ad: '"Möbliert, befristet 12 Monate, €30/m². Mietpreisbremse doesn\'t apply to furnished!"', v: 'sketchy', why: 'Furnished flats are NOT exempt. "Temporary use" only counts if the use is genuinely temporary. Courts have cut such rents by more than half.', src: 'bgb556'},
+  {ad: '"Möbliert, befristet 12 Monate, €30/m². Mietpreisbremse doesn\'t apply to furnished!"', v: 'sketchy', why: 'Furnished flats are NOT exempt. "Temporary use" only counts if the use is genuinely temporary. In one 2025 Kreuzberg case a court cut such a rent from €1,450 to €611.72.', src: 'bgb556'},
   {ad: '"Indexmiete: rent follows the consumer price index."', v: 'legal', why: 'Legal (§ 557b BGB). The brake only checks the starting rent; then it rides inflation.', src: 'bgb556'},
   {ad: '"Please bring a copy of your passport to the viewing."', v: 'sketchy', why: 'Data-protection guidance (2026): showing ID is fine, copying it is not. Guidance, not statute.', src: 'dsk'},
   {ad: '"Staffelmiete: +3% every year, written in the contract."', v: 'legal', why: 'Legal (§ 557a BGB), but every step must itself respect the rent brake.', src: 'bgb556'},
-  {ad: '"Please confirm you are not a member of a tenants\' association."', v: 'illegal', why: 'Not something a landlord may ask, per the data-protection authorities (DSK 2026). You can leave it blank.', src: 'dsk'}
+  {ad: '"Please confirm you are not a member of a tenants\' association."', v: 'sketchy', why: 'Not something a landlord may ask, per the data-protection authorities (DSK 2026). Guidance, not statute. You can leave it blank.', src: 'dsk'}
 ];
 
 /* ---------------- calculator ---------------- */
@@ -313,10 +313,10 @@ const RULES = [
   ['Deposit is max <b>3× net cold</b> rent, payable in 3 monthly instalments.', 'bgb551'],
   ['<b>Whoever hires the agent pays.</b> If the landlord ordered the Makler, you pay nothing. Viewing fees are illegal.', 'wovermg'],
   ['New-lease rent may be max <b>Mietspiegel +10%</b>. Exceptions must be disclosed before you sign. Check it free at the Senate\'s Mietpreisprüfstelle.', 'bgb556'],
-  ['<b>Sign first, complain later.</b> A written Rüge within 30 months of the start gets overpaid rent back from day one (leases since April 2020). The Mieterverein helps (€11/month, 3-month wait before legal cover).', 'bgb556'],
+  ['<b>Sign first, complain later.</b> A written Rüge within 30 months of the start (while the lease runs) gets overpaid rent back from day one (leases since April 2020). The Mieterverein helps (€11/month, 3-month wait before legal cover).', 'bgb556'],
   ['At a viewing, they may <b>see</b> your ID, not copy it. Nationality, job tenure and tenants\'-union membership are off-limits (data-protection guidance).', 'dsk'],
   ['You can skip the <b>Mietschuldenfreiheitsbescheinigung</b>: your old landlord needn\'t issue it, and the regulators say a new one can\'t demand it.', 'bgh09'],
-  ['<b>Anmeldung</b> within 2 weeks of moving in. In Berlin a booked appointment counts as on time. The landlord must give you the Wohnungsgeberbestätigung; selling a fake one costs up to €50,000.', 'bmg'],
+  ['<b>Anmeldung</b> within 2 weeks of moving in. In Berlin a booked appointment counts as on time. The landlord must give you the Wohnungsgeberbestätigung; offering an address for a fake registration costs up to €50,000.', 'bmg'],
   ['<b>Red flags:</b> landlord abroad, money before keys, Western Union, "furnished so no rent brake", a deposit above 3× net cold. Walk.', 'police']
 ];
 
@@ -332,7 +332,7 @@ const GLOSS = [
   {g: 'Rent words', t: 'Wohnlage', a: ['Wohnlagen', 'Wohnlagenkarte'], f: 'residential location class', w: 'Simple, medium or good. Every Berlin address has one in the Mietspiegel, and it moves the allowed rent.'},
   {g: 'Rent words', t: 'Staffelmiete', a: [], f: 'stepped rent', w: 'Rent rises by fixed amounts on fixed dates written in the lease (§ 557a BGB). Each step must respect the rent brake.'},
   {g: 'Rent words', t: 'Indexmiete', a: [], f: 'index-linked rent', w: 'Rent follows the consumer price index (§ 557b BGB). The rent brake only checks the starting rent.'},
-  {g: 'Rent words', t: 'Kappungsgrenze', a: [], f: 'cap on increases', w: 'In Berlin, an existing rent may rise at most 15% in 3 years (and never above the Mietspiegel).'},
+  {g: 'Rent words', t: 'Kappungsgrenze', a: [], f: 'cap on increases', w: 'In Berlin, an existing rent may rise at most 15% in 3 years, and not above the Mietspiegel (modernisation surcharges and stepped/index leases follow their own rules).'},
   {g: 'Rent words', t: 'Kaution', a: ['deposit'], f: 'security deposit', w: 'Max 3 months of net cold rent, payable in 3 instalments (§ 551 BGB).'},
   {g: 'Rent words', t: 'Ablöse', a: ['Abstand'], f: 'buy-out payment', w: 'Money to the previous tenant for furniture or a kitchen. Legal at a fair price; void above value + 50%. Pure "key money" is void.'},
   {g: 'Rent words', t: 'Möbliert auf Zeit', a: ['möbliert', 'befristet', 'Möbliert-auf-Zeit', 'furnished-temporary', 'MWZ'], f: 'furnished, temporary', w: 'Furnished, time-limited lets. Up to half of Berlin listings. Often priced as if the rent brake did not exist.'},
@@ -344,12 +344,12 @@ const GLOSS = [
   {g: 'The hunt', t: 'Mietschuldenfreiheitsbescheinigung', a: [], f: 'certificate of no rent arrears', w: 'A note from your old landlord saying you paid. They don\'t have to write it (BGH 2009), and new landlords can\'t demand it (DSK 2026).'},
   {g: 'The hunt', t: 'Selbstauskunft', a: [], f: 'tenant self-disclosure form', w: 'The landlord\'s questionnaire. Some questions are off-limits (nationality, tenants\'-union membership, job tenure).'},
   {g: 'The hunt', t: 'Anmeldung', a: ['Anmeldungen'], f: 'residence registration', w: 'Registering your address at the Bürgeramt within 2 weeks of moving in (§ 17 BMG). You need it for a tax ID and, in practice, a lot else.'},
-  {g: 'The hunt', t: 'Wohnungsgeberbestätigung', a: [], f: 'landlord\'s confirmation of move-in', w: 'A form your landlord must give you so you can do the Anmeldung (§ 19 BMG). Selling fake ones: fine up to €50,000.'},
-  {g: 'The hunt', t: 'Bürgeramt', a: [], f: 'citizens\' office', w: 'Where you do the Anmeldung. Appointments averaged ~27 days\' wait in Sept 2025.'},
+  {g: 'The hunt', t: 'Wohnungsgeberbestätigung', a: [], f: 'landlord\'s confirmation of move-in', w: 'A form your landlord must give you so you can do the Anmeldung (§ 19 BMG). Offering an address for a fake registration: fine up to €50,000.'},
+  {g: 'The hunt', t: 'Bürgeramt', a: [], f: 'citizens\' office', w: 'Where you do the Anmeldung. Appointments averaged ~27 days\' wait in July 2025.'},
   {g: 'The hunt', t: 'Makler', a: [], f: 'estate agent', w: 'Since 1 June 2015, whoever hires them pays (Bestellerprinzip).'},
   {g: 'The hunt', t: 'Bestellerprinzip', a: [], f: '"the one who orders pays"', w: 'Rule since 2015 that the party who hires the agent pays the agent.'},
   {g: 'The hunt', t: 'Kiez', a: [], f: 'neighborhood', w: 'Berlin word for your bit of the city. The radius in which you know where the good Späti is.'},
-  {g: 'The hunt', t: 'Rüge', a: [], f: 'formal complaint', w: 'A written complaint that your rent breaks the rent brake. Within 30 months of the start, it recovers overpaid rent from day one (leases since April 2020).'},
+  {g: 'The hunt', t: 'Rüge', a: [], f: 'formal complaint', w: 'A written complaint that your rent breaks the rent brake. Within 30 months of the start (and while the lease runs), it recovers overpaid rent from day one (leases since April 2020).'},
   {g: 'The hunt', t: 'Döner', a: [], f: 'Döner Kebab', w: 'Berlin\'s unofficial unit of account. Median €7.00 (Döneratlas, Sept 2026).'},
   {g: 'The hunt', t: 'Club-Mate', a: [], f: 'caffeinated mate soda', w: 'Fuel of Berlin\'s tech and club scene. Sold in crates of 20 bottles.'},
   {g: 'The hunt', t: 'Pfand', a: [], f: 'bottle deposit', w: 'Deposit on bottles and crates, refunded when you return them.'},
@@ -371,8 +371,8 @@ const GLOSS = [
   {g: 'Laws and institutions', t: 'Mieterverein', a: ['Berliner Mieterverein'], f: 'tenants\' association', w: 'Berliner Mieterverein: legal advice and representation for members, €11/month.'},
   {g: 'Laws and institutions', t: 'Mietpreisprüfstelle', a: [], f: 'rent-check office', w: 'Senate service that checks for free whether your rent breaks the rent brake.'},
   {g: 'Laws and institutions', t: 'WBS', a: ['Wohnberechtigungsschein'], f: 'housing entitlement certificate', w: 'Income-based certificate you need for most social flats.'},
-  {g: 'Laws and institutions', t: 'HOWOGE', a: ['Gewobag', 'degewo'], f: 'state-owned housing company', w: 'One of Berlin\'s six landeseigene Wohnungsbaugesellschaften (state landlords), together 404,170 flats at the end of 2025.'},
-  {g: 'Laws and institutions', t: 'GSW', a: [], f: 'Gemeinnützige Siedlungs- und Wohnungsbaugesellschaft', w: 'Berlin\'s public landlord with ~65,700 flats, sold in 2004. Now part of Vonovia via Deutsche Wohnen.'},
+  {g: 'Laws and institutions', t: 'HOWOGE', a: ['Gewobag', 'degewo'], f: 'state-owned housing company', w: 'One of Berlin\'s six landeseigene Wohnungsbaugesellschaften (state landlords). Together with Berlinovo they held 404,170 flats at the end of 2025.'},
+  {g: 'Laws and institutions', t: 'GSW', a: [], f: 'Gemeinnützige Siedlungs- und Wohnungsbaugesellschaft', w: 'Berlin\'s public landlord with ~65,700 units, sold in 2004. Now part of Vonovia via Deutsche Wohnen.'},
   {g: 'Laws and institutions', t: 'Vonovia', a: ['Deutsche Wohnen'], f: 'Germany\'s largest landlord', w: 'Took control of Deutsche Wohnen in Sept 2021. 138,354 Berlin units (2025).'},
   {g: 'Laws and institutions', t: 'DWE', a: ['Deutsche Wohnen & Co. enteignen'], f: '"Expropriate Deutsche Wohnen & Co."', w: 'The citizens\' initiative behind the 2021 referendum on socialising big landlords.'},
   {g: 'Laws and institutions', t: 'Vergesellschaftung', a: ['socialisation', 'socialise', 'socialising', 'socialised'], f: 'socialisation (Art. 15 Basic Law)', w: 'Transferring property into public ownership against compensation. Allowed by Art. 15 of the Basic Law, never used so far.'},

@@ -18,7 +18,7 @@ function buildChart() {
       <text x="${x + (bw - 6) / 2}" y="${H - B + 16}" text-anchor="middle" class="ax">${i % 2 ? '' : "'" + String(yr).slice(2)}</text></g>`;
   });
   s += `<line x1="${L}" x2="${W - 6}" y1="${y(20000)}" y2="${y(20000)}" stroke="#1b1b1b" stroke-width="2.5" stroke-dasharray="7 5"/><text x="${W - 8}" y="${y(20000) - 7}" text-anchor="end" class="tl">the 20,000 target</text>`;
-  s += `<text x="${L + 8 * bw + bw / 2}" y="${y(18999) - 8}" text-anchor="middle" class="tl">best year ever</text>`;
+  s += `<text x="${L + 8 * bw + bw / 2}" y="${y(18999) - 8}" text-anchor="middle" class="tl">best since the 1990s</text>`;
   svg.innerHTML = s;
   $$('.bc', svg).forEach(g => g.addEventListener('mouseenter', () => { const [yr, v] = d[g.dataset.i];
     $$('.bc', svg).forEach(o => o.classList.toggle('dim', o !== g));
@@ -73,7 +73,7 @@ function lockin() {
     const t = turn(y);
     $('#liTurn').textContent = t ? t[1] + '%' : '–';
     $('#liTurnBar').style.width = t ? (t[1] / 10 * 100) + '%' : 0;
-    $('#liTurnNote').textContent = t ? `(BBU figure for ${t[0]}; it was 9.5% in 2001; a relaxed market is about 8%)` : '';
+    $('#liTurnNote').textContent = t ? `(BBU figure for ${t[0]}; it was 9.5% in 2001)` : '';
     const lvl = Math.max(0, Math.min(4, Math.round((move / stay - 0.85) * 5)));
     $$('#liLoop .lp').forEach((p, i) => p.classList.toggle('on', i < lvl));
     $('#liLoop').classList.toggle('spin', lvl >= 4);
@@ -110,7 +110,7 @@ function sim() {
   };
   const setScen = i => { sc = SIM.scenarios[i]; $$('#simScen button').forEach((b, j) => b.classList.toggle('on', j === i));
     $('#simNote').innerHTML = sc.note + fnGray(sc.src); if (window.__chrome) initChrome2($('#simNote')); drawQueue(false);
-    $('#simMsg').innerHTML = `Your odds per application: <b>1 in ${sc.applicants.toLocaleString()}</b> (${(100 / sc.applicants).toFixed(2)}%). Expected applications until you get one: about <b>${sc.applicants.toLocaleString()}</b>.`; };
+    $('#simMsg').innerHTML = `Your odds per application: <b>${sc.id === 'gewobag' ? 'as bad as ' : ''}1 in ${sc.applicants.toLocaleString()}</b> (${(100 / sc.applicants).toFixed(2)}%). Expected applications until you get one: about <b>${sc.applicants.toLocaleString()}</b>.`; };
   $$('#simScen button').forEach(b => b.onclick = () => setScen(+b.dataset.i));
   const upd = () => { $('#sApps').textContent = apps; $('#sViews').textContent = views; $('#sFlats').textContent = flats; $('#sPages').textContent = (apps * 14).toLocaleString(); };
   const once = () => {
@@ -206,7 +206,7 @@ function calc() {
       row('hour', v / P.hour.v, n => n.toFixed(1))
     ].join('');
     const share = v / CALC.hhinc * 100;
-    $('#cShare').innerHTML = `That's <b>${Math.round(share)}%</b> of the median Berlin household's net income (€2,675/month). ${share > 50 ? 'More than half. The other half is for Döner.' : share > 30 ? 'Above the 30% rule of thumb, like a lot of Berlin.' : 'Under 30%. You are either sharing or a Bestandsmieter. Congratulations either way.'}`;
+    $('#cShare').innerHTML = `That's <b>${Math.round(share)}%</b> of the median Berlin household's net income (€2,675/month). ${share > 50 ? 'More than half. What is left is for Döner.' : share > 30 ? 'Above the 30% rule of thumb, like a lot of Berlin.' : 'Under 30%. You are either sharing or a Bestandsmieter. Congratulations either way.'}`;
     const dons = Math.round(v / P.doner.v);
     $('#calcCap').innerHTML = `Formulas: Döner = rent ÷ €7.00 (Berlin median, Döneratlas, 30 Sept 2026, crowd-sourced) · crates = rent ÷ €21.50 (~€17 + €4.50 Pfand, typical shop price, no survey exists) · Deutschlandtickets = rent ÷ €63 (price since Jan 2026) · WG rooms = rent ÷ €650 (MMI, summer 2026) · hours = rent ÷ €27.42 (average gross hourly earnings, April 2025: a mean, before tax). ${dons} Döner a month is ${(dons / 30).toFixed(1)} a day.`;
   };
