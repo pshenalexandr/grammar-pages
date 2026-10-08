@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TITLE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Patrick+Hand&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- hand-drawn jitter for stick figures -->
+<svg width="0" height="0" style="position:absolute"><filter id="wobble"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="3"/><feDisplacementMap in="SourceGraphic" scale="2.2"/></filter></svg>
+<div id="progress"></div>
+
+<header class="hero">
+  <h1>BIG <span>QUESTION?</span></h1>
+  <div class="sub">An unreasonably long tour of ...</div>
+  <div class="scene"><i data-stick='{"mood":"shock","arms":"up"}'></i><img src="assets/source.png" alt=""><i data-stick='{"mood":"sweat","arms":"shrug","hat":"glasses"}'></i></div>
+  <div class="scroll-cue">scroll down, it gets worse ↓</div>
+</header>
+
+<main>
+<section class="col">
+  <p class="big">Hook sentence.</p>
+  <p>Body with a footnote.<span class="fn" data-note="Fun aside.">0</span> And a boring source note.<span class="fn gray" data-note="Source.">0</span></p>
+</section>
+
+<div class="sep">• • •</div>
+
+<section class="col">
+  <div class="chapter-kicker">Part 1</div>
+  <h2 class="chapter">Chapter title</h2>
+  <p>Explain the mechanism in plain words, with an analogy.</p>
+  <div class="widget">
+    <h3>The thing-o-matic</h3>
+    <!-- interactive goes here -->
+  </div>
+  <div class="caption">(What is simplified, said plainly.)</div>
+</section>
+</main>
+
+<footer><div class="col"><h3>Notes & sources</h3><ul><li>Source, date, what is simplified.</li></ul></div></footer>
+<script src="core.js"></script>
+<script src="lens.js"></script><!-- only if the page uses the lens -->
+<script src="data.js"></script>
+<script src="app.js"></script>
+<script src="abbr.js"></script><!-- hover glossary; needs GLOSS in data.js -->
+</body>
+</html>
