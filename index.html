@@ -1,0 +1,1997 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Какого хрена, английский? Грамматика для тех, кто застрял между A2 и B1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;900&family=Caveat:wght@500;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,700;1,8..60,400;1,8..60,700&display=swap" rel="stylesheet">
+<style>
+/* Base styles from 'Who Owns the Air?' (WaitButWhy look: paper background, serif body,
+   Patrick Hand captions, Archivo Black headings, chunky ink-bordered widgets with offset shadow).
+   Includes the lens, footnote, bubble, widget, toggle, calculator and quiz styles. Trim what you don't use. */
+:root{
+  --ink:#1b1b1b;
+  --paper:#fffdf8;
+  --orange:#f26a21;
+  --blue:#2c6fbb;
+  --muted:#6d6a64;
+  --line:#e7e1d6;
+  --hand:'Caveat','Comic Sans MS',cursive;
+  --serif:'Source Serif 4',Georgia,serif;
+  --head:'Unbounded','Arial Black',sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:20px;line-height:1.65;-webkit-font-smoothing:antialiased}
+#progress{position:fixed;top:0;left:0;height:5px;background:var(--orange);width:0;z-index:50;transition:width .1s}
+.col{max-width:720px;margin:0 auto;padding:0 22px}
+.wide{max-width:1180px;margin:0 auto;padding:0 22px}
+p{margin:0 0 1.1em}
+b,strong{font-weight:700}
+.hand{font-family:var(--hand)}
+h1,h2,h3{font-family:var(--head);letter-spacing:-.01em;line-height:1.05}
+h2.chapter{font-size:44px;margin:110px 0 8px;text-transform:uppercase}
+.chapter-kicker{font-family:var(--hand);color:var(--orange);font-size:26px;margin-top:110px;margin-bottom:-100px}
+.big{font-size:30px;line-height:1.3;font-weight:600}
+.center{text-align:center}
+.caption{font-family:var(--hand);font-size:22px;color:var(--muted);text-align:center;margin:8px 0 30px}
+.sep{text-align:center;font-family:var(--hand);font-size:30px;color:#bbb;margin:60px 0;letter-spacing:.5em}
+
+/* hero */
+.hero{min-height:96vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:60px 20px 30px;position:relative}
+.hero h1{font-size:clamp(46px,8vw,104px);margin:0;text-transform:uppercase}
+.hero h1 span{color:var(--orange)}
+.hero .sub{font-family:var(--hand);font-size:28px;color:var(--muted);margin-top:14px}
+.hero .scene{display:flex;align-items:flex-end;gap:10px;margin-top:40px}
+.hero .scene img{width:min(520px,62vw);border:3px solid var(--ink);border-radius:4px;transform:rotate(-2deg);box-shadow:6px 6px 0 var(--ink)}
+.scroll-cue{font-family:var(--hand);font-size:22px;margin-top:40px;animation:bob 1.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(8px)}}
+
+/* stick figures + bubbles */
+.stick{display:inline-block;filter:url(#wobble)}
+.stick svg{display:block;overflow:visible}
+.comic{display:flex;align-items:flex-end;justify-content:center;gap:24px;margin:40px 0;flex-wrap:wrap}
+.bubble{position:relative;font-family:var(--hand);font-size:23px;line-height:1.25;background:#fff;border:2.5px solid var(--ink);border-radius:18px;padding:12px 16px;max-width:290px;margin-bottom:90px}
+.bubble:after{content:"";position:absolute;bottom:-16px;left:30px;border:9px solid transparent;border-top:12px solid var(--ink)}
+.bubble.r:after{left:auto;right:30px}
+.panel{border:3px solid var(--ink);border-radius:6px;padding:18px 18px 8px;background:#fff;display:flex;align-items:flex-end;gap:14px;min-height:260px}
+
+/* footnotes (WBW style) */
+.fn{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--blue);color:#fff;font:700 13px/1 Arial,sans-serif;cursor:pointer;vertical-align:super;margin:0 2px;user-select:none;transition:transform .15s}
+.fn.gray{background:#9a978f}
+.fn:hover{transform:scale(1.2)}
+.fn-note{font-size:17px;line-height:1.5;background:#eef4fb;border-left:5px solid var(--blue);padding:12px 16px;margin:-6px 0 18px;border-radius:0 6px 6px 0;animation:pop .2s ease}
+.fn-note.gray{background:#f1f0ec;border-color:#9a978f}
+@keyframes pop{from{opacity:0;transform:translateY(-6px)}}
+
+/* magnifier */
+.mag-wrap{position:relative;margin:30px auto;cursor:none;border:3px solid var(--ink);border-radius:6px;overflow:hidden;background:#fff;touch-action:none}
+.mag-wrap img{display:block;width:100%;height:auto}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:26px 0}
+.stat{border:2.5px solid var(--ink);border-radius:8px;padding:12px;text-align:center;background:#fff}
+.stat .n{font-family:var(--head);font-size:34px;color:var(--orange)}
+.stat .l{font-family:var(--hand);font-size:19px;line-height:1.15}
+
+/* wave widget */
+.widget{border:3px solid var(--ink);border-radius:10px;background:#fff;padding:22px;margin:34px 0;box-shadow:6px 6px 0 var(--ink)}
+.widget h3{margin:0 0 12px;font-size:22px;text-transform:uppercase}
+#wave{width:100%;height:170px;display:block;background:repeating-linear-gradient(0deg,#fff,#fff 27px,#f3efe6 28px);border-radius:6px}
+input[type=range]{width:100%;accent-color:var(--orange);height:30px}
+.freq-readout{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:10px}
+.freq-readout .f{font-family:var(--head);font-size:44px}
+.freq-readout .hood{font-family:var(--hand);font-size:24px;color:var(--orange)}
+.wave-facts{display:grid;grid-template-columns:1.3fr 1fr;gap:18px;margin-top:10px;align-items:start}
+.wave-facts .fact{font-size:18px;line-height:1.45}
+.wave-facts .fact b{font-family:var(--hand);font-size:22px;font-weight:400;color:var(--blue)}
+.meter{margin:6px 0 10px}
+.meter .lbl{font-family:var(--hand);font-size:19px;display:flex;justify-content:space-between}
+.meter .bar{height:14px;border:2px solid var(--ink);border-radius:8px;overflow:hidden;background:#f6f3ec}
+.meter .bar i{display:block;height:100%;background:var(--orange);transition:width .2s}
+.wave-stick{display:flex;align-items:flex-end;gap:10px;margin-top:6px}
+.wave-stick .bubble{margin-bottom:70px;font-size:19px}
+.ticks{display:flex;justify-content:space-between;font-family:var(--hand);font-size:16px;color:var(--muted);margin-top:-4px}
+
+/* tenants */
+.tenants{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px;margin:30px 0}
+.tenant{perspective:1000px;height:330px;cursor:pointer}
+.tenant .inner{position:relative;width:100%;height:100%;transition:transform .55s cubic-bezier(.3,1.4,.5,1);transform-style:preserve-3d}
+.tenant.flip .inner{transform:rotateY(180deg)}
+.tenant .face{position:absolute;inset:0;border:3px solid var(--ink);border-radius:12px;backface-visibility:hidden;background:#fff;padding:14px;display:flex;flex-direction:column;align-items:center;overflow:hidden}
+.tenant .front .swatch{position:absolute;top:0;left:0;right:0;height:56px;border-bottom:3px solid var(--ink)}
+.tenant .front .stick{margin-top:20px;position:relative}
+.tenant .front .nm{font-family:var(--head);font-size:21px;text-align:center;margin-top:auto;line-height:1.1}
+.tenant .front .nick{font-family:var(--hand);font-size:19px;color:var(--muted)}
+.tenant .back{transform:rotateY(180deg);align-items:flex-start;font-size:16.5px;line-height:1.45}
+.tenant .back h5{font-family:var(--head);font-size:18px;margin:0 0 6px}
+.tenant .back .q{font-family:var(--hand);font-size:19px;color:var(--orange);margin-top:auto}
+.flip-hint{font-family:var(--hand);font-size:15px;color:#aaa}
+
+.toggle{display:inline-flex;border:2.5px solid var(--ink);border-radius:24px;overflow:hidden;margin:6px 0 10px}
+.toggle button{font-family:var(--hand);font-size:22px;border:0;background:#fff;padding:6px 16px;cursor:pointer}
+.toggle button.on{background:var(--orange);color:#fff}
+
+/* fight club */
+.fights{display:flex;flex-direction:column;gap:26px;margin:30px 0}
+.fight{border:3px solid var(--ink);border-radius:12px;background:#fff;padding:18px;box-shadow:6px 6px 0 var(--ink)}
+.fight .yr{font-family:var(--hand);color:var(--orange);font-size:20px}
+.fight h4{font-family:var(--head);font-size:28px;margin:0 0 12px;text-transform:uppercase}
+.ring{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:center}
+.corner{text-align:center;font-size:16px;line-height:1.35}
+.corner .who{font-family:var(--hand);font-size:22px;line-height:1.15;margin-top:4px}
+.corner .stick{transition:transform .2s}
+.vs{font-family:var(--head);font-size:40px;color:var(--orange)}
+.fight .story{font-size:17.5px;margin:14px 0 10px}
+.bell{font-family:var(--hand);font-size:21px;border:2.5px solid var(--ink);background:var(--orange);color:#fff;border-radius:22px;padding:6px 18px;cursor:pointer}
+.bell:active{transform:scale(.96)}
+.verdict{display:none;margin-top:12px;font-family:var(--hand);font-size:22px;line-height:1.3;background:#fff6e8;border:2px dashed var(--orange);border-radius:8px;padding:10px 14px}
+.fight.done .verdict{display:block;animation:pop .3s}
+.fight.ding .corner.l .stick{animation:punchL .35s ease 3}
+.fight.ding .corner.r .stick{animation:punchR .35s ease 3}
+@keyframes punchL{50%{transform:translateX(26px) rotate(8deg)}}
+@keyframes punchR{50%{transform:translateX(-26px) rotate(-8deg)}}
+.fight.ding{animation:shake .35s 3}
+@keyframes shake{25%{transform:translate(-3px,1px)}75%{transform:translate(3px,-1px)}}
+
+/* quiz */
+.quiz{border:3px solid var(--ink);border-radius:12px;background:#fff;padding:22px;box-shadow:6px 6px 0 var(--ink);margin:30px 0}
+.quiz .qn{font-family:var(--hand);color:var(--orange);font-size:20px}
+.quiz .qt{font-family:var(--head);font-size:26px;margin:2px 0 14px;line-height:1.15}
+.quiz .opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.quiz .opts button{font-family:var(--hand);font-size:20px;text-align:left;border:2.5px solid var(--ink);background:#fff;border-radius:10px;padding:10px 14px;cursor:pointer;line-height:1.2;transition:transform .1s,background .1s}
+.quiz .opts button:hover{background:#fff6e8;transform:translateY(-2px)}
+.result{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center}
+.result h4{font-family:var(--head);font-size:34px;margin:0}
+.result .again{font-family:var(--hand);font-size:19px;border:2px solid var(--ink);border-radius:20px;background:#fff;padding:4px 14px;cursor:pointer;margin-top:10px}
+
+footer{margin-top:120px;padding:50px 0 80px;border-top:3px solid var(--ink);font-size:16px;color:var(--muted)}
+footer h3{color:var(--ink);font-size:20px}
+footer li{margin:4px 0}
+
+@media (max-width:760px){
+  body{font-size:18px}
+  h2.chapter{font-size:32px}
+  .stats{grid-template-columns:1fr 1fr}
+  .wave-facts,.mw,.calc,.quiz .opts{grid-template-columns:1fr}
+  .arow{grid-template-columns:130px 1fr 80px}
+  .band-card{grid-template-columns:1fr}
+  .ring{grid-template-columns:1fr}
+  .vs{text-align:center}
+  .mag-wrap{cursor:default}
+}
+
+a{color:var(--blue);text-decoration-thickness:1.5px;text-underline-offset:2px}
+.aside{color:var(--muted);font-size:16px}
+ul.read{margin:0 0 1.1em;padding-left:22px}
+ul.read li{margin:6px 0}
+
+/* ===== grammar explainer ===== */
+.caption,.hand,.stat .l,.bubble{letter-spacing:.01em}
+.bubble{font-size:24px}
+h2.chapter{font-size:38px;line-height:1.1}
+.hero h1{font-size:clamp(40px,7vw,92px);line-height:1}
+.lbl{font-family:var(--hand);font-size:22px;color:var(--muted);margin:6px 0 2px}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.82em;background:#f4f0e6;border-radius:5px;padding:1px 6px}
+.say{display:flex;align-items:flex-end;gap:6px}
+.say .bubble{margin-bottom:80px;font-size:21px;max-width:300px}
+.comic.tight{margin:10px 0}
+.ru-big{font-family:var(--head);font-size:26px;margin:4px 0 8px}
+.aside{color:var(--muted);font-size:17px}
+.en{font-style:italic}
+.ex{display:block;margin:6px 0 6px 18px;font-style:italic}
+.ex.bad{color:#b23a2c;text-decoration:line-through;text-decoration-thickness:2px}
+.ex.good{color:#257a3e}
+
+/* table of doom (hero) */
+.doom{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;width:min(560px,70vw);border:3px solid var(--ink);background:#fff;padding:8px;transform:rotate(-2deg);box-shadow:6px 6px 0 var(--ink);position:relative}
+.doom div{font-family:var(--hand);font-size:clamp(11px,1.6vw,17px);line-height:1.05;border:1.5px solid #ccc;padding:6px 4px;border-radius:4px;background:#fbfaf6}
+.doom div.rare{color:#bbb;text-decoration:line-through}
+.doom .scrawl{position:absolute;font-family:var(--hand);color:#e84a3a;font-size:26px;transform:rotate(-8deg);right:-30px;top:-34px;background:none;border:0}
+.doom svg{position:absolute;inset:0;pointer-events:none}
+
+/* stat tiles */
+.stat .n{font-size:30px}
+
+/* tense-o-matic */
+.tom-ctrl{display:flex;flex-wrap:wrap;gap:22px;align-items:flex-start}
+.sw{display:flex;align-items:center;gap:10px;font-family:var(--hand);font-size:23px;cursor:pointer;margin:6px 0;user-select:none}
+.sw input{display:none}
+.sw span{width:52px;height:28px;border:2.5px solid var(--ink);border-radius:16px;background:#eee;position:relative;transition:background .15s;flex:none}
+.sw span:after{content:"";position:absolute;width:20px;height:20px;border-radius:50%;background:#fff;border:2px solid var(--ink);top:1px;left:2px;transition:left .15s}
+.sw input:checked+span{background:#4c8fd6}
+.sw.g input:checked+span{background:#3aa35b}
+.sw input:checked+span:after{left:25px}
+.tom-out{margin-top:14px;border-top:2px dashed var(--line);padding-top:12px}
+.tom-name{font-family:var(--head);font-size:30px;line-height:1.1}
+.tom-formula{display:flex;flex-wrap:wrap;align-items:flex-end;gap:6px;margin:16px 0 8px}
+.pc{position:relative;font-family:var(--head);font-size:17px;border:2.5px solid var(--ink);border-radius:8px;padding:5px 11px;background:#fff}
+.pc em{position:absolute;top:-22px;left:0;font-family:var(--hand);font-style:normal;font-size:17px;color:#e84a3a;white-space:nowrap}
+.pc.aux{background:#e9ddff}.pc.have{background:#d8f1df}.pc.be,.pc.ing{background:#dcebfb}.pc.v3{background:#d8f1df}.pc.v{background:#ffe7d3}
+.pc.if{background:#fff3b8}
+.plus{font-family:var(--head);font-size:18px;color:var(--muted);align-self:center}
+.tom-ex{font-size:26px;font-style:italic;margin:8px 0 2px}
+.tom-ex .c-be,.tom-ex .c-ing{color:#2c6fbb;font-weight:700}.tom-ex .c-have,.tom-ex .c-v3{color:#257a3e;font-weight:700}.tom-ex .c-aux{color:#7041c2;font-weight:700}.tom-ex .c-v{color:var(--orange);font-weight:700}
+.tom-ru{font-family:var(--hand);font-size:23px;color:var(--muted)}
+.tom-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:end;font-size:18px}
+.freq{margin-top:10px;font-family:var(--hand);font-size:20px}
+.bars{display:inline-flex;gap:3px;vertical-align:middle}
+.bars i{width:14px;height:18px;border:2px solid var(--ink);border-radius:3px;background:#fff}
+.bars i.on{background:var(--orange)}
+svg.tl{width:100%;height:auto;display:block;margin:6px 0}
+.tl-l{font-family:var(--hand);font-size:26px;fill:var(--muted)}
+.tl-now{font-family:var(--head);font-size:20px;fill:#2c6fbb}
+.tl-s{font-family:var(--hand);font-size:25px;fill:#1b1b1b}
+.tl-s.blue{fill:#2c6fbb}.tl-s.red{fill:#e84a3a}
+
+/* verdict cards */
+.vgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.vcard{border:2.5px solid var(--ink);border-radius:10px;padding:10px 12px;background:#fff}
+.vq{font-size:20px;font-style:italic;margin-bottom:6px}
+.vbtns{display:flex;gap:6px}
+.vbtns button,.mchip,.shuf,.next,.again,.qm-ctrl button,.opts button{font-family:var(--hand);font-size:20px;border:2.5px solid var(--ink);background:#fff;border-radius:20px;padding:3px 13px;cursor:pointer}
+.vbtns button:hover,.mchip:hover,.shuf:hover{background:#fff6e8}
+.vcard.done .vbtns{display:none}
+.vcard.yes{background:#eef8f0;border-color:#3aa35b}.vcard.no{background:#fdf0ee;border-color:#e84a3a}
+.vans{font-size:16.5px;line-height:1.4}
+
+/* chips */
+.chips-row{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:10px}
+.mchip.on{background:var(--ink);color:#fff}
+.ppc-sent{font-size:26px;font-style:italic;margin:6px 0}
+.ppc-sent b{color:var(--orange)}
+.ppc-tag{display:inline-block;font-family:var(--hand);font-size:22px;border-radius:8px;padding:2px 12px;border:2px solid}
+.ppc-tag.open{border-color:#2c6fbb;color:#2c6fbb;background:#eef4fb}.ppc-tag.closed{border-color:var(--orange);color:#b5470e;background:#fff3ea}
+.ppc-tag small{color:var(--muted);font-size:18px}
+.ppc-why{font-size:18px}
+.keys-en{font-size:22px}
+
+/* future */
+.fut-sc{display:flex;gap:14px;align-items:center}
+.fut-sit{font-family:var(--head);font-size:21px;line-height:1.2}
+.fut-ru{font-family:var(--hand);font-size:22px;color:var(--muted)}
+.opts{display:grid;grid-template-columns:1fr;gap:8px;margin-top:10px}
+.opts button{border-radius:10px;text-align:left;font-size:21px;padding:8px 14px}
+.opts button.right{background:#dff3e4;border-color:#3aa35b}
+.opts button.wrong{background:#fde2de;border-color:#e84a3a}
+.opts button.dim{opacity:.45}
+.fut-ans{font-size:18px;margin-top:10px}
+.fut-done{font-family:var(--head);font-size:24px;margin-bottom:10px}
+.qn{font-family:var(--hand);color:var(--orange);font-size:21px}
+
+/* word order */
+.ord-cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.ord{border:2px dashed var(--line);border-radius:10px;padding:10px;display:flex;flex-direction:column}
+.ord-s{font-size:25px;margin:8px 0;min-height:44px}
+.w{display:inline-block;border-radius:6px;padding:0 6px;margin:2px 1px}
+.w.s{background:#ffe7d3}.w.o{background:#dcebfb}.w.v{background:#d8f1df}.w.end{background:#ffe7d3}
+.w b{color:#e84a3a}
+.w.aux{background:#e9ddff;font-weight:700}.w.wh{background:#fff3b8}.w.gone{opacity:.3;text-decoration:line-through}.w.new{background:#e9ddff;font-weight:700;outline:2.5px solid #7041c2}
+.w.moved{outline:2.5px dashed #7041c2}
+.ord-pic{min-height:110px;display:flex;align-items:center;justify-content:center}
+.bite{display:flex;align-items:flex-end;gap:2px}
+.bite .pow{font-family:var(--head);color:#e84a3a;font-size:14px;transform:rotate(-10deg);align-self:center}
+.yoda{font-size:60px}
+.ord-note{font-family:var(--hand);font-size:21px;line-height:1.2;flex:1}
+.shuf{margin-top:8px;align-self:flex-start}
+
+/* question machine */
+.qm-stage{border:2px dashed var(--line);border-radius:10px;padding:14px;min-height:170px}
+.qm-step{font-family:var(--hand);color:var(--orange);font-size:20px}
+.qm-row{font-size:30px;margin:8px 0}
+.qm-row .w{animation:pop .3s}
+.qm-say{font-size:18px}
+.qm-ctrl{display:flex;gap:8px;margin-top:10px}
+.qm-ctrl button:disabled{opacity:.35;cursor:default}
+.qm-ctrl .qm-next{background:var(--orange);color:#fff}
+
+/* conditionals */
+.cond-scale{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.cond-scale button{font-family:var(--hand);border:2.5px solid var(--ink);border-radius:10px;background:#fff;cursor:pointer;padding:6px;line-height:1.1;font-size:19px}
+.cond-scale button b{display:block;font-family:var(--head);font-size:17px}
+.cond-scale button.on{background:var(--ink);color:#fff}
+.cond-ex{font-size:23px;font-style:italic;margin:6px 0}
+.cond-ex b{color:var(--orange)}
+
+/* modals */
+.mod-wrap{display:grid;grid-template-columns:230px 1fr;gap:16px}
+.mod-list{display:flex;flex-direction:column;gap:5px}
+.mod-list button{display:flex;flex-direction:column;align-items:flex-start;border:2.5px solid var(--ink);border-radius:10px;background:#fff;cursor:pointer;padding:3px 10px;text-align:left}
+.mod-list button b{font-family:var(--head);font-size:15px}
+.mod-list button span{font-family:var(--hand);font-size:18px;color:var(--muted);line-height:1.1}
+.mod-list button.on{background:var(--ink)}.mod-list button.on b,.mod-list button.on span{color:#fff}
+.mod-out{display:grid;grid-template-columns:70px 1fr;gap:14px}
+.gauge{border:3px solid var(--ink);border-radius:30px;height:330px;position:relative;overflow:hidden;background:#f6f3ec}
+.g-fill{position:absolute;bottom:0;left:0;right:0;transition:height .4s cubic-bezier(.3,1.4,.5,1),background .3s}
+.g-lbl{position:absolute;top:8px;left:0;right:0;text-align:center;font-family:var(--hand);font-size:17px;line-height:1}
+.mod-w{font-family:var(--head);font-size:30px}
+.mod-txt p{font-size:18px;margin:6px 0}
+
+/* phrasal */
+.pv-pick{display:grid;grid-template-columns:auto auto auto 1fr;gap:12px;align-items:start}
+.pv-col{display:flex;flex-direction:column;gap:5px}
+.pv-col button{font-family:var(--head);font-size:15px;border:2.5px solid var(--ink);border-radius:8px;background:#fff;padding:4px 12px;cursor:pointer}
+.pv-col button.on{background:var(--orange);color:#fff}
+.pv-plus{font-family:var(--head);font-size:30px;align-self:center}
+.pv-res{border:2.5px solid var(--ink);border-radius:10px;padding:12px;background:#fffaf3;min-height:260px}
+.pv-key{font-family:var(--head);font-size:28px}
+.pv-key.no{color:#bbb;text-decoration:line-through}
+.pv-mean{font-family:var(--hand);font-size:25px;line-height:1.2;margin:4px 0}
+.pv-joke{font-size:17px;background:#fff;border-left:4px solid var(--orange);padding:6px 10px;border-radius:0 6px 6px 0}
+.pv-hint{font-size:16px;color:var(--muted);margin-top:8px}
+.ptable{width:100%;border-collapse:collapse;font-size:17px;margin:14px 0}
+.ptable td,.ptable th{border-bottom:1.5px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+.ptable th{font-family:var(--hand);font-size:20px;font-weight:400;color:var(--muted)}
+.ptable td:first-child{font-family:var(--head);font-size:15px;white-space:nowrap}
+
+/* cast */
+.tenant{height:360px}
+.tenant .front .nm{font-size:17px}
+.tenant .front .nick{font-size:22px;text-align:center;line-height:1.1}
+.tenant .back{font-size:16px}
+.tenant .back .q{font-size:21px;line-height:1.15}
+
+/* fights */
+.corner .who{font-size:24px}
+.fight h4{font-size:22px}
+.verdict{font-size:22px}
+
+/* cringe */
+.cr-score{font-family:var(--hand);font-size:24px;margin-bottom:8px}
+.cr-score b{font-family:var(--head);color:var(--orange)}
+.cr-list{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.cr{font-family:var(--serif);font-size:19px;font-style:italic;text-align:left;border:2.5px solid var(--ink);border-radius:10px;background:#fff;padding:8px 12px;cursor:pointer}
+.cr:hover{background:#fff6e8}
+.cr-a{display:block;font-style:normal;font-size:16px;line-height:1.35}
+.cr-a span{color:var(--muted)}
+.cr.bad{background:#fdf0ee;border-color:#e84a3a;cursor:default}
+.cr.bad .cr-s{text-decoration:line-through;text-decoration-color:#e84a3a}
+.cr.good{background:#eef8f0;border-color:#3aa35b;cursor:default}
+
+/* quiz */
+.quiz .opts{grid-template-columns:1fr 1fr}
+.result p{font-size:18px}
+
+/* cheat sheet */
+.cheat{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cheat div{border:2.5px solid var(--ink);border-radius:10px;padding:10px 14px;background:#fff;font-size:16.5px;line-height:1.4}
+.cheat h5{font-family:var(--head);font-size:16px;margin:0 0 4px;color:var(--orange)}
+
+blockquote.meme{border:3px solid var(--ink);border-radius:10px;background:#111;color:#fff;font-family:var(--head);text-transform:uppercase;text-align:center;padding:18px;font-size:22px;line-height:1.2;margin:24px auto;max-width:520px;box-shadow:5px 5px 0 var(--orange)}
+blockquote.meme small{display:block;font-family:var(--hand);text-transform:none;font-size:20px;color:#bbb;margin-top:6px}
+
+@media (max-width:760px){
+  .tom-grid,.vgrid,.ord-cols,.cr-list,.quiz .opts,.cheat{grid-template-columns:1fr}
+  .mod-wrap{grid-template-columns:1fr}.mod-list{flex-direction:row;flex-wrap:wrap}
+  .pv-pick{grid-template-columns:auto auto auto}.pv-res{grid-column:1/-1}
+  .cond-scale{grid-template-columns:1fr 1fr}
+  .doom{grid-template-columns:repeat(3,1fr)}
+}
+.fbar{display:grid;grid-template-columns:210px 1fr 64px;gap:10px;align-items:center;margin:7px 0}
+.fbar .fn-n{font-family:var(--hand);font-size:21px;line-height:1.05}
+.fbar .fb{height:26px;background:#f6f3ec;border:2px solid var(--ink);border-radius:5px;overflow:hidden}
+.fbar .fb i{display:block;height:100%;width:0;min-width:4px;background:var(--orange);transition:width 1.2s cubic-bezier(.2,.9,.3,1)}
+.fbar .fv{font-family:var(--head);font-size:15px;text-align:right}
+.fbar .fnote{grid-column:2/4;font-family:var(--hand);font-size:18px;color:#e84a3a;margin-top:-6px}
+@media (max-width:760px){.fbar{grid-template-columns:120px 1fr 54px}}
+.tl-l{font-size:34px}.tl-now{font-size:26px}.tl-s{font-size:34px;font-weight:700}
+.caption,.lbl,.tom-ru,.bubble,.sw,.toggle button,.freq,.hero .sub,.scroll-cue,.fut-ru,.ord-note,.pv-mean,.qn,.qm-step,.cr-score,.stat .l,.fbar .fn-n,.fbar .fnote,.corner .who,.verdict,.tenant .front .nick,.tenant .back .q,.flip-hint,.vbtns button,.mchip,.shuf,.next,.again,.qm-ctrl button,.opts button,.cond-scale button,.mod-list button span,.ppc-tag,.fn-note,.pc em,.doom div,.doom .scrawl,.chapter-kicker,.sep,.panel small,.mod-list button span{font-weight:700}
+.tom-formula{margin-top:30px}
+.pc em{top:-26px;font-size:19px}
+.doom .scrawl{font-size:34px;right:-40px;top:-46px}
+.bubble small{font-size:18px;color:var(--muted)}
+.comic{gap:14px;flex-wrap:nowrap}
+.comic .panel{flex:1 1 0;min-width:0;min-height:0;padding:14px 12px 6px;gap:6px}
+.comic .panel .bubble{margin-bottom:80px;font-size:22px}
+.tom-grid{grid-template-columns:1fr 1.15fr}
+@media (max-width:600px){.comic{flex-wrap:wrap}.comic .panel{flex:1 1 100%}}
+.w.gone{opacity:.55;color:#e84a3a;font-family:var(--hand);font-weight:700;animation:flyup .6s ease}
+@keyframes flyup{from{transform:translateX(0)}50%{transform:translate(-30px,-18px)}}
+.w.new{animation:dropin .45s cubic-bezier(.3,1.6,.5,1)}
+@keyframes dropin{from{transform:translateY(-30px);opacity:0}}
+.mod-out{grid-template-columns:96px 1fr}
+.gauge{height:300px;width:64px;margin:0 auto}
+.g-lbl{position:static;margin-top:6px;font-size:20px;line-height:1.05}
+.fight h4{text-transform:none;font-size:24px}
+code{white-space:nowrap}
+@media (max-width:760px){
+  .tom-grid,.mod-out{grid-template-columns:1fr}
+  .mod-out .gcol{display:none}
+  .widget{padding:14px}
+  .toggle button{font-size:19px;padding:5px 10px}
+  .tl-s{font-size:44px}.tl-l{font-size:40px}.tl-now{font-size:32px}
+  .say .bubble{margin-bottom:60px}
+  .fbar{grid-template-columns:110px 1fr 50px}
+}
+.g-fill{height:var(--p)}
+@media (max-width:760px){
+  .mod-out .gcol{display:block}
+  .gauge{height:26px;width:100%}
+  .g-fill{height:100%;width:var(--p);right:auto;transition:width .4s cubic-bezier(.3,1.4,.5,1),background .3s}
+}
+
+/* подсказки при наведении (abbr.js) */
+abbr.tt,abbr.tt-demo{text-decoration:underline dotted #9a978f;text-decoration-thickness:2px;text-underline-offset:3px;cursor:help}
+abbr.tt:hover{text-decoration-color:var(--orange);background:#fff6e8}
+.tt-card{position:fixed;display:none;z-index:95;max-width:330px;background:var(--ink);color:#fff;border-radius:10px;padding:9px 13px;box-shadow:4px 4px 0 var(--orange);pointer-events:none;font-family:var(--serif);font-style:normal;font-weight:400;font-size:15px;line-height:1.4;text-align:left;text-transform:none;letter-spacing:0}
+.tt-card b{font-family:var(--head);font-weight:700;font-size:15px;color:#f7c948;display:block}
+.tt-card .full{display:block;font-family:var(--hand);font-weight:700;font-size:19px;color:#ddd;line-height:1.15;margin:2px 0}
+.tt-card .what{display:block;margin-top:4px;color:#f1ede4}
+.tt-hint{font-size:17px;background:#fff6e8;border:2px dashed var(--orange);border-radius:8px;padding:8px 12px}
+/* V-формы */
+.vforms{border:3px solid var(--ink);border-radius:10px;background:#fff;padding:14px 16px;margin:18px 0 24px;box-shadow:5px 5px 0 var(--ink)}
+.vf-head{font-family:var(--head);font-size:16px;margin-bottom:6px}
+.vforms table{width:100%;border-collapse:collapse;font-size:16px}
+.vforms th{font-family:var(--hand);font-weight:700;font-size:18px;color:var(--muted);text-align:left;padding:3px 6px;border-bottom:2px solid var(--ink)}
+.vforms td{padding:6px;border-bottom:1px solid var(--line);vertical-align:top}
+.vforms td:first-child{font-family:var(--head);font-size:17px;color:var(--orange)}
+.vforms td:nth-child(3),.vforms td:nth-child(4),.vforms td:nth-child(5){font-style:italic}
+.vforms u{text-decoration-color:var(--orange);text-decoration-thickness:2px}
+.vf-note{font-size:15.5px;line-height:1.45;color:#3d3b37;margin-top:10px}
+/* словарик */
+.gloss h4{font-family:var(--head);font-size:18px;margin:26px 0 6px;color:var(--orange)}
+.gloss table{width:100%;border-collapse:collapse;font-size:16px;line-height:1.45}
+.gloss td{border-bottom:1px solid var(--line);padding:7px 6px;vertical-align:top}
+.gloss td:first-child{width:30%;font-size:16px}
+.gloss .gf{display:block;font-family:var(--hand);font-weight:700;font-size:18px;color:var(--muted);line-height:1.15}
+@media (max-width:760px){.vforms{overflow-x:auto}.vforms table{min-width:560px}.gloss td:first-child{width:38%}}
+.vforms td:first-child{white-space:nowrap}
+.gloss .gf{font-size:20px;color:#7a766e}.gloss td:first-child b{font-family:var(--head);font-size:14px}
+
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><filter id="wobble"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="3"/><feDisplacementMap in="SourceGraphic" scale="2.2"/></filter></svg>
+<div id="progress"></div>
+
+<header class="hero">
+  <h1>Какого хрена, <span>английский?</span></h1>
+  <div class="sub">Неприлично длинный и местами матерный гид по грамматике<br>для тех, кто застрял между A2 и B1</div>
+  <div class="scene">
+    <i data-stick='{"mood":"shock","arms":"up"}'></i>
+    <div class="doom">
+      <div>Present Simple</div><div>Present Continuous</div><div>Present Perfect</div><div>Present Perfect Continuous</div>
+      <div>Past Simple</div><div>Past Continuous</div><div>Past Perfect</div><div>Past Perfect Continuous</div>
+      <div>Future Simple</div><div>Future Continuous</div><div>Future Perfect</div><div>Future Perfect Continuous</div>
+      <span class="scrawl">12 времён?! пупупу</span>
+    </div>
+    <i data-stick='{"mood":"sweat","arms":"shrug","hat":"glasses"}'></i>
+  </div>
+  <div class="scroll-cue">листай вниз, дальше будет хуже (но понятнее) ↓</div>
+</header>
+
+<main>
+<section class="col">
+  <p class="big">За плечами лет десять школьного английского. И железное знание: London is the capital of Great Britain.<span class="fn" data-note="Сегодня технически нет. Great Britain = остров, а Лондон = столица Соединённого Королевства (United Kingdom). Учебник врал тебе с первого урока. Это многое объясняет.">0</span></p>
+  <p>Ты можешь сказать <i>My name is...</i>, понимаешь мемы и даже смотришь сериалы с субтитрами. Но стоит открыть рот, и в голове начинается: «так, это Present Perfect или Past Simple? А тут нужен do? А почему does? А will после if можно? А какого хрена вообще?»</p>
+  <p>А потом кто-то показывает тебе таблицу из двенадцати времён. Двенадцать. Включая <i>Future Perfect Continuous</i>. И мозг выдаёт единственное возможное слово (5-е место в топ-10 слов 2025 года по версии Грамоты.ру): <b>пупупу</b>.<span class="fn gray" data-note="Слово года-2025 по версии Грамоты.ру: «зумер». В топ-10 также попали «пупупу», «брейнрот», «имба» и «сигма». Источник: Meduza, 11.12.2025.">0</span></p>
+  <p>Мне захотелось разобраться, почему английская грамматика ощущается как издевательство. Пришлось перелопатить грамматики, корпусные исследования, учебники и примерно тысячу мемов. Выяснилось, что всё не так страшно. Вот цифры, которые меня успокоили:</p>
+  <div class="stats">
+    <div class="stat"><div class="n">2</div><div class="l">времени в английском на самом деле (а не 12)</div></div>
+    <div class="stat"><div class="n">20×</div><div class="l">в разговоре простые формы чаще длительных</div></div>
+    <div class="stat"><div class="n">1/150</div><div class="l">примерно один фразовый глагол на 150 слов</div></div>
+    <div class="stat"><div class="n">645</div><div class="l">значений у глагола <i>run</i> в Оксфордском словаре</div></div>
+  </div>
+  <p>(Последняя цифра не успокаивает. Простите.)<span class="fn gray" data-note="2 времени: Cambridge Grammar of the English Language (Huddleston & Pullum, 2002). 20×: Biber & Conrad, 2001, по данным Longman Grammar of Spoken and Written English. 1/150: Gardner & Davies, 2007, Британский национальный корпус. 645: OED, 2011, NPR.">0</span></p>
+  <p>Корень почти всех проблем один: <b>русский и английский решают одни и те же задачи совершенно разными инструментами.</b> Русский всё делает окончаниями и приставками. Английский окончания почти потерял и теперь выкручивается порядком слов и маленькими словами-помощниками. Если понять, как работают эти помощники, двенадцать времён, вопросы и условные предложения складываются в одну систему.</p>
+  <p class="tt-hint">💡 Слова с <abbr class="tt-demo">пунктирным подчёркиванием</abbr> можно навести (или тапнуть на телефоне): там объяснение. Все термины и мемы собраны в словарике в конце.</p>
+  <p>Поэтому у меня было три вопроса:</p>
+  <ul class="read">
+    <li><b>Что это за 12 времён и как их не бояться?</b> (части 1–4)</li>
+    <li><b>Почему нельзя просто сказать «You like pizza?»</b> (часть 5)</li>
+    <li><b>Если бы да кабы, must или have to, и что за хрень эти get up, give up, take off?</b> (части 6–8)</li>
+  </ul>
+</section>
+
+<div class="sep">• • •</div>
+
+<!-- ===================== ЧАСТЬ 1 ===================== -->
+<section class="col">
+  <div class="chapter-kicker">Часть 1</div>
+  <h2 class="chapter">Времён не двенадцать. Их два.</h2>
+  <p>Серьёзно. Посмотри на глагол <i>work</i>. Сколько у него форм, которые меняются от времени? <i>work / works</i> (настоящее) и <i>worked</i> (прошлое). Всё. Окончания для будущего у английского глагола <b>нет вообще</b>.</p>
+  <p>Поэтому большая академическая грамматика английского (Cambridge Grammar, 1800 страниц) говорит прямо: времён в английском <b>два, настоящее и прошедшее</b>. А <i>will</i> там считается модальным глаголом, родственником <i>can</i> и <i>must</i>.<span class="fn gray" data-note="Huddleston & Pullum, The Cambridge Grammar of the English Language, 2002. Так считает большинство лингвистов, но не все: некоторые (например, Salkie) считают will настоящим будущим временем. Для практики разницы нет, для понимания системы очень удобно.">0</span></p>
+  <p>Откуда тогда 12? Из <b>конструктора</b>. Но сначала пара сокращений, без которых любой учебник выглядит как шифровка.</p>
+  <div class="vforms">
+    <div class="vf-head">У каждого английского глагола есть 4 рабочие формы:</div>
+    <table>
+      <tr><th></th><th>что это</th><th>правильный глагол</th><th>неправильный</th><th>неправильный</th><th>где живёт</th></tr>
+      <tr><td><b>V1</b></td><td>базовая, «словарная» форма</td><td>work</td><td>eat</td><td>go</td><td>Present Simple, после do / will / can</td></tr>
+      <tr><td><b>V2</b></td><td>прошедшее время</td><td>work<u>ed</u></td><td>ate</td><td>went</td><td>только в Past Simple</td></tr>
+      <tr><td><b>V3</b></td><td>«причастие прошедшего времени» (past participle)</td><td>work<u>ed</u></td><td>eaten</td><td>gone</td><td>после <i>have</i> (Perfect) и в пассиве</td></tr>
+      <tr><td><b>V-ing</b></td><td>форма на -ing</td><td>work<u>ing</u></td><td>eating</td><td>going</td><td>после <i>be</i> (Continuous)</td></tr>
+    </table>
+    <div class="vf-note">V = verb, глагол. Цифра = номер колонки в той самой «таблице неправильных глаголов» из конца учебника: <i>go, went, gone</i> = V1, V2, V3. У правильных глаголов V2 и V3 одинаковые (+ed), поэтому таблицу учат только для неправильных. Неправильных в ходу около двух сотен, но реально частых пара десятков, и ты почти все уже знаешь: <i>be, have, do, go, get, make, take, see, come, know, think, say</i>.</div>
+  </div>
+  <p>Есть ещё <b>V-s</b>: это V1 + окончание <i>-s</i> для <i>he / she / it</i> в настоящем времени (<i>she works</i>). Единственное окончание лица, которое осталось в английском. Оно же самое забываемое.</p>
+  <p>Теперь конструктор. Берём одно из двух времён (или <i>will</i>) и добавляем два переключателя:</p>
+  <ul class="read">
+    <li><b style="color:#2c6fbb">be + V-ing</b> = «в процессе»: смотрим на действие изнутри, из его середины. <i>I am eating</i> = «я ем, процесс идёт». Это называется <b>Continuous</b> (длительная форма).</li>
+    <li><b style="color:#257a3e">have + V3</b> = «связь с моментом»: действие случилось раньше, а мы смотрим на него с какой-то точки (обычно из «сейчас») и видим результат. <i>I have eaten</i> = «я поел, и сейчас я сыт». Это называется <b>Perfect</b>.</li>
+    <li>Если оба переключателя выключены, форма называется <b>Simple</b> (простая): <i>I eat, I ate</i>.</li>
+  </ul>
+  <p>3 варианта времени (Past, Present, Future) × Continuous вкл/выкл × Perfect вкл/выкл = 3 × 2 × 2 = 12. Название времени в учебнике просто перечисляет, какие кнопки нажаты: <b>Present Perfect Continuous</b> = настоящее + have + be-ing. Вот и вся магия. Таблица из учебника = все комбинации трёх кнопок. Пощёлкай:</p>
+  <div class="widget">
+    <h3>Конструктор времён</h3>
+    <div id="tom"></div>
+  </div>
+  <div class="caption">Все примеры на одном глаголе <i>eat</i>, чтобы было видно: меняются только помощники. Шкала частоты грубая, это порядок величин, а не точные проценты.</div>
+  <p>Видишь красную пометку <span style="color:#e84a3a" class="hand">⏱ время тут</span>? Это самое важное открытие всей страницы:</p>
+  <p class="big">Время и лицо всегда живут в первом глаголе цепочки.</p>
+  <p><i>She <b>has</b> been eating. She <b>was</b> eating. She <b>will</b> have eaten.</i> Первый глагол несёт «когда» и «кто» (если у него вообще есть формы лица: у <i>will</i> их нет), остальные идут в застывших формах (be, been, eating, eaten). Запомни это. В части 5 это объяснит, откуда в вопросах берётся <i>do</i>, и всё сойдётся.<span class="fn" data-note="Лучшая иллюстрация того, что творят помощники: предложение «James while John had had had had had had had had had had had a better effect on the teacher». 11 раз had подряд, и оно грамматически правильное (с запятыми и кавычками понятнее: James, while John had had “had”, had had “had had”...). Речь о том, что учитель больше оценил вариант с had had. Это Past Perfect, кстати.">0</span></p>
+
+  <h3 class="sub-h">А какие из 12 реально нужны?</h3>
+  <p>Хорошая новость: в живой речи носители используют маленькую часть этой таблицы. Кто-то в 1969 году посчитал формы глаголов в английских текстах:</p>
+  <div class="widget">
+    <h3>Кто сколько работает</h3>
+    <div id="freqbars"></div>
+  </div>
+  <div class="caption">Krámský, 1969: старые выборки по 20 тысяч слов из романов, пьес и научных текстов, то есть письменный язык. Смотри на порядок, а не на десятые доли. Но вывод подтверждает и большой корпус: в разговоре простые формы встречаются более чем в 20 раз чаще длительных (Biber et al., 1999).</div>
+  <p><b>Вывод для A2-B1:</b> Present Simple + Past Simple + will/going to + Present Perfect + Present Continuous закрывают почти всю твою жизнь. Past Perfect нужен для историй. Остальное можно смело учить последним. Future Perfect Continuous можно не учить вообще, пока он сам за тобой не придёт.</p>
+</section>
+
+<div class="sep">• • •</div>
+
+<!-- ===================== ЧАСТЬ 2 ===================== -->
+<section class="col">
+  <div class="chapter-kicker">Часть 2</div>
+  <h2 class="chapter">«Я ем»: прямо сейчас или по жизни?</h2>
+  <p>По-русски «я работаю в банке» и «я работаю, не мешай» звучат одинаково. Русскому норм, из контекста понятно. Английский так не может: он заставляет выбрать.</p>
+  <div class="comic">
+    <div class="panel"><i data-stick='{"mood":"flat","hat":"glasses"}'></i><div class="bubble">I <b>work</b> in a bank.<br><small>(профиль в соцсети)</small></div></div>
+    <div class="panel"><i data-stick='{"mood":"sweat","prop":"phone"}'></i><div class="bubble">I'm <b>working</b>, don't call!<br><small>(сторис)</small></div></div>
+  </div>
+  <p>Вот лучшая аналогия на эту тему: <b>Present Simple = твой профиль в соцсети.</b> «Работаю в банке. Люблю котиков. По пятницам падел». Факты и привычки, верные вообще. <b>Present Continuous = сторис.</b> «Сейчас ем шаверму». «На этой неделе живу у мамы». То, что происходит прямо сейчас или временно.</p>
+  <p>Отсюда классическая русская ошибка: <i>What do you do?</i> значит не «что делаешь?», а «кем работаешь?» (профиль). Если хочешь спросить «чё делаешь?», то это <i>What are you doing?</i> (сторис).</p>
+
+  <h3 class="sub-h">Почему нельзя «I am knowing»</h3>
+  <p><i>be + -ing</i> означает «я внутри процесса, в его середине». У бега есть середина. У еды есть середина. А у «знать», «хотеть», «любить», «владеть» середины нет: ты не «в процессе знания», ты просто знаешь. Такие глаголы называют <b>глаголами состояния</b>, и в -ing их обычно не ставят.</p>
+  <p>Но! Некоторые глаголы имеют два смысла: один про состояние, другой про действие. <i>I have a car</i> (владею) vs <i>I'm having lunch</i> (обедаю, действие). <i>I think you're right</i> (мнение) vs <i>I'm thinking about you</i> (процесс в голове). Проверь чутьё:</p>
+  <div class="widget">
+    <h3>Кринж или база?</h3>
+    <div id="stative" class="vgrid"></div>
+  </div>
+  <div class="caption">Правило «состояния не бывают в -ing» = сильная тенденция, а не закон физики. Носители иногда ломают её ради эмоции (I'm loving it). Тебе пока не надо.</div>
+</section>
+
+<div class="sep">• • •</div>
+
+<!-- ===================== ЧАСТЬ 3 ===================== -->
+<section class="col">
+  <div class="chapter-kicker">Часть 3</div>
+  <h2 class="chapter">Present Perfect: финальный босс</h2>
+  <p>Спроси любого русскоязычного, какое время в английском самое тупое. Девять из десяти скажут: Present Perfect.<span class="fn" data-note="Цифра «девять из десяти» взята из головы. Но попробуй найти русскоязычного, который его любит. Мне таких не попадалось.">0</span> И у этого есть причина.</p>
+  <p>В русском прошедшее время одно. «Я посмотрел этот фильм» может значить и «вчера посмотрел» (история с датой), и «я его видел, в теме, не спойлери» (опыт, результат). Русский различает другое: <b>вид</b>, смотрел (процесс) vs посмотрел (результат). И нас в школе учили: «посмотрел = Perfect». <b>Это ловушка.</b></p>
+  <p class="big">Английский выбирает не по тому, закончилось ли действие, а по тому, закрыто ли окно времени.</p>
+  <ul class="read">
+    <li><b>Past Simple</b> = окно захлопнуто. Есть «когда»: вчера, в 2016, два дня назад, в детстве. История с датой, фотка в альбоме.</li>
+    <li><b>Present Perfect</b> = окно открыто до сейчас. «За всю жизнь», «на этой неделе», «уже», «с 2019 года». Когда именно, неважно. Важно, что есть <b>сейчас</b>: опыт, результат, последствие. Как шрам: когда он появился, неважно, он на тебе сейчас.</li>
+  </ul>
+  <div class="widget">
+    <h3>Ключи Шрёдингера</h3>
+    <div id="keys"></div>
+  </div>
+  <div class="caption">Одна и та же русская фраза, два английских перевода. Решает не прошлое, а то, что происходит сейчас.</div>
+  <p>Теперь главный инструмент. Кликай на слова-маркеры и смотри, где окно:</p>
+  <div class="widget">
+    <h3>Суд над окном времени</h3>
+    <div id="ppc"></div>
+  </div>
+  <div class="caption">Синее окно доходит до вертикальной линии СЕЙЧАС → Present Perfect. Оранжевое закрыто в прошлом → Past Simple.</div>
+  <p>Отдельно про самую частую ошибку русскоязычных вообще. «Я живу здесь с 2020 года», «Сколько ты здесь?», «Я знаю её пять лет»: в русском <b>настоящее</b> время, а в английском это период, который начался в прошлом и тянется до сейчас. То есть Perfect:</p>
+  <span class="ex bad">I live here since 2020. How long are you here? I know her for five years.</span>
+  <span class="ex good">I've lived here since 2020. How long have you been here? I've known her for five years.</span>
+  <p>Мнемоника: <b>видишь «since» или «for + срок до сейчас», ставь have.</b><span class="fn" data-note="Один комментатор на Хабре перевёл Present Perfect дословно: I have done my homework = «я есмь сделавший домашнюю работу». Звучит дико, но объясняет, почему yesterday не лезет: «вчера я есмь сделавший» = бред. Ты не «вчера есмь», ты есть сейчас.">0</span></p>
+  <p>И честная сноска: американцы часто говорят Past Simple там, где британцы ставят Perfect: <i>Did you eat yet? I just saw it.</i> Это не ошибка. Но <i>I have seen him yesterday</i> ошибка везде, от Лондона до Огайо.<span class="fn gray" data-note="Cambridge Dictionary (грамматика и блог, 2014): в американском английском с just, already и yet часто используют Past Simple.">0</span></p>
+</section>
+
+<div class="sep">• • •</div>
+
+<!-- ===================== ЧАСТЬ 4 ===================== -->
+<section class="col">
+  <div class="chapter-kicker">Часть 4</div>
+  <h2 class="chapter">Будущего нет. Есть четыре способа о нём говорить.</h2>
+  <p>Помнишь, у английского глагола нет окончания будущего? Поэтому о будущем он говорит обходными путями, и каждый путь даёт свой оттенок:</p>
+  <div class="cheat">
+    <div><h5>will</h5>Решение прямо сейчас. Обещание. «Мне кажется». <i>I'll get it! I'll text you. I think it'll be fine.</i></div>
+    <div><h5>going to</h5>Решение принято заранее (намерение). Или вижу признаки. <i>I'm going to quit. Look, it's going to rain.</i></div>
+    <div><h5>Present Continuous</h5>Есть договорённость, билеты, время, место. <i>I'm meeting Anna at 8.</i></div>
+    <div><h5>Present Simple</h5>Расписание, как закон природы. <i>The train leaves at 6:15.</i></div>
+  </div>
+  <p>Русскому мозгу непривычно, что настоящее время (<i>I'm meeting, the train leaves</i>) говорит о будущем. Но по-русски мы делаем то же самое: «завтра я лечу в Анталью». Лечу, а не полечу. Вот, ты уже умеешь.</p>
+  <div class="widget">
+    <h3>Битва экстрасенсов</h3>
+    <div id="fut" class="quiz-in"></div>
+  </div>
+  <div class="caption">Во многих ситуациях подходят несколько вариантов, особенно will и going to в прогнозах. Здесь отмечен самый естественный.</div>
+  <p>Бонус: в январе 2026 весь интернет смотрел на <a href="https://en.wikipedia.org/wiki/Nihilistic_penguin" target="_blank">пингвина-нигилиста</a>, который уходит от колонии в горы (кадр из документалки Херцога 2007 года). Его внутренний монолог идеально на Present Continuous: <i>Where are you going? → I'm going to the mountains.</i> План уже в процессе. Пингвин всё решил.</p>
+</section>
+
+<div class="sep">• • •</div>
+
+<!-- ===================== ЧАСТЬ 5 ===================== -->
+<section class="col">
+  <div class="chapter-kicker">Часть 5</div>
+  <h2 class="chapter">Почему нельзя просто «You like pizza?»</h2>
+  <p>Чтобы это понять, надо узнать одну вещь про историю английского. Тысячу лет назад у него были <b>падежи</b>, почти как в русском. Потом были викинги, потом норманны, и примерно к XIV веку большинство окончаний отвалилось.<span class="fn gray" data-note="Древнеанглийский (примерно до XI века) имел падежную систему: именительный, винительный, родительный, дательный. В среднеанглийский период (XI-XV века) окончания в основном стёрлись. Остатки живы до сих пор: I/me, he/him, who/whom, и притяжательное 's.">0</span> А задача «показать, кто кого» никуда не делась. Её взял на себя <b>порядок слов</b>.</p>
+  <div class="widget">
+    <h3>Кто кого кусает</h3>
+    <div id="order"></div>
+  </div>
+  <div class="caption">Русский: переставляй как хочешь, роли держатся на окончаниях, меняется только акцент. Английский: переставил = поменял смысл (или сломал предложение).</div>
+  <p>Отсюда первое правило: <b>в английском утверждении порядок железный: кто → что делает → что/кого</b>. <i>I very like it</i> или <i>Like it I do</i> звучит как Йода. Русская свобода порядка слов на английский не экспортируется.</p>
+
+  <h3 class="sub-h">Откуда берётся do</h3>
+  <p>Теперь вопросы. По-русски вопрос делается <b>интонацией</b>: «Ты любишь пиццу.» → «Ты любишь пиццу?» Слова те же, голос вверх. В английском так можно только с удивлением (<i>You like pizza?!</i> = «ты что, любишь пиццу?!»). Нейтральный вопрос строится <b>движением</b>: помощник прыгает вперёд, перед подлежащим.</p>
+  <p>Помнишь «время живёт в первом глаголе»? Вот где это выстреливает. Если помощник есть (<i>is, can, have, will</i>), он и прыгает. А если помощника нет, как в <i>She likes pizza</i>? Тогда английский вызывает пустого помощника <b>do</b>, который ничего не значит, а только переносит время и лицо. Смотри пошагово:</p>
+  <div class="widget">
+    <h3>Вопросная машина</h3>
+    <div id="qm"></div>
+  </div>
+  <div class="caption">do / does / did = такси для времени и лица. Оно забирает -s или прошедшее время, и основной глагол едет дальше голым.</div>
+  <p>Из этой схемы сразу следуют три русские ошибки, и все они про «двойную оплату» или «забыли такси»:</p>
+  <span class="ex bad">Where you live? · Does he likes? · Did you went?</span>
+  <span class="ex good">Where do you live? · Does he like? · Did you go?</span>
+
+  <blockquote class="meme">Окак<small>Мем 2025 года: чёрный кот в худи. По-английски это <i>Oh, does he?</i> / <i>Oh, is it?</i> / <i>Oh, did she?</i></small></blockquote>
+  <p>Кстати, помощники отлично работают и для коротких реакций. Англичанин не говорит «Really?» на всё подряд, он отзеркаливает помощника: <i>She's moved to Dubai. → <b>Has she?</b></i> <i>He doesn't like pizza. → <b>Doesn't he?</b></i> По сути это английский «окак». И короткие ответы так же: <i>Is this the Krusty Krab? → No, this is Patrick.</i> (Вежливее с помощником: <b>No, it isn't.</b>)</p>
+
+  <h3 class="sub-h">Вежливый вопрос: порядок возвращается</h3>
+  <p>Последняя ловушка. По-русски «скажите, где вокзал?» строится как обычный вопрос. А в английском, если вопрос спрятан внутри вежливой рамки (<i>Could you tell me..., Do you know..., I wonder...</i>), порядок слов становится <b>обычным, как в утверждении</b>. Вопрос уже задан рамкой, второй раз прыгать не надо:</p>
+  <div class="widget">
+    <h3>Включить вежливость</h3>
+    <div id="polite"></div>
+  </div>
+  <p>И заодно: <i>Tell me please...</i> по-английски звучит как приказ, а не просьба. <i>Could you tell me...</i> звучит вежливо и спасёт тебя в любой стране.</p>
+</section>
+
+<div class="sep">• • •</div>
+
+<!-- ===================== ЧАСТЬ 6 ===================== -->
+<section class="col">
+  <div class="chapter-kicker">Часть 6</div>
+  <h2 class="chapter">Если бы да кабы: условные предложения</h2>
+  <p>Условные предложения в учебниках пронумерованы от 0 до 3, и это выглядит как ещё одна таблица для зубрёжки. Но под ними одна простая идея, которая объясняет всё:</p>
+  <p class="big">Чем дальше от реальности, тем дальше в прошлое уезжает глагол.</p>
+  <p>Реально и возможно → настоящее время. Фантазия про сейчас → шаг назад, в прошедшее (<i>If I <b>had</b> a million</i>, хотя речь не о прошлом). Фантазия про прошлое → два шага назад (<i>If I <b>had had</b></i>). Прошедшее время тут работает как знак «это не по-настоящему». Двигай ползунок:</p>
+  <div class="widget">
+    <h3>Реальность-о-метр</h3>
+    <div id="cond"></div>
+  </div>
+  <div class="caption">Бывают и смешанные: If I had taken that job, I would be rich now (прошлое условие, результат сейчас). Это уже B2, не пугайся.</div>
+  <p>Две ловушки специально для русскоязычных:</p>
+  <ul class="read">
+    <li><b>Нет will после if.</b> По-русски «если <u>пойдёт</u> дождь» в будущем, по-английски <i>if it <b>rains</b></i> в настоящем. То же после <i>when, before, after, as soon as, until</i>.<span class="fn" data-note="Для продвинутых: will после if всё-таки бывает, когда это не будущее, а «желание/согласие»: If you'll wait here, I'll get the manager (= если вы не против подождать). На уровне B1 смело считай, что нельзя.">0</span></li>
+    <li><b>Одно русское «бы» = два английских типа.</b> «Если бы я знал, я бы пришёл» может быть и про сейчас, и про прошлое. Русскому всё равно, английский заставит выбрать.</li>
+  </ul>
+  <div class="widget">
+    <h3>Бы-детектор</h3>
+    <div id="by"></div>
+  </div>
+</section>
+
+<div class="sep">• • •</div>
+
+<!-- ===================== ЧАСТЬ 7 ===================== -->
+<section class="col">
+  <div class="chapter-kicker">Часть 7</div>
+  <h2 class="chapter">Must, have to, should: кто тут начальник</h2>
+  <blockquote class="meme">Можно, а зачем?<small>Главный мем начала 2026 года. По-английски: <i>We <b>can</b>. But why <b>should</b> we?</i> Два модальных глагола, готовый урок.</small></blockquote>
+  <p>Модальные глаголы (<i>can, could, may, might, must, should, will, would</i>) это странные создания. Они как будто заморожены:</p>
+  <ul class="read">
+    <li><b>Без -s:</b> <i>she can</i>, а не <i>she cans</i>.</li>
+    <li><b>Без to после себя:</b> <i>I should go</i>, а не <i>I should to go</i>.</li>
+    <li><b>Не стыкуются друг с другом:</b> <i>I will can</i> нельзя. Нужна замена: <i>I'll be able to</i>, <i>I'll have to</i>.</li>
+    <li><b>Сами себе помощники:</b> вопрос без do, просто прыгают вперёд (<i>Can you swim?</i>), как в вопросной машине выше.</li>
+  </ul>
+  <p>А теперь главная проблема. Русское «должен» покрывает кучу всего: и совет, и обязанность, и запрет, и предположение. Английский раскладывает это по шкале давления:</p>
+  <div class="widget">
+    <h3>Давление-метр</h3>
+    <div id="mod"></div>
+  </div>
+  <div class="caption">Шкала условная: она про силу давления, а не про математическую вероятность.</div>
+  <p><b>Самая опасная ловушка:</b> «ты не должен приходить». Это «тебе нельзя» (<i>you mustn't come</i>) или «можешь не приходить» (<i>you don't have to come</i>)? По-русски одна фраза, по-английски две противоположные. Перепутаешь, и коллега, которого надо было освободить от созвона, решит, что его забанили.</p>
+  <div class="comic">
+    <div class="panel"><i data-stick='{"mood":"angry","arms":"hips"}'></i><div class="bubble">You <b>mustn't</b> come.<br><small>⛔ Тебе нельзя. Не приходи.</small></div></div>
+    <div class="panel"><i data-stick='{"mood":"happy","hat":"shades"}'></i><div class="bubble">You <b>don't have to</b> come.<br><small>🟢 Можешь не приходить, как хочешь.</small></div></div>
+  </div>
+  <p>И про <i>must</i>: русскоязычные его обожают, потому что «должен» = must, логично же. Но в живой речи он сдаёт позиции. Исследование UCL по устному британскому английскому: с 1960-х по 1990-е <i>must</i> стал встречаться на 56% реже, а <i>have to</i> на 32% чаще.<span class="fn gray" data-note="UCL Survey of English Usage, корпус DCPSE: must 92,0 → 40,8 на 100 тысяч слов, have to 40,5 → 53,4. Тренд идёт и в американском, причём быстрее (Leech, 2003; Mair & Leech, 2006).">0</span> Говори <i>I have to go</i>, и будешь звучать как человек, а не как табличка в метро.</p>
+</section>
+
+<div class="sep">• • •</div>
+
+<!-- ===================== ЧАСТЬ 8 ===================== -->
+<section class="col">
+  <div class="chapter-kicker">Часть 8</div>
+  <h2 class="chapter">Get up, give up, fuck up: фразовые глаголы</h2>
+  <p>Фразовый глагол = глагол + маленькое слово (частица), и вместе они значат что-то новое. <i>Give</i> = давать, <i>up</i> = вверх, <i>give up</i> = сдаться. Логика? Сначала кажется, что никакой. Но вот секрет:</p>
+  <p class="big">У тебя уже есть фразовые глаголы. Только у тебя частица стоит спереди и называется приставкой.</p>
+  <p>Ходить → <b>вы</b>ходить, <b>за</b>ходить, <b>пере</b>ходить, <b>у</b>ходить. Английский делает то же самое, только «приставку» ставит после глагола: <i>go <b>out</b>, go <b>in</b>, go <b>over</b>, go <b>away</b></i>. И как русские приставки, частицы иногда буквальные (вы-ходить = выйти наружу), а иногда переносные (вы-яснить ≈ <i>find out</i>, тоже «наружу», но из головы).</p>
+  <table class="ptable">
+    <tr><th>частица</th><th>базовая идея</th><th>примеры</th><th>похоже на</th></tr>
+    <tbody id="ptable"></tbody>
+  </table>
+  <div class="caption">Это подсказка для интуиции, а не таблица умножения. Русские приставки тоже многозначные (у «раз-» куча смыслов), и у частиц так же.</div>
+  <div class="widget">
+    <h3>Частица-рулетка</h3>
+    <div id="pv"></div>
+  </div>
+  <div class="caption">Один глагол может иметь несколько фразовых значений. У сотни самых частых фразовых глаголов в среднем по 5,6 значений (Gardner & Davies, 2007).</div>
+  <p>И одно грамматическое правило, которое надо просто запомнить: если дополнение = местоимение (it, him, her, them), оно встаёт <b>в середину</b>:</p>
+  <span class="ex bad">Turn on it. Pick up her.</span>
+  <span class="ex good">Turn it on. Pick her up.</span>
+  <p>С обычным существительным можно и так и так: <i>turn on the light</i> = <i>turn the light on</i>.</p>
+  <p>Почему это важно учить, а не избегать? Изучающие английский, у которых в родном языке нет фразовых глаголов, склонны их избегать (это заметили ещё в 1985 году, и магистерская работа в Осло проверяла то же на русскоязычных). Мы говорим <i>postpone</i> вместо <i>put off</i> и <i>continue</i> вместо <i>go on</i>, и звучим как юридический документ.<span class="fn gray" data-note="Dagut & Laufer, 1985; Kharitonova, 2013 (магистерская работа, University of Oslo). Разница между русскоязычной и норвежской группами там оказалась небольшой, так что это тенденция, а не приговор.">0</span> А про заголовок: <i>fuck up</i> = «облажаться» (up = до конца, полностью, как русское «за-» в «запороть»). Видишь, система работает даже здесь.</p>
+</section>
+
+<div class="sep">• • •</div>
+
+<!-- ===================== ПЕРСОНАЖИ ===================== -->
+<section class="wide">
+  <div class="col">
+    <div class="chapter-kicker">Знакомьтесь</div>
+    <h2 class="chapter">Банда</h2>
+    <p>Если представить главные времена людьми, получится вот такая банда. Нажимай на карточки:</p>
+  </div>
+  <div class="tenants" id="cast"></div>
+</section>
+
+<div class="sep">• • •</div>
+
+<!-- ===================== FIGHT CLUB ===================== -->
+<section class="col">
+  <div class="chapter-kicker">Бойцовский клуб</div>
+  <h2 class="chapter">Грамматические срачи</h2>
+  <p>В грамматике тоже есть холивары. Правила в учебниках чёткие, а носители говорят как хотят. Вот четыре главных спора и кто в них прав:</p>
+  <div class="fights" id="fights"></div>
+</section>
+
+<div class="sep">• • •</div>
+
+<!-- ===================== КРИНЖ-ДЕТЕКТОР ===================== -->
+<section class="col">
+  <div class="chapter-kicker">Практика</div>
+  <h2 class="chapter">Кринж-детектор</h2>
+  <p>Вот предложения, которые регулярно встречаются в рабочих чатах, письмах и у нас в голове. Большинство с типичной «русской» ошибкой, но некоторые правильные, чтобы не было соблазна расслабиться. Кликай на те, где видишь ошибку (или просто на все подряд):</p>
+  <div class="widget">
+    <h3>Найди ошибку</h3>
+    <div id="cringe"></div>
+  </div>
+</section>
+
+<div class="sep">• • •</div>
+
+<!-- ===================== КВИЗ ===================== -->
+<section class="col">
+  <div class="chapter-kicker">Тест</div>
+  <h2 class="chapter">Какое ты время английского?</h2>
+  <p>Четыре вопроса, научная точность уровня гороскопа.</p>
+  <div class="quiz" id="quiz"></div>
+</section>
+
+<div class="sep">• • •</div>
+
+<!-- ===================== ШПАРГАЛКА ===================== -->
+<section class="col">
+  <div class="chapter-kicker">На холодильник</div>
+  <h2 class="chapter">Шпаргалка</h2>
+  <div class="cheat">
+    <div><h5>1. Время в первом глаголе</h5>Первый глагол цепочки несёт время и лицо: <i>She <b>has</b> been / <b>Does</b> she / <b>Did</b> you go</i>. Остальные застывшие.</div>
+    <div><h5>2. Профиль vs сторис</h5>Привычки и факты: Present Simple. Сейчас и временно: be + -ing. know, want, love обычно без -ing.</div>
+    <div><h5>3. Окно времени</h5>Есть «когда» (yesterday, ago, in 2016) → Past Simple. Окно до сейчас (ever, never, already, since, this week) → have + V3.</div>
+    <div><h5>4. since / for = have</h5>«Живу здесь с 2020» = <i>I've lived here since 2020</i>. Не <i>I live</i>.</div>
+    <div><h5>5. Будущее</h5>Решение сейчас: will. Решение заранее: going to. Билеты есть: Present Continuous. Расписание: Present Simple.</div>
+    <div><h5>6. Вопрос = прыжок</h5>Помощник прыгает вперёд. Нет помощника → do/does/did. Вопрос к подлежащему (Who called?) без do.</div>
+    <div><h5>7. Вежливо = прямой порядок</h5><i>Could you tell me where the station <b>is</b>?</i></div>
+    <div><h5>8. If без will</h5><i>If it <b>rains</b>, I'll stay.</i> Нереальное: шаг в прошлое. <i>If I <b>had</b>... I <b>would</b>...</i></div>
+    <div><h5>9. Модальные заморожены</h5>Без -s, без to, без will can. mustn't = нельзя, don't have to = можно не.</div>
+    <div><h5>10. Частица = приставка</h5>out ≈ вы-, up ≈ до конца, over ≈ пере-. Местоимение в середину: <i>turn it on</i>.</div>
+  </div>
+</section>
+
+<div class="sep">• • •</div>
+
+<!-- ===================== КОНЕЦ ===================== -->
+<section class="col">
+  <h2 class="chapter">Так какого хрена, английский?</h2>
+  <p>Ответ, как выяснилось, довольно логичный. Английский когда-то потерял почти все окончания. С тех пор он компенсирует их тремя трюками: <b>жёстким порядком слов</b> (кто кого кусает), <b>словами-помощниками</b> (do, have, be, will, которые несут время и прыгают в вопросах) и <b>частицами после глагола</b> (вместо наших приставок).</p>
+  <p>Двенадцать времён = два времени и два переключателя. Present Perfect = окно, открытое до сейчас. Вопрос = прыжок помощника. Условные = чем фантастичнее, тем прошлее. Модальные = шкала давления. Фразовые = приставки задом наперёд.</p>
+  <p>Это не набор произвольных правил, придуманных, чтобы помучить тебя на ЕГЭ. Это просто <b>другая операционная система</b>. Русский = Android с окончаниями, английский = iOS с помощниками. Оба работают, просто кнопки в разных местах.</p>
+  <div class="comic">
+    <div class="panel"><i data-stick='{"mood":"happy","hat":"tophat"}'></i><div class="bubble">How long <b>have</b> you <b>been</b> learning English?</div></div>
+    <div class="panel"><i data-stick='{"mood":"smug","hat":"glasses","flip":true}'></i><div class="bubble r">I've been learning it for ten years. And I've finally understood why I just said it like that.</div></div>
+  </div>
+  <div class="caption">(Обе фразы в ответе с have. Первый: период до сейчас. Второй: результат сейчас. Окно открыто, всё сходится.)</div>
+  <p class="center hand" style="font-size:28px">London is still the capital of Great Britain.<br>(Технически всё ещё нет.)</p>
+</section>
+<div class="sep">• • •</div>
+<section class="col">
+  <div class="chapter-kicker">Если что-то непонятно</div>
+  <h2 class="chapter">Словарик</h2>
+  <p>Все термины, сокращения и мемы со страницы в одном месте. Лучше переобъяснить, чем недообъяснить.</p>
+  <div id="gloss" class="gloss"></div>
+</section>
+</main>
+
+<footer><div class="col">
+  <h3>Источники и что упрощено</h3>
+  <ul>
+    <li><b>Два времени:</b> Huddleston & Pullum, <i>The Cambridge Grammar of the English Language</i> (2002); Cambridge Dictionary, раздел Future. Это мнение большинства лингвистов, но не всех.</li>
+    <li><b>Частота форм:</b> Biber & Conrad (2001), TESOL Quarterly, по данным <i>Longman Grammar of Spoken and Written English</i> (Biber et al., 1999): простые формы в разговоре более чем в 20 раз чаще длительных. Проценты по временам: Krámský (1969), маленькая выборка, приведено как иллюстрация.</li>
+    <li><b>must / have to:</b> UCL Survey of English Usage (корпус DCPSE); Leech (2003); Mair & Leech (2006).</li>
+    <li><b>Present Perfect в американском:</b> Cambridge Dictionary, Present perfect simple.</li>
+    <li><b>will / going to / Present Continuous:</b> British Council LearnEnglish, Future forms.</li>
+    <li><b>Фразовые глаголы:</b> Gardner & Davies (2007), TESOL Quarterly; Kharitonova (2013), University of Oslo; OED, «run» с 645 значениями (NPR, 2011).</li>
+    <li><b>I'm lovin' it:</b> слоган McDonald's с 2003 года; Granath & Wherrity (2014) о глаголах состояния в -ing.</li>
+    <li><b>Типичные ошибки русскоязычных:</b> обобщение по Englex, Skyeng, Lingualeo, Хабру и статьям о межъязыковой интерференции; порядок «по частоте» = моя оценка, а не данные корпуса ошибок.</li>
+    <li><b>Мемы:</b> Know Your Meme (топ-2025), Оксфорд (brain rot 2024, rage bait 2025), Collins (brat 2024, vibe coding 2025), Cambridge (parasocial 2025), Dictionary.com (6-7, 2025), Грамота.ру (вайб 2024, зумер 2025), Brand Analytics, Медиалогия и «Вфокусе Mail» (мемы Рунета 2026), NPR (Duolingo, февраль 2025), NBC (Chicken Jockey, апрель 2025), Wikipedia (Nihilistic penguin, Italian brainrot).</li>
+    <li><b>Упрощено:</b> «правила» везде = сильные тенденции, а не законы. Носители нарушают их ради эмоций и по региональным привычкам. Аналогия «частица = приставка» и «do = такси» это интуиция, а не лингвистическая теория. Американский и британский английский местами расходятся; на экзаменах принимают оба варианта, главное не смешивать их в одном тексте.</li>
+  </ul>
+</div></footer>
+<script>
+// Core helpers for a visual explainer: $/$$, Hz/length/money formatting, stick figures,
+// reading-progress bar and WBW-style click-to-expand footnotes.
+// Usage in HTML: <i data-stick='{"mood":"shock","arms":"up","hat":"glasses"}'></i>
+// then call renderSticks(); initChrome(); on DOMContentLoaded.
+// Footnotes: <span class="fn" data-note="...">0</span> (gray = add class "gray"); numbers are auto-assigned.
+// Requires the #wobble SVG filter and #progress div from base.html.
+
+/* ---------- helpers ---------- */
+const $ = (s, el = document) => el.querySelector(s);
+const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+const INK = '#1b1b1b';
+const L10 = Math.log10;
+
+function fmtHz(f) {
+  const t = (v) => (+v.toPrecision(4)).toLocaleString('en-US', {maximumFractionDigits: 3});
+  if (f < 1e3) return t(f) + ' Hz';
+  if (f < 1e6) return t(f / 1e3) + ' kHz';
+  if (f < 1e9) return t(f / 1e6) + ' MHz';
+  return t(f / 1e9) + ' GHz';
+}
+function fmtRange(lo, hi) { return `${fmtHz(lo)} – ${fmtHz(hi)}`; }
+function fmtLen(m) {
+  if (m >= 1000) return (+(m / 1000).toPrecision(3)).toLocaleString() + ' km';
+  if (m >= 1) return (+m.toPrecision(3)) + ' m';
+  if (m >= 0.01) return (+(m * 100).toPrecision(3)) + ' cm';
+  return (+(m * 1000).toPrecision(3)) + ' mm';
+}
+function bigWords(n) {
+  const u = [[1e12, 'trillion'], [1e9, 'billion'], [1e6, 'million'], [1e3, 'thousand']];
+  for (const [v, w] of u) if (n >= v) return `${(+(n / v).toPrecision(3)).toLocaleString()} ${w}`;
+  return Math.round(n).toLocaleString();
+}
+function money(v) {
+  if (v >= 1e9) return '$' + (+(v / 1e9).toPrecision(3)) + 'B';
+  if (v >= 1e6) return '$' + (+(v / 1e6).toPrecision(3)) + 'M';
+  if (v >= 100) return '$' + Math.round(v).toLocaleString();
+  if (v >= 1) return '$' + v.toFixed(2);
+  return (v * 100).toFixed(v * 100 < 1 ? 2 : 1) + '¢';
+}
+
+/* ---------- stick figures ---------- */
+function stick({mood = 'happy', arms, hat = 'none', prop = null, scale = 1, flip = false} = {}) {
+  const S = `stroke="${INK}" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" fill="none"`;
+  if (!arms) arms = prop ? 'hold' : mood === 'shock' ? 'up' : 'down';
+  const ARMS = {
+    down: 'M40 50 L27 70 M40 50 L53 70',
+    up: 'M40 50 L24 30 M40 50 L56 30',
+    hips: 'M40 50 L28 60 L37 69 M40 50 L52 60 L43 69',
+    point: 'M40 50 L27 70 M40 50 L70 42',
+    hold: 'M40 50 L27 70 M40 50 L58 60',
+    shrug: 'M40 50 L26 54 L21 43 M40 50 L54 54 L59 43',
+    punch: 'M40 50 L74 47 M40 50 L30 38'
+  };
+  let a = ARMS[arms] || ARMS.down;
+  if (mood === 'shh') a = 'M40 50 L27 70 M40 50 L53 46 L42 34';
+  const shades = hat === 'shades';
+  const eyeR = mood === 'shock' ? 2.7 : 1.9;
+  let face = shades ? '' : `<circle cx="35" cy="22" r="${eyeR}" fill="${INK}"/><circle cx="45" cy="22" r="${eyeR}" fill="${INK}"/>`;
+  const MOUTH = {
+    happy: 'M34 29 Q40 35 46 29', sad: 'M34 33 Q40 27 46 33', smug: 'M35 30 Q41 32 47 27',
+    flat: 'M35 30.5 L45 30.5', sweat: 'M34 31 Q37 28 40 31 Q43 34 46 31', angry: 'M34 32 Q40 28 46 32'
+  };
+  if (mood === 'shock') face += `<ellipse cx="40" cy="31" rx="3" ry="4" fill="${INK}"/>`;
+  else if (mood === 'shh') face += `<circle cx="40" cy="31" r="2" ${S}/><line x1="42" y1="25" x2="42" y2="36" ${S}/>`;
+  else face += `<path d="${MOUTH[mood] || MOUTH.happy}" ${S}/>`;
+  if (mood === 'angry') face += `<path d="M31 16 L38 19 M49 16 L42 19" ${S}/>`;
+  if (mood === 'sweat' || mood === 'shock') face += `<path d="M58 9 Q62 16 58 18 Q54 16 58 9Z" fill="#6ab0e8" stroke="${INK}" stroke-width="1.5"/>`;
+
+  const HATS = {
+    hardhat: `<path d="M25 17 Q40 -1 55 17Z" fill="#f2c230" ${S.replace('fill="none"', '')}/><path d="M21 17 L59 17" ${S}/>`,
+    tophat: `<rect x="29" y="-14" width="22" height="23" fill="${INK}"/><path d="M22 10 L58 10" ${S}/><rect x="29" y="1" width="22" height="4" fill="#e84a3a"/>`,
+    headphones: `<path d="M25 24 Q40 -4 55 24" ${S}/><rect x="21" y="18" width="7" height="13" rx="3" fill="${INK}"/><rect x="52" y="18" width="7" height="13" rx="3" fill="${INK}"/>`,
+    glasses: `<circle cx="35" cy="22" r="5.5" ${S} stroke-width="2.4"/><circle cx="45" cy="22" r="5.5" ${S} stroke-width="2.4"/><path d="M40.5 22 L39.5 22" ${S}/>`,
+    pilot: `<path d="M27 13 Q40 1 53 13Z" fill="#1f3f9a" stroke="${INK}" stroke-width="2.5"/><path d="M25 13 L61 15" ${S}/><circle cx="40" cy="8" r="2.2" fill="#f2c230"/>`,
+    captain: `<path d="M26 13 Q40 -1 54 13Z" fill="#fff" stroke="${INK}" stroke-width="2.5"/><rect x="27" y="9" width="26" height="4" fill="#1f3f9a"/><path d="M25 13 L60 14" ${S}/><path d="M37 6 L40 3 L43 6" stroke="#f2c230" stroke-width="2" fill="none"/>`,
+    batears: `<path d="M30 13 L26 -3 L37 10Z M50 13 L54 -3 L43 10Z" fill="${INK}" stroke="${INK}" stroke-width="2" stroke-linejoin="round"/>`,
+    shades: `<path d="M29 18 H39 V25 Q34 27 29 25Z M41 18 H51 V25 Q46 27 41 25Z" fill="${INK}"/><path d="M39 19 L41 19" ${S}/><path d="M35 30.5 L45 30.5" ${S}/>`,
+    antenna: `<line x1="40" y1="10" x2="40" y2="-6" ${S}/><circle cx="40" cy="-9" r="3.5" fill="#f26a21" stroke="${INK}" stroke-width="2"/><path d="M33 -2 Q40 -14 47 -2" stroke="#f26a21" stroke-width="2" fill="none"/>`,
+    party: `<path d="M32 12 L40 -12 L48 12Z" fill="#f26a21" stroke="${INK}" stroke-width="2.5" stroke-linejoin="round"/><circle cx="40" cy="-13" r="3.5" fill="#f7e43a" stroke="${INK}" stroke-width="2"/>`,
+    helmet: `<path d="M24 20 Q40 -3 56 20Z" fill="#6b7a45" stroke="${INK}" stroke-width="2.5"/>`,
+    none: ''
+  };
+  const PROPS = {
+    phone: `<rect x="56" y="49" width="10" height="16" rx="2" fill="${INK}"/><rect x="58" y="51" width="6" height="10" fill="#7fd0ff"/>`,
+    mega: `<path d="M57 60 L77 49 L77 72Z" fill="#fff" ${S.replace('fill="none"', '')}/><path d="M80 54 Q84 60 80 66 M85 50 Q91 60 85 70" stroke="${INK}" stroke-width="2" fill="none"/>`,
+    clock: `<circle cx="66" cy="57" r="10" fill="#fff" ${S.replace('fill="none"', '')}/><path d="M66 57 L66 50 M66 57 L71 59" ${S} stroke-width="2.2"/>`,
+    wheel: `<circle cx="66" cy="59" r="10" ${S}/><path d="M56 59 L76 59 M66 59 L66 69" ${S} stroke-width="2.2"/>`
+  };
+  const w = 96 * scale, h = 140 * scale;
+  return `<span class="stick"><svg width="${w}" height="${h}" viewBox="-8 -18 104 140" style="${flip ? 'transform:scaleX(-1)' : ''}">
+    <path d="${a}" ${S}/>
+    <line x1="40" y1="38" x2="40" y2="78" ${S}/>
+    <path d="M40 78 L28 111 M40 78 L52 111" ${S}/>
+    <circle cx="40" cy="24" r="14" fill="#fff" ${S.replace('fill="none"', '')}/>
+    ${face}${HATS[hat] || ''}${prop ? PROPS[prop] || '' : ''}
+  </svg></span>`;
+}
+function renderSticks() {
+  $$('[data-stick]').forEach(el => {
+    const o = JSON.parse(el.dataset.stick || '{}');
+    el.outerHTML = stick(o);
+  });
+}
+
+/* ---------- progress + footnotes ---------- */
+function initChrome() {
+  const bar = $('#progress');
+  addEventListener('scroll', () => {
+    const h = document.documentElement;
+    bar.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
+  }, {passive: true});
+  $$('.fn').forEach(fn => fn.addEventListener('click', () => {
+    const host = fn.closest('p, li, div, blockquote');
+    const next = host.nextElementSibling;
+    if (next && next.classList.contains('fn-note') && next.dataset.for === fn.dataset.id) { next.remove(); return; }
+    const n = document.createElement('div');
+    n.className = 'fn-note' + (fn.classList.contains('gray') ? ' gray' : '');
+    n.dataset.for = fn.dataset.id;
+    n.innerHTML = fn.dataset.note;
+    host.after(n);
+  }));
+  $$('.fn').forEach((f, i) => { f.dataset.id = i; f.textContent = i + 1; });
+}
+
+
+</script>
+<script>
+// Весь текст и данные лежат здесь, отдельно от движка (app.js).
+
+/* ---------- Конструктор времён: 3 времени x процесс x результат = 12 ---------- */
+// key = time + (prog ? 'C' : '') + (perf ? 'P' : '')
+// pieces: [текст, тип] тип: aux (вспомогательный), be, have, ing, v3, v, s
+// tl: что рисовать на таймлайне: {type:'dot'|'span'|'habit'|'dotlink'|'spanlink', at:-1..1, from, to}
+const TENSES = {
+  pres: {
+    name: 'Present Simple', ru: 'Я ем (вообще, по жизни)',
+    ex: [['I ', ''], ['eat', 'v'], [' pizza on Fridays.', '']],
+    ex3: 'She eat<b>s</b> pizza on Fridays.',
+    means: 'Факт, привычка, расписание. Не «сейчас», а «по жизни».',
+    tl: {type: 'habit'},
+    freq: 5, nick: 'Душнила-рутинёр',
+    meme: 'Каждую пятницу. Без исключений. Это не время, это образ жизни.'
+  },
+  presC: {
+    name: 'Present Continuous', ru: 'Я ем (прямо сейчас, не отвлекай)',
+    ex: [['I ', ''], ['am', 'be'], [' eat', 'v'], ['ing', 'ing'], [' pizza right now.', '']],
+    means: 'Процесс в моменте (или временный период, или план на ближайшее).',
+    tl: {type: 'span', from: -0.18, to: 0.18},
+    freq: 3, nick: 'Я в моменте',
+    meme: 'Не могу говорить, я в моменте. Процесс идёт, пицца остывает.'
+  },
+  presP: {
+    name: 'Present Perfect', ru: 'Я поел (и сейчас сыт, вот результат)',
+    ex: [['I ', ''], ['have', 'have'], [' eat', 'v'], ['en', 'v3'], [' already.', '']],
+    means: 'Действие в прошлом, но смотрим на него ИЗ СЕЙЧАС: результат, опыт, «за этот период».',
+    tl: {type: 'dotlink', at: -0.45},
+    freq: 3, nick: 'Бывший, который всё ещё влияет',
+    meme: '<i>I\'ve watched 300 reels today. I\'ve got brain rot.</i> Когда смотрел, неважно. Важно, что мозг уже всё.'
+  },
+  presCP: {
+    name: 'Present Perfect Continuous', ru: 'Я ем уже час (и всё ещё ем / вот, весь в соусе)',
+    ex: [['I ', ''], ['have', 'have'], [' been', 'be'], [' eat', 'v'], ['ing', 'ing'], [' for an hour.', '']],
+    means: 'Процесс начался в прошлом и тянется до сейчас. «Как долго?» = вот это.',
+    tl: {type: 'spanlink', from: -0.6, to: 0},
+    freq: 1, nick: 'Марафонец',
+    meme: 'Ждун одобряет: <i>I\'ve been waiting for this bus for 40 minutes.</i> Ждал и всё ещё жду.'
+  },
+  past: {
+    name: 'Past Simple', ru: 'Я ел / поел (вчера, история закрыта)',
+    ex: [['I ', ''], ['ate', 'v'], [' pizza yesterday.', '']],
+    means: 'Было и прошло. Есть (или подразумевается) конкретное «когда».',
+    tl: {type: 'dot', at: -0.6},
+    freq: 4, nick: 'Архивариус',
+    meme: 'Вчера. В 19:40. Дело закрыто, протокол подписан.'
+  },
+  pastC: {
+    name: 'Past Continuous', ru: 'Я ел (в тот момент, когда...)',
+    ex: [['I ', ''], ['was', 'be'], [' eat', 'v'], ['ing', 'ing'], [' when you called.', '']],
+    means: 'Процесс в прошлом, в который что-то врезалось. Декорация для истории.',
+    tl: {type: 'spanpast', from: -0.8, to: -0.35, hit: -0.55},
+    freq: 2, nick: 'Фон для драмы',
+    meme: 'Как Стив из «Это фиаско, братан»: <i>He was walking along the log when he fell.</i> Шёл (фон) → упал (событие).'
+  },
+  pastP: {
+    name: 'Past Perfect', ru: 'Я уже поел (к тому моменту в прошлом)',
+    ex: [['I ', ''], ['had', 'have'], [' eat', 'v'], ['en', 'v3'], [' before you came.', '']],
+    means: '«Предпрошедшее»: что-то случилось ДО другого момента в прошлом.',
+    tl: {type: 'pastperf', at: -0.8, ref: -0.4},
+    freq: 1, nick: 'Предпрошлое',
+    meme: 'Помнишь, как в феврале 2025 Duolingo «убил» свою сову? <i>By the time I opened the app, Duo had already died.</i>'
+  },
+  pastCP: {
+    name: 'Past Perfect Continuous', ru: 'Я ел уже час (к тому моменту в прошлом)',
+    ex: [['I ', ''], ['had', 'have'], [' been', 'be'], [' eat', 'v'], ['ing', 'ing'], [' for an hour when you came.', '']],
+    means: 'Процесс тянулся до какого-то момента в прошлом.',
+    tl: {type: 'spanref', from: -0.9, to: -0.4},
+    freq: 1, nick: 'Редкий покемон',
+    meme: 'Встречается в книгах. В разговоре, как снежный барс: говорят, есть.'
+  },
+  fut: {
+    name: 'Future Simple (will)', ru: 'Я съем / буду есть',
+    ex: [['I ', ''], ['will', 'aux'], [' eat', 'v'], [' it later.', '']],
+    means: 'Решение прямо сейчас, обещание, прогноз «мне кажется».',
+    tl: {type: 'dot', at: 0.55},
+    freq: 3, nick: 'Импульсивный',
+    meme: 'Ладно, я съем. Решил прямо сейчас, не спрашивай.'
+  },
+  futC: {
+    name: 'Future Continuous', ru: 'Я буду есть (в тот момент в будущем)',
+    ex: [['I ', ''], ['will', 'aux'], [' be', 'be'], [' eat', 'v'], ['ing', 'ing'], [' at 8.', '']],
+    means: 'Процесс в момент в будущем. «В 8 не звони, я буду есть».',
+    tl: {type: 'span', from: 0.35, to: 0.75},
+    freq: 1, nick: 'Занятой в будущем',
+    meme: 'В восемь я буду есть. Это не план, это прогноз моего состояния.'
+  },
+  futP: {
+    name: 'Future Perfect', ru: 'Я съем (уже, к какому-то моменту в будущем)',
+    ex: [['I ', ''], ['will', 'aux'], [' have', 'have'], [' eat', 'v'], ['en', 'v3'], [' it by 9.', '']],
+    means: 'К моменту в будущем уже будет сделано.',
+    tl: {type: 'futperf', at: 0.4, ref: 0.75},
+    freq: 0, nick: 'Дедлайн-гуру',
+    meme: 'К девяти я её уже съем. Можешь не приходить.'
+  },
+  futCP: {
+    name: 'Future Perfect Continuous', ru: 'Я буду есть уже час (к тому моменту)',
+    ex: [['I ', ''], ['will', 'aux'], [' have', 'have'], [' been', 'be'], [' eat', 'v'], ['ing', 'ing'], [' for an hour by 9.', '']],
+    means: 'К моменту в будущем процесс будет длиться уже столько-то.',
+    tl: {type: 'spanref', from: 0.2, to: 0.75},
+    freq: 0, nick: 'Лох-несское чудовище',
+    meme: 'Все о нём слышали. В живой речи его почти никто не видел. Учебники фоткают его издалека, как снежного человека.'
+  }
+};
+
+const FREQ_LBL = ['почти никогда (зверь из учебника)', 'редко', 'время от времени', 'регулярно', 'очень часто', 'постоянно, это база'];
+
+/* ---------- Кринж или база: глаголы состояния ---------- */
+const STATIVE = [
+  {s: 'I am knowing the answer.', ok: false, why: '<i>know</i> = состояние, а не процесс. Знание не «идёт», оно просто есть: <b>I know.</b>'},
+  {s: 'I\'m having lunch, call me later.', ok: true, why: '<i>have lunch</i> = обедать, это действие. А вот «владеть» (<i>I have a car</i>) в -ing не ставят.'},
+  {s: 'She is having a Labubu.', ok: false, why: 'Владение = состояние: <b>She has a Labubu.</b> (А если «у неё сейчас истерика из-за Лабубу», то <i>she\'s having a meltdown</i>, это норм.)'},
+  {s: 'I\'m thinking about you.', ok: true, why: '<i>think about</i> = процесс в голове прямо сейчас. Можно.'},
+  {s: 'I\'m believing you.', ok: false, why: '<i>believe</i> = состояние (верю, и всё): <b>I believe you.</b> Кстати, <i>I\'m thinking you\'re right</i> в разговоре услышать можно (осторожное «склоняюсь к тому»), но базовый вариант для мнения: <b>I think</b>.'},
+  {s: 'I\'m seeing someone.', ok: true, why: 'Это «я с кем-то встречаюсь». С -ing у <i>see</i> меняется смысл, и это легально.'},
+  {s: 'This soup is tasting weird.', ok: false, why: 'Суп сам по себе «на вкус странный»: <b>This soup tastes weird.</b> А вот повар <i>is tasting the soup</i> (пробует), это действие.'},
+  {s: 'I\'m lovin\' it.', ok: true, why: 'Слоган McDonald\'s с 2003 года. Формально «люблю» = состояние, но -ing добавляет эмоции «прям кайфую сейчас». Живая речь так умеет. Тебе на экзамене так не надо.'},
+  {s: 'It is depending on the weather.', ok: false, why: '<b>It depends.</b> Просто depends. Самый полезный ответ на любой вопрос в жизни.'},
+  {s: 'He\'s being rude today.', ok: true, why: '<i>He is rude</i> = он хам по жизни. <i>He\'s being rude</i> = сегодня ведёт себя по-хамски. Тонко, но база.'}
+];
+
+/* ---------- Present Perfect vs Past Simple: окно времени ---------- */
+// w: окно на таймлайне [from,to], open: доходит ли до СЕЙЧАС
+const PP_MARKERS = [
+  {m: 'yesterday', en: 'I <b>watched</b> this series yesterday.', open: false, w: [-0.55, -0.25], wl: 'вчера (закончилось)', at: -0.4,
+   why: 'Вчера кончилось. Окно захлопнуто, его не открыть. Есть конкретное «когда» → Past Simple. <b>I have watched it yesterday</b> = классическая ошибка от переусердия.'},
+  {m: 'never', en: 'I <b>have never watched</b> this series.', open: true, w: [-0.95, 0], wl: 'вся моя жизнь до сейчас',
+   why: 'Окно = вся твоя жизнь, и она (надеемся) продолжается. Это опыт → Present Perfect.'},
+  {m: 'ever?', en: '<b>Have</b> you ever <b>watched</b> Squid Game?', open: true, w: [-0.95, 0], wl: 'за всю жизнь, хоть раз', at: -0.5,
+   why: '«Хоть раз в жизни» = опыт. Когда именно, неважно. Важно: есть ли это у тебя в «копилке».'},
+  {m: 'in 2016', en: 'I <b>watched</b> it in 2016.', open: false, w: [-0.85, -0.6], wl: '2016 (всё, тренд «Мой 2016» тоже прошёл)', at: -0.72,
+   why: 'Год закончился. Даже если в 2026 все вспоминали свой 2016, это закрытое окно → Past Simple.'},
+  {m: 'already', en: 'I <b>have already watched</b> it, no spoilers.', open: true, w: [-0.5, 0], wl: 'к этому моменту', at: -0.25, alt: '(в США часто: I already watched it)',
+   why: 'Важен результат сейчас: я в теме, спойлеры не страшны. В британском это Perfect. Американцы часто говорят Past Simple, и это тоже норм.'},
+  {m: 'just', en: 'I<b>\'ve just watched</b> the last episode. I\'m cooked.', open: true, w: [-0.15, 0], wl: 'только что', at: -0.07, alt: '(в США: I just watched)',
+   why: 'Только что + последствие налицо: ты эмоционально уничтожен (cooked). Present Perfect.'},
+  {m: 'this week', en: 'I<b>\'ve watched</b> three episodes this week.', open: true, w: [-0.35, 0.25], wl: 'эта неделя (ещё идёт)',
+   why: 'Неделя не кончилась, окно открыто, счётчик ещё может вырасти. Когда неделя закончится, скажешь уже <i>Last week I watched three episodes</i>.'},
+  {m: 'when I was a kid', en: 'I <b>watched</b> it when I was a kid.', open: false, w: [-0.95, -0.6], wl: 'детство (закончилось, увы)',
+   why: 'Детство кончилось (хотя у некоторых нет). Закрытое окно → Past Simple.'},
+  {m: 'since 2019', en: 'I<b>\'ve been watching</b> this series since 2019. Help.', open: true, w: [-0.7, 0], wl: 'с 2019 и до сих пор',
+   why: '«С тех пор и до сих пор» = Present Perfect (Continuous). По-русски «я смотрю его с 2019» в настоящем, и это ловушка: <b>I watch it since 2019</b> неправильно.'},
+  {m: 'two days ago', en: 'I <b>watched</b> it two days ago.', open: false, w: [-0.45, -0.25], wl: '2 дня назад', at: -0.35,
+   why: '<i>ago</i> = «столько-то назад», точка в прошлом. С <i>ago</i> Present Perfect не дружит никогда.'}
+];
+
+/* ---------- Будущее ---------- */
+const FUTURE = [
+  {sit: 'Звонок в дверь. Ты встаёшь с дивана.', ru: '«Я открою!»', stick: {mood: 'happy', arms: 'point'},
+   opts: ['I\'ll get it!', 'I\'m going to get it!', 'I get it!'], ok: [0],
+   why: 'Решение родилось прямо сейчас, в момент речи → <b>will</b>. Как в меме «Сам решу»: решил тут же, на месте. (А <i>I get it</i> вообще значит «я понял».)'},
+  {sit: 'Билеты в Анталью на 12 августа уже куплены.', ru: '«Я лечу в Анталью в августе»', stick: {mood: 'smug', hat: 'shades'},
+   opts: ['I will fly to Antalya in August.', 'I\'m flying to Antalya in August.', 'I fly to Antalya in August.'], ok: [1],
+   why: 'Есть билеты, дата, всё договорено → <b>Present Continuous</b> для планов-договорённостей. <i>I\'m going to fly</i> тоже бы прокатило. А вот <i>will</i> звучит так, будто ты только сейчас решил.'},
+  {sit: 'Небо чёрное, гремит гром.', ru: '«Сейчас пойдёт дождь»', stick: {mood: 'sweat', arms: 'up'},
+   opts: ['It will rain.', 'It\'s going to rain.', 'It rains.'], ok: [1],
+   why: 'Прогноз по признакам, которые видно прямо сейчас (тучи!) → <b>going to</b>. Will = «мне кажется, вообще, когда-нибудь».'},
+  {sit: 'Поезд по расписанию отходит в 6:15.', ru: '«Поезд отправляется в 6:15»', stick: {mood: 'flat', prop: 'clock'},
+   opts: ['The train will leave at 6:15.', 'The train leaves at 6:15.', 'The train is going to leave at 6:15.'], ok: [1],
+   why: 'Расписание = как закон природы → <b>Present Simple</b>. Да, про будущее. Да, английский странный.'},
+  {sit: 'Твой друг Воздухан. Он «запускает бизнес». С 2019 года.', ru: '«Я собираюсь открыть кофейню»', stick: {mood: 'smug', arms: 'hips'},
+   opts: ['I will open a coffee shop.', 'I\'m going to open a coffee shop.', 'I open a coffee shop.'], ok: [1],
+   why: 'Намерение, решение уже принято раньше → <b>going to</b>. Сбудется ли? Грамматике всё равно. Воздухану тоже.'},
+  {sit: 'Ты обещаешь маме написать, когда долетишь.', ru: '«Напишу, обещаю!»', stick: {mood: 'happy', prop: 'phone'},
+   opts: ['I\'m texting you!', 'I\'ll text you, I promise!', 'I text you!'], ok: [1],
+   why: 'Обещания и предложения помощи → <b>will</b>. (Напишешь ли ты на самом деле, вопрос уже не к грамматике.)'},
+  {sit: 'По-твоему, через 10 лет нейросети будут делать всю работу.', ru: '«Думаю, ИИ заменит нас всех»', stick: {mood: 'sweat', hat: 'antenna'},
+   opts: ['I think AI will replace us all.', 'I think AI is replacing us all next year.', 'I think AI replaces us.'], ok: [0],
+   why: 'Мнение, прогноз «мне кажется» (<i>I think, probably, I\'m sure</i>) → <b>will</b>. Clanker одобряет.'}
+];
+
+/* ---------- Порядок слов ---------- */
+const ORDER = {
+  ru: [
+    {w: [['Пёс', 's'], ['укусил', 'v'], ['Вас<b>ю</b>', 'o']], note: 'Нейтрально. Кто кусал? Пёс. Кого? Вас<b>ю</b>. Роль Васи видно по окончанию <b>-ю</b>.'},
+    {w: [['Вас<b>ю</b>', 'o'], ['укусил', 'v'], ['пёс', 's']], note: 'Слова поменялись местами, а смысл тот же! «Васю» всё равно «кого». Сменился только акцент: «...и это был ПЁС».'},
+    {w: [['Укусил', 'v'], ['пёс', 's'], ['Вас<b>ю</b>', 'o']], note: 'Звучит как начало байки в баре. Но кусает всё ещё пёс.'},
+    {w: [['Вас<b>ю</b>', 'o'], ['пёс', 's'], ['укусил', 'v']], note: 'Драматично, как в новостях на РЕН-ТВ. Пёс всё ещё агрессор.'},
+    {w: [['Пёс', 's'], ['Вас<b>ю</b>', 'o'], ['укусил', 'v']], note: 'Йода одобряет. Хоть все шесть порядков перебери, смысл не меняется. А чтобы кусал Вася, надо менять окончание: «Вас<b>я</b> укусил пс<b>а</b>».'}
+  ],
+  en: [
+    {w: [['The dog', 's'], ['bit', 'v'], ['Vasya', 'o']], pic: 'ok', note: 'Пёс укусил Васю. Обычная новость.'},
+    {w: [['Vasya', 's'], ['bit', 'v'], ['the dog', 'o']], pic: 'rev', note: 'А теперь ВАСЯ укусил пса! Слова те же, но место решило, кто кусает. Окончаний нет, роль = позиция.'},
+    {w: [['Bit', 'v'], ['the dog', 's'], ['Vasya', 'o']], pic: 'huh', note: 'Звучит как поломка мозга. Носитель зависнет.'},
+    {w: [['The dog', 's'], ['Vasya', 'o'], ['bit', 'v']], pic: 'huh', note: 'Так говорит Йода. Или итальянский брейнрот. Не делай так.'}
+  ]
+};
+
+/* ---------- Вопросная машина ---------- */
+const QSENT = [
+  {label: 'She likes pizza', frames: [
+    {t: [['She', 's'], ['like', 'v'], ['<b>s</b>', 'end'], ['pizza', 'o'], ['.', '']], say: 'Обычное утверждение. Окончание <b>-s</b> = «она, сейчас/вообще».'},
+    {t: [['Do<b>es</b>', 'new'], ['she', 's'], ['like', 'v'], ['<b>s</b> ↖', 'gone'], ['pizza', 'o'], ['?', '']], say: 'Нужен вопрос → вперёд выходит помощник <b>do</b>. И <b>-s</b> перепрыгивает на него: do + s = <b>does</b>.'},
+    {t: [['Do<b>es</b>', 'new'], ['she', 's'], ['like', 'v'], ['pizza', 'o'], ['?', '']], say: 'Готово: <b>Does she like pizza?</b> Глагол голый, потому что окончание «забрал» does. <i>Does she likes</i> = двойная оплата, так нельзя.'}
+  ]},
+  {label: 'He went home', frames: [
+    {t: [['He', 's'], ['went', 'v'], ['home', 'o'], ['.', '']], say: '<i>went</i> = go + прошлое, склеенные в одно слово.'},
+    {t: [['Did', 'new'], ['he', 's'], ['<s>went</s> go', 'v'], ['home', 'o'], ['?', '']], say: 'Вперёд выходит <b>did</b>, и прошлое переезжает в него. Глагол возвращается в начальную форму: went → <b>go</b>.'},
+    {t: [['Did', 'new'], ['he', 's'], ['go', 'v'], ['home', 'o'], ['?', '']], say: '<b>Did he go home?</b> А <i>Did he went?</i> = два прошлых в одном предложении. Перебор, как два Лабубу на одной сумке. (Ладно, это как раз норм.)'}
+  ]},
+  {label: 'They live in Dubai', frames: [
+    {t: [['They', 's'], ['live', 'v'], ['in Dubai', 'o'], ['.', '']], say: 'Мама, они в Дубае. Утверждение.'},
+    {t: [['Do', 'new'], ['they', 's'], ['live', 'v'], ['in Dubai', 'o'], ['?', '']], say: 'Без окончания тоже нужен помощник: <b>Do they live in Dubai?</b> По-русски вопрос делается интонацией («Они живут в Дубае?»), в английском интонации мало, нужен <b>do</b>.'},
+    {t: [['Where', 'wh'], ['do', 'new'], ['they', 's'], ['live', 'v'], ['?', '']], say: 'С вопросительным словом схема та же: <b>Where do they live?</b> <i>Where they live?</i> = кринж №1 у русскоязычных.'}
+  ]},
+  {label: 'You can swim', frames: [
+    {t: [['You', 's'], ['can', 'aux'], ['swim', 'v'], ['.', '']], say: 'Тут уже есть помощник: модальный <b>can</b>.'},
+    {t: [['Can', 'aux moved'], ['you', 's'], ['swim', 'v'], ['?', '']], say: 'Если помощник уже есть, do НЕ нужен. Помощник сам прыгает вперёд: <b>Can you swim?</b> (Ответ кота: <i>No, I can\'t. I have paws.</i> У меня лапки.)'}
+  ]},
+  {label: 'He is a sigma', frames: [
+    {t: [['He', 's'], ['is', 'aux'], ['a sigma', 'o'], ['.', '']], say: 'С глаголом <b>be</b> (am/is/are/was/were) тоже не нужен do.'},
+    {t: [['Is', 'aux moved'], ['he', 's'], ['a sigma', 'o'], ['?', '']], say: '<b>Is he a sigma?</b> be сам прыгает вперёд. <i>Does he is</i> = критическая ошибка, аура -1000.'}
+  ]},
+  {label: 'Who called?', frames: [
+    {t: [['Mike', 's'], ['called', 'v'], ['you', 'o'], ['.', '']], say: 'Майк позвонил тебе. А если мы не знаем, КТО позвонил?'},
+    {t: [['Who', 'wh'], ['called', 'v'], ['you', 'o'], ['?', '']], say: '<b>Who</b> просто встаёт на место Майка. Порядок не меняется, do не нужен! <i>Who did call you?</i> без особого ударения = ошибка.'},
+    {t: [['Who', 'wh'], ['did', 'new'], ['you', 's'], ['call', 'v'], ['?', '']], say: 'А вот «КОМУ ты звонил?» = вопрос к дополнению. Тут do возвращается: <b>Who did you call?</b>'}
+  ]}
+];
+
+/* ---------- Условные ---------- */
+const COND = [
+  {n: 'Тип 0', tag: 'закон природы', f: [['If + Present', 'if'], ['Present', 'v']],
+   en: 'If you <b>heat</b> ice, it <b>melts</b>.', ru: 'Если нагреть лёд, он тает. Всегда. Везде. Даже в Огайо.',
+   why: 'Факт, который работает всегда. В обеих частях Present Simple.', stick: {mood: 'flat', hat: 'glasses'}, joke: 'If you scroll reels at 3am, you get brain rot. Наука.'},
+  {n: 'Тип 1', tag: 'реально, может случиться', f: [['If + Present', 'if'], ['will + V', 'aux']],
+   en: 'If you <b>ignore</b> him three times, Tung Tung Tung Sahur <b>will come</b>.', ru: 'Если трижды проигнорируешь, Тунг-Тунг-Тунг Сахур придёт.',
+   why: '<b>Главная ловушка:</b> по-русски «если <u>проигнорируешь</u>» в будущем времени, а по-английски после <i>if</i> будущее НЕ ставят. <i>If you will ignore</i> = ошибка. То же с <i>when, before, after, as soon as</i>: <i>When I <b>come</b> home, I\'ll call you.</i>',
+   stick: {mood: 'shock', arms: 'up'}, joke: 'If I see one more «12 tenses» table, I\'ll scream.'},
+  {n: 'Тип 2', tag: 'фантазия про сейчас', f: [['If + Past', 'if'], ['would + V', 'aux']],
+   en: 'If I <b>had</b> a million, I <b>would buy</b> every Labubu.', ru: 'Если бы у меня был миллион, я бы скупил всех Лабубу.',
+   why: 'Прошедшее время тут НЕ про прошлое. Это «шаг назад от реальности»: так английский говорит «это не по-настоящему». Миллиона нет. Лабубу тоже. <i>If I were you</i> (а не <i>was</i>) = устойчивая фраза для советов.',
+   stick: {mood: 'smug', hat: 'tophat'}, joke: 'If I were you, I would touch grass. Звучит как совет, на деле приговор.'},
+  {n: 'Тип 3', tag: 'прошлое, поезд ушёл', f: [['If + had V3', 'if'], ['would have + V3', 'aux']],
+   en: 'If I <b>had studied</b>, I <b>would have passed</b> the exam.', ru: 'Если бы я учился, я бы сдал экзамен. (Не учился. Не сдал.)',
+   why: 'Сожаление о прошлом, которое уже не изменить. Два шага назад от реальности: had + V3. Переделаем мем «Лев если и делал, то без удовольствия» в 3-й тип: <i>If the lion had done it, he wouldn\'t have enjoyed it.</i> (Если бы лев это сделал, ему бы не понравилось.)',
+   stick: {mood: 'sad'}, joke: 'If I had read this page earlier, I wouldn\'t have failed. Ну, теперь ты знаешь.'}
+];
+const BY = [
+  {ru: 'Если бы я знал, я бы пришёл', p2: 'If I <b>knew</b> (the address), I <b>would come</b>. <span class="aside">(адреса нет прямо сейчас)</span>', p3: 'If I <b>had known</b>, I <b>would have come</b>. <span class="aside">(вчера была тусовка, а я не знал)</span>'},
+  {ru: 'Если бы у меня были деньги, я бы купил Лабубу', p2: 'If I <b>had</b> money, I <b>would buy</b> a Labubu.', p3: 'If I <b>had had</b> money, I <b>would have bought</b> a Labubu. <span class="aside">(в июле 2025, на пике. Да, had had, это нормально)</span>'},
+  {ru: 'Если бы ты не спал, ты бы увидел', p2: 'If you <b>weren\'t</b> sleeping, you <b>would see</b> it. <span class="aside">(прямо сейчас ты спишь)</span>', p3: 'If you <b>hadn\'t been</b> asleep, you <b>would have seen</b> it. <span class="aside">(ты проспал вчерашнее северное сияние)</span>'}
+];
+
+/* ---------- Модальные ---------- */
+const MODALS = [
+  {w: 'might / may', ru: 'может быть', p: 18, pl: 'может, а может, и нет', en: 'It <b>might</b> rain. I <b>may</b> be late.', enru: 'Может пойти дождь. Я, возможно, опоздаю.',
+   why: 'Вероятность ~50/50 или меньше. Звучит естественнее, чем <i>Maybe it will rain</i>.', stick: {mood: 'flat', arms: 'shrug'}, joke: 'I might go to the gym. (Не пойду.)'},
+  {w: 'can / could', ru: 'могу / мог бы', p: 30, pl: 'есть вариант', en: 'We <b>can</b>. But why <b>should</b> we?', enru: '«Можно, а зачем?» (мем 2026 года)',
+   why: '<i>can</i> = умею / есть возможность / разрешено. <i>could</i> = мог (в прошлом) или вежливое «а не могли бы вы». <i>Could you help me?</i> вежливее, чем <i>Can you</i>.', stick: {mood: 'smug', hat: 'tophat'}, joke: 'Можно, а зачем? = can + should в одном меме. Готовый урок по модальным.'},
+  {w: 'should', ru: 'стоит, советую', p: 52, pl: 'совет', en: 'You <b>should</b> touch grass.', enru: 'Тебе стоит выйти на улицу и потрогать траву.',
+   why: 'Совет, рекомендация. Не «должен», а «лучше бы». Очень часто русское «должен» на самом деле = <i>should</i>.', stick: {mood: 'happy', arms: 'point'}, joke: 'Самый вежливый способ сказать «ну ты и NPC».'},
+  {w: 'have to', ru: 'надо, приходится', p: 80, pl: 'надо (так вышло)', en: 'I <b>have to</b> work tomorrow.', enru: 'Мне завтра на работу. (Не хочу, но так устроен мир.)',
+   why: 'Обязанность из-за обстоятельств, правил, начальника. <b>Главная рабочая лошадка:</b> в устной британской речи <i>have to</i> в значении «надо» встречается примерно втрое чаще, чем <i>must</i>. В американской разрыв ещё больше.', stick: {mood: 'sad', prop: 'clock'}, joke: '<i>I have to</i> = «я бы не стал, но жизнь заставляет».'},
+  {w: 'must', ru: 'должен (кровь из носу)', p: 92, pl: 'обязан!', en: 'Passengers <b>must</b> wear seatbelts.', enru: 'Пассажиры обязаны пристегнуться.',
+   why: 'Сильное «обязан»: правила, таблички, документы, или твоё личное твёрдое убеждение (<i>I must call mom</i>). В речи звучит как начальник или учебник. Второй смысл: «наверняка»: <i>You must be tired</i> = ты, должно быть, устал.', stick: {mood: 'angry', prop: 'mega'}, joke: 'Говорить <i>I must go to work</i> каждый день = как говорить «я обязан проследовать на рабочее место». Технически ок, звучит как робот.'},
+  {w: 'mustn\'t', ru: 'НЕЛЬЗЯ', p: 100, pl: '⛔ запрет', en: 'You <b>mustn\'t</b> throw popcorn in the cinema.', enru: 'В кино нельзя кидаться попкорном. (Привет, «Chicken Jockey!»)',
+   why: 'Запрет. Не «не обязательно», а «нельзя, стоп». В апреле 2025 подростки на «Minecraft в кино» на реплику Джека Блэка «Chicken Jockey!» орали и кидались попкорном так, что в некоторые кинотеатры вызывали полицию.', stick: {mood: 'angry', arms: 'hips'}, joke: '🚫 mustn\'t = красный свет.'},
+  {w: 'don\'t have to', ru: 'не обязательно', p: 4, pl: 'можешь не', en: 'You <b>don\'t have to</b> come.', enru: 'Можешь не приходить. (Но приходи, если хочешь.)',
+   why: '<b>Ловушка века:</b> «не должен» по-русски = и «нельзя», и «не обязательно». В английском это два РАЗНЫХ слова. Перепутаешь, и вместо «можешь не приходить» скажешь «тебе запрещено приходить».', stick: {mood: 'happy', hat: 'shades'}, joke: '🟢 don\'t have to = зелёный свет на «не делать».'}
+];
+
+/* ---------- Фразовые ---------- */
+const PHRASAL = {
+  verbs: [{w: 'get'}, {w: 'give'}, {w: 'look'}, {w: 'take'}, {w: 'turn'}, {w: 'run'}],
+  parts: [
+    {w: 'up', idea: 'вверх → до конца, полностью (как рус. <i>вс-, до-, с-</i>: eat up = съесть всё)'},
+    {w: 'out', idea: 'наружу → выход, до конца (как рус. <i>вы-</i>: find out = выяснить)'},
+    {w: 'off', idea: 'прочь, отделение, выключение (как <i>от-, с-</i>)'},
+    {w: 'on', idea: 'на, дальше, продолжение, включение'},
+    {w: 'over', idea: 'через, сверху → пере- (как <i>пере-</i>: think over = обдумать)'},
+    {w: 'down', idea: 'вниз, уменьшение, «записать» (как <i>с-, за-</i>)'},
+    {w: 'into', idea: 'внутрь, превращение, увлечение'}
+  ],
+  map: {
+    'get up': ['вставать (с кровати)', 'I get up at 7. Okay, at 7:40.'],
+    'get out': ['выйти; «уходи!»', 'Get out of my room!', 'Классика ссоры в сериале.'],
+    'get off': ['выйти из транспорта', 'Get off the bus at the next stop.'],
+    'get on': ['сесть (в автобус, поезд, самолёт); ладить', 'Get on the bus. / We get on well.', 'В машину <i>get in</i>, а в автобус <i>get on</i>. Логика: в автобусе можно стоять.'],
+    'get over': ['пережить, отойти от', 'I can\'t get over my ex. / I can\'t get over this meme.', 'Второе = «никак не отойду от этого мема».'],
+    'get down': ['спуститься; угнетать', 'This weather gets me down.'],
+    'get into': ['попасть внутрь; увлечься', 'I got into Italian brainrot.', 'Втянулись все. Сопротивление бесполезно.'],
+    'give up': ['сдаться, бросить', 'Never give up! / I gave up smoking.', 'НЕ «отдать наверх». Up = до конца.'],
+    'give out': ['раздавать; отказать (о теле, технике)', 'My knees gave out on the stairs.'],
+    'give off': ['излучать (запах, вайб)', 'He gives off main character energy.', 'Идеально для описания ауры.'],
+    'give in': ['уступить, сдаться под давлением', 'I gave in and bought a Labubu.'],
+    'look up': ['найти (в словаре, гугле)', 'Look up «delulu» in the Cambridge Dictionary.', 'Его туда правда добавили в 2025.'],
+    'look out': ['берегись!', 'Look out! Chicken jockey!'],
+    'look over': ['просмотреть, проверить', 'Can you look over my essay?'],
+    'look down': ['смотреть вниз; look down on = свысока', 'Don\'t look down on people who make mistakes.'],
+    'look on': ['наблюдать со стороны', 'Everyone looked on as he fell off the log.', 'Как все смотрели на «Это фиаско, братан».'],
+    'run on': ['работать на (топливе); затягиваться', 'This car runs on electricity. / The meeting ran on for hours.'],
+    'give over': ['(брит. разг.) хватит, прекрати', 'Oh, give over!', 'Британский аналог «да ну хорош».'],
+    'look into': ['изучить, разобраться', 'We\'ll look into it.', 'Корпоративное «мы разберёмся» (никто не разберётся).'],
+    'take off': ['взлететь; снять (одежду); резко пойти в гору', 'The plane took off. / Take off your shoes. / The meme took off.'],
+    'take up': ['начать заниматься (хобби); занимать место', 'I took up padel.', 'Падел: хобби каждого, кто в 2025 решил следить за здоровьем.'],
+    'take out': ['вынести; пригласить (на свидание)', 'Take out the trash. / He took her out to dinner.'],
+    'take over': ['захватить, взять на себя', 'AI will take over the world. Clankers are taking over.'],
+    'take on': ['взять на себя (работу), нанять', 'I took on too many projects.'],
+    'take down': ['записать; снести, убрать', 'Take down my number. / They took the video down.'],
+    'turn up': ['появиться; сделать громче', 'He turned up two hours late. / Turn it up!'],
+    'turn on': ['включить', 'Turn on the light.', 'Есть и 18+ значение: «возбуждать». Контекст, друг мой, контекст.'],
+    'turn off': ['выключить; отталкивать', 'Turn off your phone. / Bad grammar is a turn-off.'],
+    'turn down': ['отклонить; сделать тише', 'She turned down my offer.', 'Тебя «turned down»: вежливо отшили.'],
+    'turn over': ['перевернуть', 'Turn over the card.'],
+    'turn into': ['превратиться', 'My cat turned into Big Floppa.'],
+    'turn out': ['оказаться', 'It turned out that he was a bot.', 'Самая полезная фраза для сплетен.'],
+    'run out': ['закончиться (о запасе)', 'We ran out of coffee.', 'Ситуация уровня «пупупу».'],
+    'run into': ['случайно встретить; врезаться', 'I ran into my ex at the supermarket.'],
+    'run over': ['переехать (машиной)', 'Duo got run over by a Cybertruck.', 'В шуточной кампании Duolingo в феврале 2025 так «погибла» их сова. Через две недели воскресла.'],
+    'run off': ['сбежать', 'The cat ran off with my sausage.'],
+    'run up': ['набежать, накопить (счёт, долг)', 'He ran up a huge bill.'],
+    'run down': ['разрядить, измотать', 'My battery is running down.']
+  }
+};
+const PTABLE = [
+  ['up', 'вверх → до конца', 'eat up (съесть всё), fill up (заправить до полного), shut up (заткнуться)', 'с-, до-, вс-'],
+  ['out', 'наружу → выяснение, конец', 'go out (выйти), find out (выяснить), run out (закончиться)', 'вы-'],
+  ['off', 'прочь, отключение', 'take off (снять/взлететь), switch off (отключить), go off (сработать, о будильнике)', 'от-, с-'],
+  ['on', 'продолжение, включение', 'go on (продолжать), carry on, turn on', 'про-, в-'],
+  ['down', 'вниз, уменьшение, фиксация', 'calm down (успокоиться), slow down, write down (записать)', 'у-, за-, с-'],
+  ['over', 'через, заново, до конца', 'think over (обдумать), get over (пережить), start over (начать заново)', 'пере-, о-'],
+  ['back', 'назад, обратно', 'come back (вернуться), call back (перезвонить), pay back (вернуть долг)', 'пере-, от-, воз-']
+];
+
+/* ---------- Персонажи ---------- */
+const CAST = [
+  {name: 'Present Simple', nick: 'Душнила-рутинёр', color: '#ffe7d3', stick: {mood: 'flat', hat: 'glasses', prop: 'clock'},
+   bio: 'Говорит только фактами и привычками. Каждое утро кофе, каждую пятницу пицца. Ещё работает расписанием: <i>The train leaves at 6</i>. Самый частый глагольный формат в разговоре. Не путать с «сейчас».', q: 'Water boils at 100 degrees. Нет, я не про сегодня. Я про всегда.'},
+  {name: 'Present Continuous', nick: 'Я в моменте', color: '#dcebfb', stick: {mood: 'happy', hat: 'headphones', prop: 'phone'},
+   bio: 'Живёт прямо сейчас. Процесс, временная фигня (<i>I\'m living with my parents this month</i>) и планы с билетами (<i>I\'m flying tomorrow</i>). Не дружит с love, know, want: они не процессы.', q: 'Не могу говорить, I\'m farming aura.'},
+  {name: 'Present Perfect', nick: 'Бывший, который всё ещё влияет', color: '#d8f1df', stick: {mood: 'sweat'},
+   bio: 'Событие было в прошлом, но смотрим на него из сейчас. Ненавидит даты: скажешь «вчера», и он уходит, хлопнув дверью. Любит: ever, never, already, just, yet, since, for. Главный босс для русскоязычных.', q: 'Когда это было, неважно. Важно, что ты до сих пор об этом думаешь.'},
+  {name: 'Past Simple', nick: 'Архивариус', color: '#f4e1c4', stick: {mood: 'smug', hat: 'tophat'},
+   bio: 'Было, прошло, закрыто. Любит даты: yesterday, in 2016, ago, last week. В разговорах про прошлое обычно хватает его одного. Не любит вопросы без did.', q: 'Brat summer was in 2024. Отпусти.'},
+  {name: 'will', nick: 'Импульсивный (и вообще не время)', color: '#e9ddff', stick: {mood: 'happy', arms: 'point'},
+   bio: 'Формально модальный глагол, а не время (так считает Cambridge Grammar). Решения на ходу, обещания, «мне кажется». Ненавидит стоять после <i>if</i> и <i>when</i>.', q: 'Сам решу! (I\'ll decide for myself!)'},
+  {name: 'going to', nick: 'Воздухан', color: '#fff3b8', stick: {mood: 'smug', arms: 'hips', hat: 'shades'},
+   bio: 'Намерения и планы, решённые заранее. Ещё прогнозы «по признакам»: тучи → <i>it\'s going to rain</i>. В речи сжимается до <i>gonna</i>.', q: 'I\'m gonna start a business. Since 2019.'},
+  {name: 'Past Perfect', nick: 'Предпрошлое', color: '#dfe6ef', stick: {mood: 'flat', hat: 'pilot'},
+   bio: 'Нужен, когда в прошлом ДВА события и надо показать, какое раньше. Если порядок и так понятен (<i>after, before</i>), часто можно обойтись Past Simple.', q: 'К моменту, как приложение открылось, сова уже had died.'},
+  {name: 'Future Perfect Continuous', nick: 'Лох-несское чудовище', color: '#eee', stick: {mood: 'shock', hat: 'party'},
+   bio: '<i>By 2030 I will have been learning English for 20 years.</i> Грамматически существует. В живой речи встречается реже, чем Лабубу без коробки. Учи последним. Или никогда.', q: 'Пупупу.'}
+];
+
+/* ---------- Бойцовский клуб ---------- */
+const FIGHTS = [
+  {kicker: 'Бой 1 · Британия против Америки', title: 'Have you eaten yet? vs Did you eat yet?',
+   l: {who: '🇬🇧 Present Perfect', says: '«Только Perfect с just, already и yet!»', stick: {mood: 'angry', hat: 'tophat'}},
+   r: {who: '🇺🇸 Past Simple', says: '«I just ate, bro. Relax.»', stick: {mood: 'smug', hat: 'shades'}},
+   story: 'Учебники (британские) говорят: с <i>just, already, yet</i> только Present Perfect. Американцы на это: <i>Did you eat yet? I already saw it.</i> Cambridge Dictionary прямо пишет: в американском так часто говорят.',
+   verdict: '🏆 Ничья. В британском и на экзаменах (IELTS, Cambridge): Perfect. В американских сериалах услышишь оба. Ошибкой ни то ни другое не будет. А вот <i>I have seen him yesterday</i> ошибка в обеих странах.'},
+  {kicker: 'Бой 2 · Решение против плана', title: 'will vs going to',
+   l: {who: 'will', says: '«Решил прямо сейчас!»', stick: {mood: 'happy', arms: 'up'}},
+   r: {who: 'going to', says: '«Я это планировал ещё вчера»', stick: {mood: 'smug', hat: 'glasses'}},
+   story: 'Учебники разводят их строго. Но в прогнозах «мне кажется» они часто взаимозаменяемы: <i>I think it will be / it\'s going to be fine.</i>',
+   verdict: '🏆 Победа по очкам у здравого смысла. <b>Спонтанно/обещание</b> → will. <b>Заранее решил / видно по признакам</b> → going to. <b>Прогноз-мнение</b> → оба норм. Не мучайся.'},
+  {kicker: 'Бой 3 · Учебник против улицы', title: 'If I were vs If I was',
+   l: {who: 'were', says: '«If I were you. Всегда. Для всех лиц.»', stick: {mood: 'flat', hat: 'tophat'}},
+   r: {who: 'was', says: '«If I was rich, I\'d... ну ты понял»', stick: {mood: 'happy', hat: 'headphones'}},
+   story: 'Грамматики говорят: в нереальном условии <i>were</i> для всех (I, he, she). В живой речи носители постоянно говорят <i>if I was</i>.',
+   verdict: '🏆 <b>were</b> всегда правильно, на экзамене бери его. <b>was</b> норм в разговоре. Но <i>If I were you</i> (совет) = застывшая фраза, тут were вне конкуренции.'},
+  {kicker: 'Бой 4 · Старая гвардия против рабочей лошадки', title: 'must vs have to',
+   l: {who: 'must', says: '«Я сильный модальный глагол с 1000-летней историей!»', stick: {mood: 'angry', hat: 'captain'}},
+   r: {who: 'have to', says: '«А меня просто чаще используют»', stick: {mood: 'happy', hat: 'hardhat'}},
+   story: 'По данным UCL (устный британский английский), с 1960-х по 1990-е <i>must</i> упал на 56%, а <i>have to</i> вырос на 32%. Сегодня в значении «надо» have to встречается почти втрое чаще.',
+   verdict: '🏆 <b>have to</b> нокаутом в разговорной речи. <i>must</i> остаётся в правилах, табличках и в значении «наверняка» (<i>You must be joking</i>). А <i>mustn\'t</i> и <i>don\'t have to</i> вообще про разное, см. часть про модальные.'}
+];
+
+/* ---------- Кринж-детектор ---------- */
+const CRINGE = [
+  {s: 'I am agree with you.', fix: 'I agree with you.', why: '«Я согласен» = прилагательное, а agree = глагол. «Я есть соглашаюсь».'},
+  {s: 'How long are you here?', fix: 'How long have you been here?', why: '«Сколько ты здесь?» По-русски настоящее, по-английски период до сейчас → Perfect.'},
+  {s: 'I live in Berlin since 2020.', fix: 'I\'ve lived (I\'ve been living) in Berlin since 2020.', why: 'since = «с тех пор и до сих пор» = Perfect.'},
+  {s: 'I\'ve just finished my homework.', fix: null, why: 'Just + результат сейчас. Чистая база.'},
+  {s: 'Where you live?', fix: 'Where do you live?', why: 'Вопрос без do. Русская интонация не экспортируется.'},
+  {s: 'I didn\'t went to the party.', fix: 'I didn\'t go to the party.', why: 'did уже забрал прошлое. Двойная оплата.'},
+  {s: 'Does she likes Labubu?', fix: 'Does she like Labubu?', why: 'does уже забрал -s.'},
+  {s: 'Who called you?', fix: null, why: 'Вопрос к подлежащему, do не нужен. Всё верно.'},
+  {s: 'If it will rain, we will stay home.', fix: 'If it rains, we\'ll stay home.', why: 'После if будущее не ставим.'},
+  {s: 'Tell me please where is the station.', fix: 'Could you tell me where the station is?', why: 'В косвенном вопросе порядок как в утверждении. И «Tell me» звучит как приказ.'},
+  {s: 'I have seen him yesterday.', fix: 'I saw him yesterday.', why: 'yesterday = закрытое окно → Past Simple.'},
+  {s: 'I am knowing this meme.', fix: 'I know this meme.', why: 'know = состояние, без -ing.'},
+  {s: 'You mustn\'t come if you\'re busy.', fix: 'You don\'t have to come if you\'re busy.', why: 'Хотелось сказать «не обязательно», а получилось «запрещено приходить». Друг обиделся.'},
+  {s: 'I should to go.', fix: 'I should go.', why: 'После модальных (can, should, must, might) никакого to.'},
+  {s: 'I\'m having a shower, call me later.', fix: null, why: 'have a shower = действие, -ing можно. База.'},
+  {s: 'I from Moscow.', fix: 'I\'m from Moscow.', why: 'По-русски «я из Москвы» без глагола, в английском без am нельзя. Мама, I AM in Dubai.'},
+  {s: 'I will can help you tomorrow.', fix: 'I\'ll be able to help you tomorrow.', why: 'Два модальных подряд нельзя: will can = ошибка. Используй be able to.'},
+  {s: 'If I were you, I\'d log off.', fix: null, why: 'Второй тип, were, would. Идеально. И совет хороший.'}
+];
+
+/* ---------- Квиз ---------- */
+const QUIZ = {
+  q: [
+    {t: 'Пятница, 21:00. Ты:', a: [
+      ['Как всегда: сериал, плед, доставка. Как каждую пятницу.', 'pres'],
+      ['Еду в бар, пишу тебе из такси, не отвлекай', 'presC'],
+      ['Лежу. Неделя случилась. Последствия налицо.', 'presP'],
+      ['Вспоминаю 2016. Вот это были времена', 'past'],
+      ['Составляю в Notion план, как начну новую жизнь с понедельника', 'going'],
+      ['Думаю, что к 40 годам буду работать на этой работе уже 15 лет', 'fpc']]},
+    {t: 'Твоё отношение к дедлайнам:', a: [
+      ['Сдаю всегда в срок. Это просто факт обо мне.', 'pres'],
+      ['Делаю прямо сейчас, в 3 ночи, под энергетик', 'presC'],
+      ['Уже сделано. Когда? Неважно. Не скажу.', 'presP'],
+      ['Был один дедлайн в 2019. Мы не говорим о нём.', 'past'],
+      ['Я собираюсь начать. Скоро. Вот-вот.', 'going'],
+      ['К пятнице я буду работать над этим уже три недели', 'fpc']]},
+    {t: 'Какой мем про тебя?', a: [
+      ['Душнила с фактами', 'pres'],
+      ['«Я в моменте»', 'presC'],
+      ['Ждун', 'presP'],
+      ['«Мой 2016»', 'past'],
+      ['Воздухан', 'going'],
+      ['Пупупу', 'fpc']]},
+    {t: 'Тебя спрашивают, бывал(а) ли ты в Дубае. Ответ:', a: [
+      ['Я туда не езжу. Принципиально.', 'pres'],
+      ['Я ПРЯМО СЕЙЧАС в Дубае, мама!', 'presC'],
+      ['Три раза. Опыт есть, загар остался.', 'presP'],
+      ['Да, в 2018, на майские. Шаурма была хорошая.', 'past'],
+      ['Собираюсь в следующем году. Уже коплю.', 'going'],
+      ['К 2030-му я буду копить на Дубай уже 10 лет', 'fpc']]}
+  ],
+  r: {
+    pres: {name: 'Present Simple', stick: {mood: 'flat', hat: 'glasses', prop: 'clock'}, text: 'Стабильность уровня расписания электричек. Твоя жизнь = набор фактов и привычек. Самое частое время в языке, и это заслуженно. Минус: на вопрос «что делаешь?» отвечаешь «работаю в банке».'},
+    presC: {name: 'Present Continuous', stick: {mood: 'happy', hat: 'headphones', prop: 'phone'}, text: 'Ты всегда в моменте. Процесс > результат. Минус: пытаешься приклеить -ing к love и know. Не надо. Они не процесс, они вайб.'},
+    presP: {name: 'Present Perfect', stick: {mood: 'sweat'}, text: 'Прошлое тебя не отпускает, но это уже стиль. Сложная натура: тебя боятся все русскоязычные, но без тебя не обойтись. И при тебе лучше не говорить «вчера».'},
+    past: {name: 'Past Simple', stick: {mood: 'smug', hat: 'tophat'}, text: 'Ты про истории. «Было дело...» Даты, факты, всё закрыто. Второе место по популярности в речи. Главное правило: в вопросах твой лучший друг did, а не -ed.'},
+    going: {name: 'going to', stick: {mood: 'smug', arms: 'hips', hat: 'shades'}, text: 'Воздухан-энергия. Планы, намерения, Notion на 40 страниц. Грамматически безупречно, по факту «начну с понедельника». Но эй, gonna звучит круто.'},
+    fpc: {name: 'Future Perfect Continuous', stick: {mood: 'shock', hat: 'party'}, text: 'Тебя почти никто не встречал вживую. Ты существуешь в учебниках и в 3 часа ночи в голове у тех, кто думает о жизни. Редкость, загадка, немного пупупу.'}
+  }
+};
+
+/* ---------- Частота форм (Krámský 1969, маленькая выборка) ---------- */
+const FREQ_BARS = [
+  ['Present Simple', 57.5, 'больше половины всех глаголов'],
+  ['Past Simple', 19.7, ''],
+  ['will (Future Simple)', 8.5, ''],
+  ['Present Perfect', 6.0, ''],
+  ['Present Continuous', 5.1, ''],
+  ['все остальные семь вместе', 3.2, '← вот это вся «страшная» половина таблицы']
+];
+
+/* ---------- Словарик и подсказки при наведении (abbr.js) ---------- */
+// t: термин, a: другие написания на странице, f: расшифровка / перевод, w: объяснение простыми словами
+const GLOSS = [
+  // Формы глагола
+  {g: 'Формы глагола', t: 'V1', a: ['V'], f: 'verb, форма 1: базовая', w: 'Словарная форма без окончаний: <i>eat, go, work</i>. Стоит в Present Simple (I eat) и после помощников: do, will, can, should.'},
+  {g: 'Формы глагола', t: 'V-s', a: ['V / V-s'], f: 'V1 + окончание -s', w: 'Для he / she / it в настоящем времени: <i>she eats, he goes</i>. Единственное окончание лица, которое осталось в английском.'},
+  {g: 'Формы глагола', t: 'V2', a: [], f: 'verb, форма 2: прошедшее время', w: '<i>ate, went, worked</i>. Используется только в Past Simple. У правильных глаголов = V1 + ed, у неправильных надо выучить.'},
+  {g: 'Формы глагола', t: 'V3', a: [], f: 'verb, форма 3: past participle, причастие прошедшего времени', w: '<i>eaten, gone, worked</i>. Нужна после have (I have eaten = Perfect) и в пассиве (it was eaten). Сама по себе время не показывает. У правильных совпадает с V2.'},
+  {g: 'Формы глагола', t: 'V-ing', a: ['-ing'], f: 'форма на -ing (present participle)', w: '<i>eating, going</i>. После be даёт «процесс»: I am eating. Сама по себе время не показывает: время несёт be (am / was / will be).'},
+  {g: 'Формы глагола', t: 'неправильные глаголы', a: ['неправильных глаголов', 'неправильный', 'неправильных'], f: 'irregular verbs', w: 'Глаголы, у которых V2 и V3 образуются не через -ed: go, went, gone. Их учат по таблице. Самые частые глаголы почти все неправильные, увы.'},
+  {g: 'Формы глагола', t: 'пассив', a: ['пассиве'], f: 'passive voice, страдательный залог', w: 'Когда важно, что сделали, а не кто: <i>The pizza was eaten</i> (пиццу съели). Строится как be + V3.'},
+
+  // Время и вид
+  {g: 'Как устроены времена', t: 'Simple', a: [], f: 'простая форма', w: 'Ни be + V-ing, ни have + V3. Просто факт: <i>I eat, I ate, I will eat</i>.'},
+  {g: 'Как устроены времена', t: 'Continuous', a: ['Progressive'], f: 'длительная форма, be + V-ing', w: 'Смотрим на действие изнутри, когда оно в процессе: <i>I am eating</i>. В американских учебниках называется Progressive.'},
+  {g: 'Как устроены времена', t: 'Perfect', a: ['Perfect’а', 'Perfect\'а'], f: 'перфект, have + V3', w: 'Действие случилось раньше какого-то момента, и мы смотрим на него с этого момента: что в итоге, какой результат или опыт.'},
+  {g: 'Как устроены времена', t: 'аспект', a: [], f: 'aspect', w: 'Способ посмотреть на действие: как на факт (Simple), изнутри процесса (Continuous) или через результат (Perfect). Похоже на русский вид (делать/сделать), но работает по-другому.'},
+  {g: 'Как устроены времена', t: 'вид', a: [], f: 'вид глагола в русском', w: 'Несовершенный (делал, смотрел: процесс) и совершенный (сделал, посмотрел: результат). В английском такого нет, и «сделал» НЕ равно автоматически Perfect.'},
+  {g: 'Как устроены времена', t: 'Present Simple', a: [], f: 'настоящее простое, V1 / V-s', w: 'Факты, привычки, расписание: <i>I work in a bank. The train leaves at 6.</i> Не «прямо сейчас».'},
+  {g: 'Как устроены времена', t: 'Present Continuous', a: [], f: 'настоящее длительное, am/is/are + V-ing', w: 'Прямо сейчас или временно: <i>I\'m eating. I\'m living with my mom this month.</i> Ещё планы-договорённости: <i>I\'m flying tomorrow.</i>'},
+  {g: 'Как устроены времена', t: 'Present Perfect', a: [], f: 'настоящее совершённое, have/has + V3', w: 'Прошлое, увиденное из сейчас: опыт, результат, период до сейчас. <i>I\'ve been to Dubai. I\'ve lost my keys. I\'ve lived here since 2020.</i>'},
+  {g: 'Как устроены времена', t: 'Present Perfect Continuous', a: [], f: 'have/has been + V-ing', w: 'Процесс начался в прошлом и тянется до сейчас: <i>I\'ve been waiting for 40 minutes.</i>'},
+  {g: 'Как устроены времена', t: 'Past Simple', a: [], f: 'прошедшее простое, V2', w: 'Было и закончилось, есть «когда»: <i>I ate pizza yesterday.</i>'},
+  {g: 'Как устроены времена', t: 'Past Continuous', a: [], f: 'was/were + V-ing', w: 'Процесс в прошлом, на фоне которого что-то случилось: <i>I was eating when you called.</i>'},
+  {g: 'Как устроены времена', t: 'Past Perfect', a: [], f: 'предпрошедшее, had + V3', w: 'Случилось ДО другого момента в прошлом: <i>When you came, I had already eaten.</i>'},
+  {g: 'Как устроены времена', t: 'Past Perfect Continuous', a: [], f: 'had been + V-ing', w: 'Процесс тянулся до момента в прошлом: <i>I had been waiting for an hour when he came.</i>'},
+  {g: 'Как устроены времена', t: 'Future Simple', a: [], f: 'will + V1', w: 'Решение прямо сейчас, обещание, «мне кажется»: <i>I\'ll get it! I think it\'ll rain.</i> Лингвисты считают will модальным глаголом, а не временем.'},
+  {g: 'Как устроены времена', t: 'Future Continuous', a: [], f: 'will be + V-ing', w: 'Процесс в момент в будущем: <i>At 8 I\'ll be eating.</i>'},
+  {g: 'Как устроены времена', t: 'Future Perfect', a: [], f: 'will have + V3', w: 'К моменту в будущем уже будет сделано: <i>By 9 I\'ll have eaten.</i>'},
+  {g: 'Как устроены времена', t: 'Future Perfect Continuous', a: [], f: 'will have been + V-ing', w: 'К моменту в будущем процесс будет длиться уже столько-то. В живой речи почти не встречается.'},
+  {g: 'Как устроены времена', t: 'going to', a: ['gonna'], prose: true, f: 'be going to + V1, «собираюсь»', w: 'Будущее по заранее принятому решению или по видимым признакам: <i>I\'m going to quit. It\'s going to rain.</i> В речи сжимается до <i>gonna</i>.'},
+
+  // Грамматика
+  {g: 'Грамматика', t: 'помощник', a: ['помощники', 'помощника', 'помощников', 'помощнику', 'помощником', 'вспомогательный глагол'], f: 'auxiliary verb, вспомогательный глагол', w: 'Служебные глаголы do, be, have, will (и модальные). Сами почти ничего не значат, зато несут время и лицо и прыгают вперёд в вопросах.'},
+  {g: 'Грамматика', t: 'модальный глагол', a: ['модальные глаголы', 'модальных', 'модальные', 'модальным', 'модальными', 'модальный'], f: 'modal verb', w: 'can, could, may, might, must, should, will, would. Выражают «могу, надо, наверное». Без -s, без to после себя, не стыкуются друг с другом.'},
+  {g: 'Грамматика', t: 'глаголы состояния', a: ['глаголом состояния', 'глаголами состояния', 'глаголах состояния', 'глаголов состояния', 'глагол состояния'], f: 'stative verbs', w: 'Глаголы, которые описывают состояние, а не действие: know, want, love, like, believe, have (= владеть). У состояния нет «середины», поэтому -ing обычно не ставят.'},
+  {g: 'Грамматика', t: 'подлежащее', a: ['подлежащего', 'подлежащему', 'подлежащим'], f: 'subject', w: 'Кто или что делает действие: <b>She</b> likes pizza. <b>The dog</b> bit Vasya.'},
+  {g: 'Грамматика', t: 'дополнение', a: ['дополнению', 'дополнения'], f: 'object', w: 'Кого или что: She likes <b>pizza</b>. The dog bit <b>Vasya</b>.'},
+  {g: 'Грамматика', t: 'падеж', a: ['падежи', 'падежей', 'падежам'], f: 'case', w: 'Изменение окончания по роли в предложении: Вася / Васю / Васе. В английском почти не осталось, только I / me, he / him, who / whom и \'s.'},
+  {g: 'Грамматика', t: 'фразовый глагол', a: ['фразовые глаголы', 'фразовых глаголов', 'фразовых глаголах', 'фразовым', 'фразового глагола', 'фразовые', 'фразовых'], f: 'phrasal verb', w: 'Глагол + частица с новым значением: give up (сдаться), take off (взлететь). Аналог русских приставок, только частица стоит после глагола.'},
+  {g: 'Грамматика', t: 'частица', a: ['частицы', 'частицу', 'частиц', 'частицам', 'частицей'], f: 'particle', w: 'Маленькое слово в фразовом глаголе: up, out, off, on, over, down, back. Похоже на предлог, но работает как русская приставка.'},
+  {g: 'Грамматика', t: 'приставка', a: ['приставки', 'приставками', 'приставкой', 'приставок', 'приставку'], f: 'prefix', w: 'Русская часть слова перед корнем: <b>вы</b>ходить, <b>пере</b>думать. В английском эту работу делает частица после глагола.'},
+  {g: 'Грамматика', t: 'косвенный вопрос', a: ['косвенный', 'Вежливый (косвенный)'], f: 'indirect question', w: 'Вопрос, спрятанный в вежливую рамку: <i>Could you tell me where the station is?</i> После рамки порядок слов обычный, как в утверждении.'},
+  {g: 'Грамматика', t: 'условные предложения', a: ['Условные предложения', 'условное', 'условные', 'условном'], f: 'conditionals', w: 'Предложения с if. По учебникам их 4 типа (0, 1, 2, 3), от закона природы до сожаления о прошлом.'},
+  {g: 'Грамматика', t: 'If I were', a: ['If I were you'], f: '«если бы я был»', w: 'В нереальном условии were ставят для всех лиц (I, he, she). В разговоре часто говорят was, но в If I were you (совет) только were.'},
+  {g: 'Грамматика', t: 'SVO', a: ['кто → что делает → что/кого'], f: 'Subject, Verb, Object', w: 'Порядок слов английского утверждения: подлежащее, глагол, дополнение. Жёсткий, переставлять нельзя.'},
+
+  // Уровни, книги, исследования
+  {g: 'Уровни, экзамены, источники', t: 'A2', a: [], f: 'уровень по шкале CEFR', w: 'Базовый: простые фразы о себе, работе, покупках, понимаешь медленную речь на знакомые темы.'},
+  {g: 'Уровни, экзамены, источники', t: 'B1', a: [], f: 'уровень по шкале CEFR', w: 'Средний: можешь объясниться в поездке, рассказать историю, понимаешь основное в ясной речи. Типичный уровень «вроде знаю, но говорить страшно».'},
+  {g: 'Уровни, экзамены, источники', t: 'B2', a: [], f: 'уровень по шкале CEFR', w: 'Выше среднего: свободно общаешься с носителями на большинство тем, смотришь сериалы почти без субтитров.'},
+  {g: 'Уровни, экзамены, источники', t: 'CEFR', a: [], f: 'Common European Framework of Reference', w: 'Общеевропейская шкала владения языком: A1, A2, B1, B2, C1, C2.'},
+  {g: 'Уровни, экзамены, источники', t: 'IELTS', a: [], f: 'International English Language Testing System', w: 'Международный экзамен по английскому для учёбы, работы и переезда.'},
+  {g: 'Уровни, экзамены, источники', t: 'ЕГЭ', a: [], f: 'Единый государственный экзамен', w: 'Школьный выпускной экзамен в России. Источник детских травм про Present Perfect.'},
+  {g: 'Уровни, экзамены, источники', t: 'Cambridge Grammar', a: ['Cambridge Grammar of the English Language'], f: 'Huddleston & Pullum, 2002', w: 'Огромная академическая грамматика английского (около 1800 страниц). Именно она говорит, что времён два.'},
+  {g: 'Уровни, экзамены, источники', t: 'корпус', a: ['корпуса', 'корпусные', 'корпусным', 'корпусе'], f: 'текстовый корпус', w: 'Огромная база реальных текстов и расшифровок речи (миллионы слов). По ней считают, как люди говорят на самом деле, а не как написано в учебнике.'},
+  {g: 'Уровни, экзамены, источники', t: 'UCL', a: [], f: 'University College London', w: 'Лондонский университет, где ведут Survey of English Usage: корпус британской речи с 1960-х.'},
+  {g: 'Уровни, экзамены, источники', t: 'OED', a: ['Оксфордском словаре'], f: 'Oxford English Dictionary', w: 'Главный исторический словарь английского. В нём у глагола run 645 значений.'},
+
+  // Мемы и сленг
+  {g: 'Мемы и сленг', t: 'пупупу', a: [], f: 'междометие, 2025', w: 'Выражение растерянности или лёгкой грусти. 5-е место в рейтинге слов 2025 года по версии Грамоты.ру.'},
+  {g: 'Мемы и сленг', t: 'Окак', a: ['окак'], f: 'мем 2025 года', w: '«О, как?», слитое в одно слово. Чёрный кот в худи. Реакция на что угодно неожиданное.'},
+  {g: 'Мемы и сленг', t: 'Воздухан', a: ['воздухан', 'Воздухан-энергия'], f: 'мем 2026 года, дагестанский сленг', w: 'Человек, который много говорит и ничего не делает. Рисуют с вентилятором вместо головы.'},
+  {g: 'Мемы и сленг', t: 'Ждун', a: [], f: 'мем 2017 года', w: 'Грустное серое существо, которое терпеливо ждёт. Скульптура нидерландской художницы Маргрит ван Бревоорт.'},
+  {g: 'Мемы и сленг', t: 'Это фиаско, братан', a: ['«Это фиаско, братан»'], f: 'мем 2017 года', w: 'Пёс сиба-ину гордо идёт по бревну и падает в ручей. Про эпичный провал.'},
+  {g: 'Мемы и сленг', t: 'Сам решу', a: ['«Сам решу»'], f: 'мем 2025 года', w: 'Фраза сына Розы Сябитовой из реалити-шоу. Про решение, принятое прямо сейчас и наперекор всем.'},
+  {g: 'Мемы и сленг', t: 'Можно, а зачем?', a: ['«Можно, а зачем?»'], f: 'мем начала 2026 года', w: 'Ответ представителя АвтоВАЗа на вопрос, могут ли они сделать конкурента BMW 5-й серии.'},
+  {g: 'Мемы и сленг', t: 'Мой 2016', a: ['«Мой 2016»'], f: 'тренд 2026 года', w: 'Люди массово выкладывали свои фото десятилетней давности и ностальгировали.'},
+  {g: 'Мемы и сленг', t: 'Я в моменте', a: ['«Я в моменте»'], f: 'трек Джарахова и Markul, 2021', w: 'Стало мемом про то, чтобы жить здесь и сейчас. Идеальный слоган Present Continuous.'},
+  {g: 'Мемы и сленг', t: 'Лев если и делал, то без удовольствия', a: ['«Лев если и делал, то без удовольствия»'], f: 'мем 2025 года', w: 'Ироничная переделка «пацанских» мотивационных цитат про льва.'},
+  {g: 'Мемы и сленг', t: 'кринж', a: ['Кринж', 'кринжа'], f: 'от англ. cringe', w: 'Испанский стыд, неловкость. Противоположность «базы».'},
+  {g: 'Мемы и сленг', t: 'база', a: ['База', 'базой', 'Чистая база'], f: 'сленг', w: 'Что-то правильное, фундаментальное, с чем не поспоришь. «Это база» = это очевидно верно.'},
+  {g: 'Мемы и сленг', t: 'душнила', a: ['Душнила', 'Душнила-рутинёр', 'Душнила с фактами'], f: 'сленг', w: 'Занудный человек, который всех поправляет и «душит» фактами.'},
+  {g: 'Мемы и сленг', t: 'зумер', a: [], f: 'слово 2025 года по Грамоте.ру', w: 'Представитель поколения Z (родились примерно в 1997-2012).'},
+  {g: 'Мемы и сленг', t: 'брейнрот', a: ['brain rot', 'брейнрота', 'итальянский брейнрот', 'Italian brainrot', 'итальянского брейнрота'], f: 'brain rot, «гниение мозга», слово 2024 года по Оксфорду', w: 'Отупение от бесконечного залипания в короткие видео, а также сам такой контент. Итальянский брейнрот (2025): ИИ-существа с фейково-итальянскими именами вроде акулы в кроссовках Tralalero Tralala.'},
+  {g: 'Мемы и сленг', t: 'Tung Tung Tung Sahur', a: ['Тунг-Тунг-Тунг Сахур'], f: 'индонезийский мем, 2025', w: 'Деревянное полено с битой. По легенде приходит, если трижды проигнорировать предрассветную побудку в Рамадан.'},
+  {g: 'Мемы и сленг', t: 'Labubu', a: ['Лабубу'], f: 'игрушка Pop Mart, пик в 2025', w: 'Зубастый монстрик-брелок в «слепых» коробках. Мировая истерия летом 2025.'},
+  {g: 'Мемы и сленг', t: 'Chicken Jockey', a: [], f: 'мем 2025, «Minecraft в кино»', w: 'Реплика Джека Блэка, на которой подростки в кинотеатрах устраивали хаос с попкорном.'},
+  {g: 'Мемы и сленг', t: 'Clanker', a: ['clanker', 'Clankers'], f: 'сленг 2025', w: 'Пренебрежительное слово для роботов и ИИ, пришло из «Звёздных войн».'},
+  {g: 'Мемы и сленг', t: 'cooked', a: [], f: 'сленг 2025, «приготовлен»', w: 'Всё, мне конец. <i>The exam is tomorrow and I haven\'t studied. I\'m cooked.</i>'},
+  {g: 'Мемы и сленг', t: 'touch grass', a: [], f: '«потрогай траву»', w: 'Совет выйти из интернета на улицу и вернуться в реальность.'},
+  {g: 'Мемы и сленг', t: 'NPC', a: [], f: 'Non-Player Character', w: 'Персонаж в игре, которым никто не управляет. В сленге: человек без своего мнения, живущий по скрипту.'},
+  {g: 'Мемы и сленг', t: 'аура', a: ['ауры', 'aura', 'farming aura'], f: 'сленг 2024-2025', w: 'Крутость, харизма. «+1000 ауры» = очень круто. Aura farming = специально вести себя круто ради образа.'},
+  {g: 'Мемы и сленг', t: 'sigma', a: ['сигма', 'Sigma'], f: 'сленг', w: 'Ироничное «одинокий волк, независимый крутой тип». Хит 2024 года «Сигма бой» сделал слово мировым.'},
+  {g: 'Мемы и сленг', t: 'Big Floppa', a: ['Шлёпа'], f: 'мем 2019-2020', w: 'Каракал Гоша из Москвы, он же Шлёпа. Один из самых известных русских мемных котов в мире.'},
+  {g: 'Мемы и сленг', t: 'Krusty Krab', a: [], f: '«Красти Краб», Губка Боб', w: 'Мем из мультфильма: <i>Is this the Krusty Krab? No, this is Patrick.</i> Идеальное упражнение на короткие ответы.'},
+  {g: 'Мемы и сленг', t: 'Duolingo', a: [], f: 'приложение для изучения языков', w: 'Знаменито мемами про сову-маньяка. В феврале 2025 компания «убила» маскота Duo в шуточной кампании и через две недели воскресила.'},
+  {g: 'Мемы и сленг', t: 'Огайо', a: ['Ohio'], f: 'мем 2022-2024', w: 'Only in Ohio: в мемах штат Огайо = место, где происходит всё самое странное.'},
+  {g: 'Мемы и сленг', t: 'Йода', a: ['Йоды'], f: 'магистр из «Звёздных войн»', w: 'Говорит с перевёрнутым порядком слов: «Сильна в тебе Сила». На английском это звучит так же странно.'},
+  {g: 'Мемы и сленг', t: 'падел', a: ['padel'], f: 'вид спорта', w: 'Гибрид тенниса и сквоша в стеклянной коробке. Хобби каждого, кто решил начать следить за здоровьем.'},
+  {g: 'Мемы и сленг', t: 'вайб', a: [], f: 'от англ. vibe, слово 2024 года по Грамоте.ру', w: 'Атмосфера, настроение, ощущение.'}
+];
+
+</script>
+<script>
+// Виджеты. core.js даёт $, $$, stick(), renderSticks(), initChrome().
+
+const esc = s => String(s);
+const say = (o, text, cls = '') => `<div class="say ${cls}">${stick(o)}<div class="bubble">${text}</div></div>`;
+
+/* ---------- таймлайн ---------- */
+function timeline(tl, opts = {}) {
+  const W = 1000, H = 175, Y = 105, X = a => 500 + a * 440;
+  const C = opts.color || '#f26a21';
+  let g = '';
+  // ось
+  g += `<line x1="30" y1="${Y}" x2="975" y2="${Y}" stroke="#1b1b1b" stroke-width="3"/><path d="M975 ${Y} l-14 -8 v16z" fill="#1b1b1b"/>`;
+  g += `<text x="40" y="${Y + 44}" class="tl-l">прошлое</text><text x="960" y="${Y + 44}" class="tl-l" text-anchor="end">будущее</text>`;
+  g += `<line x1="500" y1="${Y - 52}" x2="500" y2="${Y + 14}" stroke="#2c6fbb" stroke-width="3" stroke-dasharray="6 5"/><text x="500" y="${Y + 46}" class="tl-now" text-anchor="middle">СЕЙЧАС</text>`;
+  const wave = (a, b) => {
+    const x1 = X(a), x2 = X(b); let d = `M${x1} ${Y - 18}`;
+    for (let x = x1; x < x2; x += 18) d += ` q9 -14 18 0`;
+    return `<path d="${d}" stroke="${C}" stroke-width="5" fill="none" stroke-linecap="round"/>`;
+  };
+  const cross = (a, lbl) => `<g transform="translate(${X(a)},${Y})"><path d="M-11 -11 L11 11 M11 -11 L-11 11" stroke="${C}" stroke-width="6" stroke-linecap="round"/></g>` +
+    (lbl ? `<text x="${X(a)}" y="${Y - 22}" class="tl-s" text-anchor="middle">${lbl}</text>` : '');
+  const ref = (a, lbl) => `<line x1="${X(a)}" y1="${Y - 60}" x2="${X(a)}" y2="${Y + 12}" stroke="#1b1b1b" stroke-width="2.5" stroke-dasharray="3 5"/><text x="${X(a)}" y="${Y - 66}" class="tl-s" text-anchor="middle">${lbl}</text>`;
+  const arc = (a, b, lbl) => {
+    const x1 = X(a), x2 = X(b), mx = (x1 + x2) / 2;
+    return `<path d="M${x1} ${Y - 14} Q${mx} ${Y - 90} ${x2 - 4} ${Y - 20}" stroke="#2c6fbb" stroke-width="3" fill="none" marker-end="url(#ah)"/>` +
+      (lbl ? `<text x="${mx}" y="${Y - 62}" class="tl-s blue" text-anchor="middle">${lbl}</text>` : '');
+  };
+  const defs = `<defs><marker id="ah" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#2c6fbb"/></marker></defs>`;
+  switch (tl.type) {
+    case 'habit': for (const a of [-0.85, -0.6, -0.35, -0.1, 0.15, 0.4, 0.65, 0.88]) g += cross(a); g += `<text x="500" y="36" class="tl-s" text-anchor="middle">каждую пятницу, всегда, обычно</text>`; break;
+    case 'span': g += wave(tl.from, tl.to) + `<text x="${X((tl.from + tl.to) / 2)}" y="${Y - 34}" class="tl-s" text-anchor="middle">процесс идёт</text>`; break;
+    case 'dot': g += cross(tl.at, tl.lbl || (tl.at < 0 ? 'вчера, в 2019, тогда' : 'потом')); break;
+    case 'dotlink': g += cross(tl.at, 'когда-то') + arc(tl.at, 0, 'результат / опыт сейчас'); break;
+    case 'spanlink': g += wave(tl.from, tl.to) + `<text x="${X(tl.from)}" y="${Y - 34}" class="tl-s">с тех пор...</text><text x="500" y="36" class="tl-s blue" text-anchor="middle">...и до сих пор</text>`; break;
+    case 'spanpast': g += wave(tl.from, tl.to) + `<path d="M${X(tl.hit)} ${Y - 70} l-10 26 h14 l-10 28" stroke="#e84a3a" stroke-width="4" fill="none" stroke-linejoin="round"/><text x="${X(tl.hit) + 14}" y="${Y - 56}" class="tl-s red">бах! звонок</text>`; break;
+    case 'pastperf': g += cross(tl.at, 'сначала') + ref(tl.ref, 'потом другое'); break;
+    case 'futperf': g += cross(tl.at, 'сделано') + ref(tl.ref, 'дедлайн'); break;
+    case 'spanref': g += wave(tl.from, tl.to) + ref(tl.to, 'к этому моменту'); break;
+    case 'window': {
+      const x1 = X(tl.from), x2 = X(tl.to), open = tl.open;
+      g += `<rect x="${x1}" y="${Y - 48}" width="${x2 - x1}" height="58" rx="8" fill="${open ? '#e6f0fb' : '#fdeee4'}" stroke="${open ? '#2c6fbb' : '#f26a21'}" stroke-width="3" ${open ? '' : ''}/>`;
+      g += `<text x="${(x1 + x2) / 2}" y="${Y - 56}" class="tl-s ${open ? 'blue' : ''}" text-anchor="middle">${tl.lbl}</text>`;
+      if (tl.at != null) g += cross(tl.at);
+      break;
+    }
+  }
+  return `<svg class="tl" viewBox="0 0 ${W} ${H}">${defs}${g}</svg>`;
+}
+
+/* ---------- 1. Конструктор времён ---------- */
+function initTenseOMatic() {
+  const box = $('#tom'); if (!box) return;
+  const st = {time: 'pres', prog: false, perf: false};
+  const TIME_LBL = {past: 'Прошлое', pres: 'Настоящее', fut: 'Будущее'};
+  box.innerHTML = `
+    <div class="tom-ctrl">
+      <div><div class="lbl">1. Когда?</div><div class="toggle" id="tom-time">${Object.entries(TIME_LBL).map(([k, v]) => `<button data-k="${k}">${v}</button>`).join('')}</div></div>
+      <div><div class="lbl">2. Переключатели</div>
+        <label class="sw"><input type="checkbox" id="tom-prog"><span></span> процесс <code>be + -ing</code></label>
+        <label class="sw g"><input type="checkbox" id="tom-perf"><span></span> связь с моментом <code>have + V3</code></label></div>
+    </div>
+    <div class="tom-out"></div>`;
+  const out = $('.tom-out', box);
+  const formula = () => {
+    const {time, prog, perf} = st, el = [];
+    if (time === 'fut') el.push(['will', 'aux']);
+    if (perf) el.push([el.length ? 'have' : time === 'past' ? 'had' : 'have / has', 'have']);
+    if (prog) el.push([perf ? 'been' : el.length ? 'be' : time === 'past' ? 'was / were' : 'am / is / are', 'be']);
+    if (prog) el.push(['V-ing', 'ing']);
+    else if (perf) el.push(['V3', 'v3']);
+    else el.push([el.length ? 'V' : time === 'past' ? 'V2 (ate, went, played)' : 'V / V-s', 'v']);
+    return el.map((p, i) => `<span class="pc ${p[1]}">${i === 0 ? '<em>⏱ время тут</em>' : ''}${p[0]}</span>`).join('<span class="plus">+</span>');
+  };
+  const draw = () => {
+    const k = st.time + (st.prog ? 'C' : '') + (st.perf ? 'P' : '');
+    const t = TENSES[k];
+    $$('#tom-time button').forEach(b => b.classList.toggle('on', b.dataset.k === st.time));
+    const bars = [0, 1, 2, 3, 4].map(i => `<i class="${i < t.freq ? 'on' : ''}"></i>`).join('');
+    out.innerHTML = `
+      <div class="tom-name">${t.name}</div>
+      <div class="tom-formula">${formula()}</div>
+      <div class="tom-ex">${t.ex.map(([w, c]) => `<span class="${c ? 'c-' + c : ''}">${w}</span>`).join('')}</div>
+      <div class="tom-ru">🇷🇺 ${t.ru}</div>
+      ${timeline(t.tl)}
+      <div class="tom-grid">
+        <div><b>Смысл:</b> ${t.means}<div class="freq"><span>Как часто в живой речи:</span> <span class="bars">${bars}</span> <small>${FREQ_LBL[t.freq]}</small></div></div>
+        ${say({mood: t.freq ? 'happy' : 'shock', hat: t.freq >= 4 ? 'none' : t.freq ? 'glasses' : 'tophat'}, t.meme)}
+      </div>`;
+  };
+  $('#tom-time').addEventListener('click', e => { if (e.target.dataset.k) { st.time = e.target.dataset.k; draw(); } });
+  $('#tom-prog').addEventListener('change', e => { st.prog = e.target.checked; draw(); });
+  $('#tom-perf').addEventListener('change', e => { st.perf = e.target.checked; draw(); });
+  draw();
+}
+
+/* ---------- 2. Кринж или база (stative verbs) ---------- */
+function initVerdictCards(sel, items) {
+  const box = $(sel); if (!box) return;
+  box.innerHTML = items.map((it, i) => `<div class="vcard" data-i="${i}"><div class="vq">${it.s}</div><div class="vbtns"><button data-a="1">База ✅</button><button data-a="0">Кринж 🚫</button></div><div class="vans"></div></div>`).join('');
+  box.addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b) return;
+    const card = b.closest('.vcard'), it = items[card.dataset.i];
+    const right = (+b.dataset.a === 1) === it.ok;
+    card.classList.add('done', right ? 'yes' : 'no');
+    $('.vans', card).innerHTML = `<b>${right ? 'В точку!' : 'Мимо.'}</b> ${it.ok ? 'Это норм.' : 'Так не говорят.'} ${it.why}`;
+  });
+}
+
+/* ---------- 3. Present Perfect vs Past Simple ---------- */
+function initPerfectCourt() {
+  const box = $('#ppc'); if (!box) return;
+  box.innerHTML = `<div class="chips-row">${PP_MARKERS.map((m, i) => `<button class="mchip" data-i="${i}">${m.m}</button>`).join('')}</div><div class="ppc-out"></div>`;
+  const out = $('.ppc-out', box);
+  const show = i => {
+    const m = PP_MARKERS[i];
+    $$('.mchip', box).forEach(b => b.classList.toggle('on', +b.dataset.i === i));
+    out.innerHTML = `<div class="ppc-sent">${m.en}</div><div class="ppc-tag ${m.open ? 'open' : 'closed'}">${m.open ? 'Окно открыто до СЕЙЧАС → Present Perfect' : 'Окно закрыто → Past Simple'}${m.alt ? ' <small>' + m.alt + '</small>' : ''}</div>
+      ${timeline({type: 'window', from: m.w[0], to: m.w[1], open: m.open, lbl: m.wl, at: m.at})}
+      <p class="ppc-why">${m.why}</p>`;
+  };
+  box.addEventListener('click', e => { const b = e.target.closest('.mchip'); if (b) show(+b.dataset.i); });
+  show(0);
+}
+
+/* ---------- Ключи Шрёдингера ---------- */
+function initKeys() {
+  const box = $('#keys'); if (!box) return;
+  const draw = found => {
+    $$('#keys .toggle button').forEach(b => b.classList.toggle('on', (b.dataset.f === '1') === found));
+    $('.keys-out', box).innerHTML = found
+      ? `<div class="comic tight">${say({mood: 'happy', arms: 'up'}, 'Нашлись через час. В холодильнике.')}</div><div class="keys-en"><b>I lost my keys</b> yesterday. <span class="aside">История закончилась, сейчас всё ок → Past Simple.</span></div>`
+      : `<div class="comic tight">${say({mood: 'sweat', arms: 'shrug'}, 'Стою под дверью. Ключей нет. Вообще.')}</div><div class="keys-en"><b>I've lost my keys!</b> <span class="aside">Последствие прямо сейчас: ты под дверью → Present Perfect.</span></div>`;
+  };
+  box.innerHTML = `<div class="ru-big">«Я потерял ключи»</div><div class="lbl">А ключи сейчас где?</div><div class="toggle"><button data-f="0">Всё ещё нет 😭</button><button data-f="1">Уже нашлись</button></div><div class="keys-out"></div>`;
+  box.addEventListener('click', e => { const b = e.target.closest('button[data-f]'); if (b) draw(b.dataset.f === '1'); });
+  draw(false);
+}
+
+/* ---------- 4. Будущее: гадалка ---------- */
+function initFuture() {
+  const box = $('#fut'); if (!box) return;
+  let i = 0, score = 0;
+  const draw = () => {
+    if (i >= FUTURE.length) {
+      box.innerHTML = `<div class="fut-done">${score} из ${FUTURE.length}. ${score >= FUTURE.length - 1 ? 'Ванга нервно курит.' : score >= 3 ? 'Норм. Битва экстрасенсов, полуфинал.' : 'Ну, будущее туманно. Перечитай табличку выше.'}</div><button class="again" id="fut-again">Ещё раз</button>`;
+      $('#fut-again').onclick = () => { i = 0; score = 0; draw(); };
+      return;
+    }
+    const f = FUTURE[i];
+    box.innerHTML = `<div class="qn">Ситуация ${i + 1} из ${FUTURE.length}</div>
+      <div class="fut-sc">${stick(f.stick || {mood: 'happy'})}<div><div class="fut-sit">${f.sit}</div><div class="fut-ru">${f.ru}</div></div></div>
+      <div class="opts">${f.opts.map((o, j) => `<button data-j="${j}">${o}</button>`).join('')}</div><div class="fut-ans"></div>`;
+    $('.opts', box).addEventListener('click', e => {
+      const b = e.target.closest('button'); if (!b || box.dataset.locked) return;
+      box.dataset.locked = 1;
+      const j = +b.dataset.j, ok = f.ok.includes(j);
+      if (ok) score++;
+      $$('.opts button', box).forEach((x, k) => x.classList.add(f.ok.includes(k) ? 'right' : k === j ? 'wrong' : 'dim'));
+      $('.fut-ans', box).innerHTML = `<b>${ok ? 'Да!' : 'Не-а.'}</b> ${f.why} <button class="next">Дальше →</button>`;
+      $('.next', box).onclick = () => { delete box.dataset.locked; i++; draw(); };
+    });
+  };
+  draw();
+}
+
+/* ---------- 5. Порядок слов: падежи vs позиция ---------- */
+function initOrder() {
+  const box = $('#order'); if (!box) return;
+  let ru = 0, en = 0;
+  const draw = () => {
+    const r = ORDER.ru[ru], e = ORDER.en[en];
+    box.innerHTML = `
+      <div class="ord-cols">
+        <div class="ord">
+          <div class="lbl">🇷🇺 Русский: роль слова = окончание</div>
+          <div class="ord-s">${r.w.map(w => `<span class="w ${w[1]}">${w[0]}</span>`).join(' ')}</div>
+          <div class="ord-pic">${bite(true)}</div>
+          <div class="ord-note">${r.note}</div>
+          <button class="shuf" data-l="ru">🔀 Перемешать</button>
+        </div>
+        <div class="ord">
+          <div class="lbl">🇬🇧 Английский: роль слова = место</div>
+          <div class="ord-s">${e.w.map(w => `<span class="w ${w[1]}">${w[0]}</span>`).join(' ')}</div>
+          <div class="ord-pic">${e.pic === 'ok' ? bite(true) : e.pic === 'rev' ? bite(false) : '<div class="yoda">🤨</div>'}</div>
+          <div class="ord-note">${e.note}</div>
+          <button class="shuf" data-l="en">🔀 Перемешать</button>
+        </div>
+      </div>`;
+  };
+  box.addEventListener('click', ev => {
+    const b = ev.target.closest('.shuf'); if (!b) return;
+    if (b.dataset.l === 'ru') ru = (ru + 1) % ORDER.ru.length; else en = (en + 1) % ORDER.en.length;
+    draw();
+  });
+  draw();
+}
+function bite(dogBites) {
+  // собака и мужик: кто кого кусает
+  const dog = `<svg width="110" height="80" viewBox="0 0 110 80"><g stroke="#1b1b1b" stroke-width="3" fill="#fff" stroke-linecap="round" stroke-linejoin="round" filter="url(#wobble)"><ellipse cx="50" cy="45" rx="30" ry="14"/><path d="M28 55 L24 74 M40 57 L38 74 M62 57 L64 74 M72 54 L78 74"/><path d="M20 42 Q8 30 14 22" fill="none"/><circle cx="84" cy="34" r="13"/><path d="M92 26 L100 16 L96 30" /><circle cx="88" cy="31" r="1.8" fill="#1b1b1b"/>${dogBites ? '<path d="M94 42 l10 -2 M94 42 l8 6" stroke="#e84a3a"/>' : ''}</g></svg>`;
+  const man = stick({mood: dogBites ? 'shock' : 'angry', arms: dogBites ? 'up' : 'punch', scale: 0.7, flip: dogBites});
+  return dogBites ? `<div class="bite">${dog}<span class="pow">КУСЬ!</span>${man}</div>` : `<div class="bite">${man}<span class="pow">КУСЬ!</span>${dog}</div>`;
+}
+
+/* ---------- Вопросная машина ---------- */
+function initQMachine() {
+  const box = $('#qm'); if (!box) return;
+  let si = 0, step = 0;
+  box.innerHTML = `<div class="chips-row">${QSENT.map((q, i) => `<button class="mchip" data-i="${i}">${q.label}</button>`).join('')}</div>
+    <div class="qm-stage"></div><div class="qm-ctrl"><button class="qm-back">← Назад</button><button class="qm-next">Дальше →</button></div>`;
+  const stage = $('.qm-stage', box);
+  const draw = () => {
+    const q = QSENT[si], fr = q.frames[step];
+    $$('.mchip', box).forEach(b => b.classList.toggle('on', +b.dataset.i === si));
+    stage.innerHTML = `<div class="qm-step">Шаг ${step + 1} из ${q.frames.length}</div><div class="qm-row">${fr.t.map(([w, c]) => `<span class="w ${c || ''}">${w}</span>`).join('')}</div><div class="qm-say">${fr.say}</div>`;
+    $('.qm-back', box).disabled = step === 0;
+    $('.qm-next', box).disabled = step === q.frames.length - 1;
+  };
+  box.addEventListener('click', e => {
+    const c = e.target.closest('.mchip'); if (c) { si = +c.dataset.i; step = 0; draw(); }
+    if (e.target.closest('.qm-next')) { step = Math.min(step + 1, QSENT[si].frames.length - 1); draw(); }
+    if (e.target.closest('.qm-back')) { step = Math.max(step - 1, 0); draw(); }
+  });
+  draw();
+}
+
+/* ---------- Вежливый вопрос ---------- */
+function initPolite() {
+  const box = $('#polite'); if (!box) return;
+  let on = false;
+  const draw = () => {
+    $$('.toggle button', box).forEach(b => b.classList.toggle('on', (b.dataset.p === '1') === on));
+    $('.pol-out', box).innerHTML = on
+      ? `<div class="qm-row"><span class="w">Could you tell me</span> <span class="w wh">where</span> <span class="w s">the station</span> <span class="w aux moved">is</span><span class="w">?</span></div><div class="qm-say">Вопрос уже задан словами «Could you tell me». Дальше идёт обычный порядок, как в утверждении: <b>кто → что делает</b>. Глагол <code>is</code> уехал обратно на своё место.</div>`
+      : `<div class="qm-row"><span class="w wh">Where</span> <span class="w aux">is</span> <span class="w s">the station</span><span class="w">?</span></div><div class="qm-say">Прямой вопрос: <code>is</code> выпрыгивает вперёд подлежащего. Норм, но звучит как допрос.</div>`;
+  };
+  box.innerHTML = `<div class="toggle"><button data-p="0">Прямой вопрос</button><button data-p="1">Вежливый (косвенный)</button></div><div class="pol-out"></div>`;
+  box.addEventListener('click', e => { const b = e.target.closest('button[data-p]'); if (b) { on = b.dataset.p === '1'; draw(); } });
+  draw();
+}
+
+/* ---------- 6. Условные: реальность-о-метр ---------- */
+function initCond() {
+  const box = $('#cond'); if (!box) return;
+  box.innerHTML = `<div class="cond-scale">${COND.map((c, i) => `<button data-i="${i}"><b>${c.n}</b><small>${c.tag}</small></button>`).join('')}</div>
+    <input type="range" min="0" max="${COND.length - 1}" step="1" value="1" id="cond-r"><div class="cond-out"></div>`;
+  const draw = i => {
+    const c = COND[i];
+    $('#cond-r').value = i;
+    $$('.cond-scale button', box).forEach((b, k) => b.classList.toggle('on', k === i));
+    $('.cond-out', box).innerHTML = `<div class="tom-formula">${c.f.map(p => `<span class="pc ${p[1]}">${p[0]}</span>`).join('<span class="plus">,</span>')}</div>
+      <div class="cond-ex">${c.en}</div><div class="tom-ru">🇷🇺 ${c.ru}</div>
+      <div class="tom-grid"><div>${c.why}</div>${say(c.stick, c.joke)}</div>`;
+  };
+  $('#cond-r').addEventListener('input', e => draw(+e.target.value));
+  box.addEventListener('click', e => { const b = e.target.closest('.cond-scale button'); if (b) draw(+b.dataset.i); });
+  draw(1);
+}
+
+/* ---------- Бы-детектор ---------- */
+function initBy() {
+  const box = $('#by'); if (!box) return;
+  let i = 0, past = false;
+  const draw = () => {
+    const b = BY[i];
+    $$('#by .toggle button').forEach(x => x.classList.toggle('on', (x.dataset.t === '1') === past));
+    $('.by-ru', box).innerHTML = `«${b.ru}»`;
+    $('.by-out', box).innerHTML = past
+      ? `<div class="cond-ex">${b.p3}</div><div class="aside">Речь о прошлом, поезд ушёл → <b>3-й тип</b>: had + V3, would have + V3.</div>`
+      : `<div class="cond-ex">${b.p2}</div><div class="aside">Речь о сейчас/вообще, но это фантазия → <b>2-й тип</b>: Past, would + V.</div>`;
+  };
+  box.innerHTML = `<div class="ru-big by-ru"></div><div class="lbl">О каком времени речь?</div><div class="toggle"><button data-t="0">Сейчас / вообще</button><button data-t="1">Про прошлое, уже поздно</button></div><div class="by-out"></div><button class="shuf" id="by-next">Другая фраза 🔀</button>`;
+  box.addEventListener('click', e => {
+    const b = e.target.closest('button[data-t]'); if (b) { past = b.dataset.t === '1'; draw(); }
+    if (e.target.id === 'by-next') { i = (i + 1) % BY.length; draw(); }
+  });
+  draw();
+}
+
+/* ---------- 7. Модальные: давление-метр ---------- */
+function initModals() {
+  const box = $('#mod'); if (!box) return;
+  box.innerHTML = `<div class="mod-wrap"><div class="mod-list">${MODALS.map((m, i) => `<button data-i="${i}"><b>${m.w}</b><span>${m.ru}</span></button>`).join('')}</div><div class="mod-out"></div></div>`;
+  const draw = i => {
+    const m = MODALS[i];
+    $$('.mod-list button', box).forEach((b, k) => b.classList.toggle('on', k === i));
+    $('.mod-out', box).innerHTML = `
+      <div class="gcol"><div class="gauge"><div class="g-fill" style="--p:${m.p}%;background:${m.p > 85 ? '#e84a3a' : m.p > 55 ? '#f26a21' : m.p > 25 ? '#f2c230' : '#7cc576'}"></div></div><div class="g-lbl">${m.pl}</div></div>
+      <div class="mod-txt"><div class="mod-w">${m.w}</div><div class="cond-ex">${m.en}</div><div class="tom-ru">🇷🇺 ${m.enru}</div><p>${m.why}</p>${say(m.stick, m.joke)}</div>`;
+  };
+  box.addEventListener('click', e => { const b = e.target.closest('.mod-list button'); if (b) draw(+b.dataset.i); });
+  draw(2);
+}
+
+/* ---------- 8. Фразовые: рулетка ---------- */
+function initPhrasal() {
+  const box = $('#pv'); if (!box) return;
+  const st = {v: 0, p: 0};
+  const V = PHRASAL.verbs, P = PHRASAL.parts;
+  box.innerHTML = `<div class="pv-pick"><div><div class="lbl">Глагол</div><div class="pv-col" id="pv-v">${V.map((v, i) => `<button data-v="${i}">${v.w}</button>`).join('')}</div></div>
+    <div class="pv-plus">+</div>
+    <div><div class="lbl">Частица</div><div class="pv-col" id="pv-p">${P.map((p, i) => `<button data-p="${i}">${p.w}</button>`).join('')}</div></div>
+    <div class="pv-res"></div></div><button class="shuf" id="pv-rand">🎰 Крутануть</button>`;
+  const draw = () => {
+    const v = V[st.v], p = P[st.p], key = v.w + ' ' + p.w, r = PHRASAL.map[key];
+    $$('#pv-v button').forEach((b, i) => b.classList.toggle('on', i === st.v));
+    $$('#pv-p button').forEach((b, i) => b.classList.toggle('on', i === st.p));
+    $('.pv-res', box).innerHTML = r
+      ? `<div class="pv-key">${key}</div><div class="pv-mean">${r[0]}</div><div class="cond-ex">${r[1]}</div>${r[2] ? `<div class="pv-joke">${r[2]}</div>` : ''}<div class="pv-hint"><b>${p.w}</b> = ${p.idea}</div>`
+      : `<div class="pv-key no">${key}</div><div class="pv-mean">В нашей шпаргалке такого нет. Либо его не существует, либо он настолько редкий, что носитель посмотрит на тебя как на NPC.</div><div class="pv-hint"><b>${p.w}</b> = ${p.idea}</div>`;
+  };
+  box.addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b) return;
+    if (b.dataset.v != null) st.v = +b.dataset.v;
+    else if (b.dataset.p != null) st.p = +b.dataset.p;
+    else if (b.id === 'pv-rand') {
+      const keys = Object.keys(PHRASAL.map), k = keys[Math.floor(Math.random() * keys.length)].split(' ');
+      st.v = V.findIndex(v => v.w === k[0]); st.p = P.findIndex(p => p.w === k.slice(1).join(' '));
+    }
+    draw();
+  });
+  draw();
+}
+
+/* ---------- Персонажи ---------- */
+function initCast() {
+  const box = $('#cast'); if (!box) return;
+  box.innerHTML = CAST.map(c => `<div class="tenant"><div class="inner">
+    <div class="face front"><div class="swatch" style="background:${c.color}"></div>${stick(c.stick)}<div class="nm">${c.name}</div><div class="nick">${c.nick}</div><div class="flip-hint">нажми, чтобы перевернуть</div></div>
+    <div class="face back"><h5>${c.name}</h5><div>${c.bio}</div><div class="q">«${c.q}»</div></div></div></div>`).join('');
+  box.addEventListener('click', e => { const t = e.target.closest('.tenant'); if (t) t.classList.toggle('flip'); });
+}
+
+/* ---------- Бойцовский клуб ---------- */
+function initFights() {
+  const box = $('#fights'); if (!box) return;
+  box.innerHTML = FIGHTS.map((f, i) => `<div class="fight" data-i="${i}"><div class="yr">${f.kicker}</div><h4>${f.title}</h4>
+    <div class="ring"><div class="corner l">${stick(f.l.stick)}<div class="who">${f.l.who}</div><div>${f.l.says}</div></div><div class="vs">VS</div>
+    <div class="corner r">${stick({...f.r.stick, flip: true})}<div class="who">${f.r.who}</div><div>${f.r.says}</div></div></div>
+    <div class="story">${f.story}</div><button class="bell">🔔 Гонг!</button><div class="verdict">${f.verdict}</div></div>`).join('');
+  box.addEventListener('click', e => {
+    const b = e.target.closest('.bell'); if (!b) return;
+    const f = b.closest('.fight'); f.classList.add('ding');
+    setTimeout(() => { f.classList.remove('ding'); f.classList.add('done'); }, 1050);
+  });
+}
+
+/* ---------- Кринж-детектор ---------- */
+function initCringe() {
+  const box = $('#cringe'); if (!box) return;
+  let found = 0;
+  const bad = CRINGE.filter(c => c.fix).length;
+  box.innerHTML = `<div class="cr-score">Найдено ошибок: <b id="cr-n">0</b> из ${bad} <span id="cr-react"></span></div><div class="cr-list">${CRINGE.map((c, i) => `<button class="cr" data-i="${i}"><span class="cr-s">${c.s}</span><span class="cr-a"></span></button>`).join('')}</div>`;
+  box.addEventListener('click', e => {
+    const b = e.target.closest('.cr'); if (!b || b.classList.contains('done')) return;
+    const c = CRINGE[b.dataset.i];
+    b.classList.add('done', c.fix ? 'bad' : 'good');
+    $('.cr-a', b).innerHTML = c.fix ? `✏️ <b>${c.fix}</b><br><span>${c.why}</span>` : `✅ Это правильно! <span>${c.why}</span>`;
+    if (c.fix) found++;
+    $('#cr-n').textContent = found;
+    $('#cr-react').textContent = found === bad ? ' 🏆 Grammar Sigma. Абсолютная аура.' : found >= bad / 2 ? ' 🔥 +1000 ауры' : '';
+  });
+}
+
+/* ---------- Квиз ---------- */
+function initQuiz() {
+  const box = $('#quiz'); if (!box) return;
+  let qi = 0; const score = {};
+  const draw = () => {
+    if (qi >= QUIZ.q.length) {
+      const top = Object.entries(score).sort((a, b) => b[1] - a[1])[0][0], r = QUIZ.r[top];
+      box.innerHTML = `<div class="result">${stick(r.stick)}<div><div class="qn">Ты:</div><h4>${r.name}</h4><p>${r.text}</p><button class="again">Пройти ещё раз</button></div></div>`;
+      $('.again', box).onclick = () => { qi = 0; for (const k in score) delete score[k]; draw(); };
+      return;
+    }
+    const q = QUIZ.q[qi];
+    box.innerHTML = `<div class="qn">Вопрос ${qi + 1} из ${QUIZ.q.length}</div><div class="qt">${q.t}</div><div class="opts">${q.a.map((a, j) => `<button data-j="${j}">${a[0]}</button>`).join('')}</div>`;
+  };
+  box.addEventListener('click', e => {
+    const b = e.target.closest('.opts button'); if (!b) return;
+    const k = QUIZ.q[qi].a[b.dataset.j][1]; score[k] = (score[k] || 0) + 1; qi++; draw();
+  });
+  draw();
+}
+
+/* ---------- частота времён (Krámský 1969) ---------- */
+function initFreqBars() {
+  const box = $('#freqbars'); if (!box) return;
+  const max = FREQ_BARS[0][1];
+  box.innerHTML = FREQ_BARS.map(([n, v, note]) => `<div class="fbar"><div class="fn-n">${n}</div><div class="fb"><i data-w="${v / max * 100}"></i></div><div class="fv">${v}%</div>${note ? `<div class="fnote">${note}</div>` : ''}</div>`).join('');
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { $$('.fb i', box).forEach(i => i.style.width = i.dataset.w + '%'); io.disconnect(); }
+  }), {threshold: 0.3});
+  io.observe(box);
+}
+function initPTable() {
+  const t = $('#ptable'); if (!t) return;
+  t.innerHTML = PTABLE.map(r => `<tr>${r.map(c => `<td>${c}</td>`).join('')}</tr>`).join('');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderSticks();
+  initFreqBars();
+  initPTable();
+  initTenseOMatic();
+  initVerdictCards('#stative', STATIVE);
+  initPerfectCourt();
+  initKeys();
+  initFuture();
+  initOrder();
+  initQMachine();
+  initPolite();
+  initCond();
+  initBy();
+  initModals();
+  initPhrasal();
+  initCast();
+  initFights();
+  initCringe();
+  initQuiz();
+  initChrome();
+  // авто-нумерация частей
+  let n = 0;
+  $$('.chapter-kicker').forEach(k => { if (/^Часть \d+/.test(k.textContent)) k.textContent = 'Часть ' + (++n); });
+});
+
+</script>
+<script>
+// Подсказки при наведении для терминов и мемов (словарь: GLOSS в data.js).
+// Оборачивает совпадения в <abbr class="tt">, следит за перерисовкой виджетов (MutationObserver),
+// на телефоне показывает карточку по тапу. Ещё строит словарик в #gloss.
+(() => {
+  const MAP = {};
+  GLOSS.forEach(e => [e.t, ...e.a].forEach(k => { MAP[k] = e; }));
+  const terms = Object.keys(MAP).sort((a, b) => b.length - a.length);
+  const escRe = s => s.replace(/[.*+?^${}()|[\]\\/]/g, '\\$&');
+  const RE = new RegExp(`(?<![\\p{L}\\d-])(${terms.map(escRe).join('|')})(?![\\p{L}\\d]|-[\\p{L}])`, 'gu');
+  const SKIP = 'script, style, button, h1, h2, h3, h4, .doom, abbr, svg, .tt-card, #gloss, .tt-hint, .vf-head, input, label, .pv-col, .cond-scale, .mod-list, .chips-row, .toggle, footer';
+  const EXAMPLE = 'i, em, .ex, .opts, .ppc-sent, .cond-ex, .tom-ex, .qm-row, .cr-s, .vq, .cr-a';
+  const tip = document.createElement('div');
+  tip.className = 'tt-card';
+  document.body.appendChild(tip);
+
+  function wrap(root) {
+    const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode: n => (!n.parentElement || n.parentElement.closest(SKIP)) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT
+    });
+    const hits = []; let n;
+    while ((n = w.nextNode())) { RE.lastIndex = 0; if (RE.test(n.textContent)) hits.push(n); }
+    hits.forEach(node => {
+      const frag = document.createDocumentFragment(); let last = 0;
+      node.textContent.replace(RE, (m, t, i) => {
+        frag.append(node.textContent.slice(last, i));
+        if (MAP[t].prose && node.parentElement.closest(EXAMPLE)) { frag.append(m); last = i + m.length; return; }
+        const a = document.createElement('abbr'); a.className = 'tt'; a.dataset.t = t; a.textContent = t;
+        frag.append(a); last = i + m.length;
+      });
+      frag.append(node.textContent.slice(last));
+      node.replaceWith(frag);
+    });
+  }
+
+  let pending = false;
+  const mo = new MutationObserver(() => {
+    if (pending) return; pending = true;
+    setTimeout(() => { pending = false; mo.disconnect(); wrap(document.body); observe(); }, 40);
+  });
+  const observe = () => mo.observe(document.body, {childList: true, subtree: true});
+
+  let cur = null;
+  const show = el => {
+    const e = MAP[el.dataset.t]; if (!e) return;
+    cur = el;
+    tip.innerHTML = `<b>${e.t}</b><span class="full">${e.f}</span><span class="what">${e.w}</span>`;
+    tip.style.display = 'block';
+    const r = el.getBoundingClientRect(), x = r.left + r.width / 2, y = r.top, t = tip.getBoundingClientRect();
+    tip.style.left = Math.min(Math.max(8, x - t.width / 2), innerWidth - t.width - 8) + 'px';
+    tip.style.top = (y - t.height - 12 < 8 ? r.bottom + 10 : y - t.height - 12) + 'px';
+  };
+  const hide = () => { tip.style.display = 'none'; cur = null; };
+  document.addEventListener('mouseover', e => { const el = e.target.closest && e.target.closest('abbr.tt'); if (el) show(el); });
+  document.addEventListener('mouseout', e => { if (e.target.closest && e.target.closest('abbr.tt')) hide(); });
+  document.addEventListener('click', e => {
+    const el = e.target.closest && e.target.closest('abbr.tt');
+    if (el) { if (cur === el && tip.style.display === 'block') hide(); else show(el); }
+    else hide();
+  });
+  addEventListener('scroll', hide, {passive: true});
+
+  function glossary() {
+    const box = document.getElementById('gloss'); if (!box) return;
+    const groups = [...new Set(GLOSS.map(e => e.g))];
+    box.innerHTML = groups.map(g => `<h4>${g}</h4><table>${GLOSS.filter(e => e.g === g).map(e =>
+      `<tr><td><b>${e.t}</b></td><td><span class="gf">${e.f}</span>${e.w}</td></tr>`).join('')}</table>`).join('');
+  }
+
+  document.addEventListener('DOMContentLoaded', () => setTimeout(() => { glossary(); wrap(document.body); observe(); }, 30));
+})();
+
+</script>
+</body>
+</html>
